@@ -3,4 +3,11 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  has_many :jobs
+
+  acts_as_taggable_on :hobbies, :personalities, :values, :soft_skills, :hard_skills, :languages
+
+  acts_as_favoritable
+  acts_as_favoritor
 end
