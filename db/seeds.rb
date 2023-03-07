@@ -29,7 +29,7 @@ url_arr.each do |url|
     description: infos[0]["general"]["description"],
     mbti: "super smart",
     city: infos[0]["general"]["location"],
-    has_a_project: "false",
+    has_a_project: false,
     email: "#{infos[0]["general"]["lastName"]}@gmail.com",
     password: "123456"
   )
@@ -55,11 +55,14 @@ url_arr.each do |url|
   end
 end
 
-# def find_xp("Sep 2021 - Jan 2022 · 1 yrs 5 mos")
-#   couper au niveau du point
-#   garder ce qui match sur la droite
-#   remove les whitespace
-#   regex => fait matcher yrs et tu prends le devant
-#   regex => fait matcher mos et tu prends le devant
-#   compute en month
-# end
+def xp_calculation
+  date_range = infos[0]["jobs"][num]["dateRange"]
+  end_date = date_range.split(" - ")[1].split(" · ")[0]
+  start_date = date_range.split(" - ")[0]
+  Date.parse(end_date) - Date.parse(start_date)
+end
+
+# /(.*)\s-\s(.*)\s·/.match("Sep 2021 - Jan 2022 · 1 yrs 5 mos")
+# matches = _
+# matches[1]
+# Date.today
