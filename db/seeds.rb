@@ -10,6 +10,14 @@ Project.destroy_all
 Company.destroy_all
 User.destroy_all
 
+@hobbies = ["Reading", "Traveling", "Fishing", "Crafting", "Music", "Gardening", "Video Games", "Sport"]
+@personality = ["ambitious", "competitive", "motivated", "natural leader", "passionate", "stubborn", "accepting", "casual",
+                "charismatic", "easygoing", "relaxed", "social", "critical thinker", "dependable", "detail-oriented", "focused",
+                "objective", "logical", "compassionate", "existential", "insightful", "observant", "sensitive", "supportive"]
+@soft_skills = ["Teamwork", "Problem solving", "Communication", "Adaptability", "Critical thinking", "Time management", "Interpersonal"]
+@hard_skills = ["Management", "Technical", "Marketing", "Computer"]
+@languages = ["French", "Spanish", "German", "Chinese", "Italian"]
+@mbti_profiles = ["Analyst", "Diplomat", "Sentinel", "Explorer"]
 
 def xp_calculation(job)
   begin
@@ -23,6 +31,7 @@ def xp_calculation(job)
   end
 end
 
+<<<<<<< HEAD
 COO_profiles = "app/assets/JSON/coo.json"
 file = File.read(COO_profiles)
 data = JSON.parse(file)
@@ -34,13 +43,21 @@ data.each do |infos|
     last_name: infos["general"]["lastName"],
     gender: "female",
     description: infos["general"]["description"],
-    mbti: "super smart",
+    mbti: @mbti_profiles.sample,
+    mission: [true, false].sample,
     city: infos["general"]["location"],
     has_a_project: [true, false].sample,
     email: "#{infos["general"]["lastName"]}@gmail.com",
     password: "123456"
   )
+
+  user.hobby_list.add(@hobbies.sample(2))
+  user.personality_list.add(@personality.sample(3))
+  user.soft_skill_list.add(@soft_skills.sample(2))
+  user.hard_skill_list.add(@hard_skills.sample)
+  user.language_list.add("French", @languages.sample)
   user.save!
+
 
   infos["jobs"].first(3).each do |job|
     company1 = Company.new(
@@ -75,7 +92,6 @@ data.each do |infos|
     training.school = school
 
     training.save
-
   end
 end
 #   if user.has_a_project?
