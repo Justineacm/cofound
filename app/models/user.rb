@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :jobs
+
   acts_as_taggable_on :hobbies, :personalities, :values, :soft_skills, :hard_skills, :languages
 
   acts_as_favoritable
