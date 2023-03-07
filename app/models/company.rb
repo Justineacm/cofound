@@ -1,5 +1,5 @@
 class Company < ApplicationRecord
-  belongs_to :job
+  has_many :jobs
 
-  validates :companies, :industry, presence: true
+  validates :industry, presence: true
 end
