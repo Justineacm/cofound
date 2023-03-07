@@ -1,10 +1,5 @@
 class UsersController < ApplicationController
-  @hobbies = @user.hobby_list
-  @values = @user.value_list
-  @personalities = @user.personality_list
-  @soft_skills = @user.soft_skill_list
-  @hard_skills = @user.hard_skill_list
-  @languages = @user.language_list
+  before_action :authenticate_user!, only: :toggle_favorite
 
   def new
     @user = User.new
@@ -17,6 +12,18 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @hobbies = @user.hobby_list
+    @values = @user.value_list
+    @personalities = @user.personality_list
+    @soft_skills = @user.soft_skill_list
+    @hard_skills = @user.hard_skill_list
+    @languages = @user.language_list
+  end
+
+  def toggle_favorite
+    @user = User.find(params[:id])
+    current_user.favorited?(@user, scopes: [:favorite]) ? current_user.unfavorite(@user, scopes: [:favorite]) : current_user.favorite(@user, scopes: [:favorite])
+    # It checks if a user has liked it. If it’s been favourited before, it is now unfavorited and vice versa.
   end
 
   private
