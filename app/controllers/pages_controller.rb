@@ -4,4 +4,8 @@ class PagesController < ApplicationController
   def home
   end
 
+  def dashboard
+    @users = current_user.users
+  end
+
 end
