@@ -18,8 +18,8 @@ User.destroy_all
                 "charismatic", "easygoing", "relaxed", "social", "critical thinker", "dependable", "detail-oriented", "focused",
                 "objective", "logical", "compassionate", "existential", "insightful", "observant", "sensitive", "supportive"]
 @soft_skills = ["Teamwork", "Problem solving", "Communication", "Adaptability", "Critical thinking", "Time management", "Interpersonal"]
-@hard_skills = ["Management", "Technical", "Marketing", "Computer"]
-@languages = ["French", "Spanish", "German", "Chinese", "Italian"]
+@expertise = ["Management", "Technical", "Marketing", "Computer"]
+@languages = ["Spanish", "English", "German", "Chinese", "Italian"]
 @mbti_profiles = ["Analyst", "Diplomat", "Sentinel", "Explorer"]
 
 url_arr = [
@@ -46,10 +46,9 @@ url_arr.each do |url|
   @user1.hobby_list.add(@hobbies.sample(2))
   @user1.personality_list.add(@personality.sample(3))
   @user1.soft_skill_list.add(@soft_skills.sample(2))
-  @user1.hard_skill_list.add(@hard_skills.sample)
+  @user1.expertise_list.add(@expertise.sample)
   @user1.language_list.add("French", @languages.sample)
   @user1.save!
-
   infos[0]["jobs"].first(3).each do |job|
     @company1 = Company.new(
       industry: job["companyName"],
