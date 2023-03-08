@@ -31,7 +31,39 @@ def xp_calculation(job)
   end
 end
 
-<<<<<<< HEAD
+def gen_project(user)
+  return unless user.has_a_project?
+
+  url = "https://www.indiegogo.com/explore/tech-innovation?project_type=campaign&project_timing=all&sort=trending"
+
+  html_file = URI.open(url).read
+  html_doc = Nokogiri::HTML.parse(html_file)
+
+  debugger
+
+  html_doc.search(".discoverable-card").first(5).each do |element|
+    url = element['href']
+    html_file = URI.open(url).read
+    html_doc = Nokogiri::HTML.parse(html_file)
+
+    html_doc.search('.body').each do |element|
+      p element.search(".k-Title").text.strip
+
+    end
+
+      project = Project.new(
+        name: element.search(".basicsSection-title").text.strip,
+        industry: element.search(".linkedLabelsList-tag").text.strip,
+        pitch_deck: element.search(".class=site-internet").text.strip,
+        pitch: element.search(".basicsSection-tagline").text.strip,
+        city: element.search(".basicsCampaignOwner-details-city").text.strip,
+        user_id: user.id
+      )
+
+      project.save!
+  end
+end
+
 COO_profiles = "app/assets/JSON/coo.json"
 file = File.read(COO_profiles)
 data = JSON.parse(file)
@@ -58,6 +90,7 @@ data.each do |infos|
   user.language_list.add("French", @languages.sample)
   user.save!
 
+  gen_project(user)
 
   infos["jobs"].first(3).each do |job|
     company1 = Company.new(
@@ -94,36 +127,8 @@ data.each do |infos|
     training.save
   end
 end
-#   if user.has_a_project?
-
-#     url = "https://www.indiegogo.com/explore/tech-innovation?project_type=campaign&project_timing=all&sort=trending"
-
-#     html_file = URI.open(url).read
-#     html_doc = Nokogiri::HTML.parse(html_file)
 
 
-#     html_doc.search(".discoverable-card").first(5).each do |element|
-#       url = element['href']
-#       html_file = URI.open(url).read
-#       html_doc = Nokogiri::HTML.parse(html_file)
-
-#       html_doc.search('.body').each do |element|
-#         p element.search(".k-Title").text.strip
-
-#       end
-
-#         project = Project.new(
-#           name: element.search(".basicsSection-title").text.strip,
-#           industry: element.search(".linkedLabelsList-tag").text.strip,
-#           pitch_deck: element.search(".class=site-internet").text.strip,
-#           pitch: element.search(".basicsSection-tagline").text.strip,
-#           city: element.search(".basicsCampaignOwner-details-city").text.strip,
-#           user_id: user.id
-#         )
-
-#         project.save!
-#     end
-# end
 
 
 # /(.*)\s-\s(.*)\s·/.match("Sep 2021 - Jan 2022 · 1 yrs 5 mos")
