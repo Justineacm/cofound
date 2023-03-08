@@ -13,6 +13,13 @@ Job.destroy_all
 Company.destroy_all
 User.destroy_all
 
+@hobbies = ["Reading", "Traveling", "Fishing", "Crafting", "Music", "Gardening", "Video Games", "Sport"]
+@personality = ["ambitious", "competitive", "motivated", "natural leader", "passionate", "stubborn", "accepting", "casual",
+                "charismatic", "easygoing", "relaxed", "social", "critical thinker", "dependable", "detail-oriented", "focused",
+                "objective", "logical", "compassionate", "existential", "insightful", "observant", "sensitive", "supportive"]
+@soft_skills = ["Teamwork", "Problem solving", "Communication", "Adaptability", "Critical thinking", "Time management", "Interpersonal"]
+@hard_skills = ["Management", "Technical", "Marketing", "Computer"]
+
 url_arr = [
   "https://phantombuster.s3.amazonaws.com/mkrBVUuON2g/CiKJ8wejbU5c89KJ4kzMYw/ProfileMongLinkedin.json",
   "https://phantombuster.s3.amazonaws.com/mkrBVUuON2g/tKu3CcI31b0fZgWH7RcB2g/ProfileMaloLinkedin.json",
