@@ -19,6 +19,8 @@ User.destroy_all
                 "objective", "logical", "compassionate", "existential", "insightful", "observant", "sensitive", "supportive"]
 @soft_skills = ["Teamwork", "Problem solving", "Communication", "Adaptability", "Critical thinking", "Time management", "Interpersonal"]
 @hard_skills = ["Management", "Technical", "Marketing", "Computer"]
+@languages = ["French", "Spanish", "German", "Chinese", "Italian"]
+@mbti_profiles = ["Analyst", "Diplomat", "Sentinel", "Explorer"]
 
 url_arr = [
   "https://phantombuster.s3.amazonaws.com/mkrBVUuON2g/CiKJ8wejbU5c89KJ4kzMYw/ProfileMongLinkedin.json",
@@ -29,36 +31,41 @@ url_arr = [
 url_arr.each do |url|
   infos = JSON.parse(RestClient.get(url))
 
-  user1 = User.new(
+  @user1 = User.new(
     first_name: infos[0]["general"]["firstName"],
     last_name: infos[0]["general"]["lastName"],
     gender: "female",
     description: infos[0]["general"]["description"],
-    mbti: "super smart",
+    mbti: @mbti_profiles.sample,
+    mission: [true, false].sample,
     city: infos[0]["general"]["location"],
     has_a_project: false,
     email: "#{infos[0]["general"]["lastName"]}@gmail.com",
     password: "123456"
   )
-  user1.save!
+  @user1.hobby_list.add(@hobbies.sample(2))
+  @user1.personality_list.add(@personality.sample(3))
+  @user1.soft_skill_list.add(@soft_skills.sample(2))
+  @user1.hard_skill_list.add(@hard_skills.sample)
+  @user1.language_list.add("French", @languages.sample)
+  @user1.save!
 
   infos[0]["jobs"].first(3).each do |job|
-    company1 = Company.new(
+    @company1 = Company.new(
       industry: job["companyName"],
     )
-    company1.save!
+    @company1.save!
 
-    job = Job.new(
+    @job = Job.new(
       description: job["description"],
       title: job["jobTitle"],
       city: job["location"],
       year_experience: 1
     )
+    @job.user = @user1
+    @job.company = @company1
 
-    job.user = user1
-    job.company = company1
-
-    job.save!
+    @job.save!
   end
 end
 
