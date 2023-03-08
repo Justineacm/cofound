@@ -25,3 +25,39 @@
   color: white;
   opacity: 0.8;
 }
+
+.btn-circle-message {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border: 1px solid $blue;
+  background:url('images/message.svg') no-repeat;
+  background-size: 15px;
+}
+
+.btn-circle-project {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border: 1px solid $blue;
+  background:url('images/project.svg') no-repeat;
+  background-size: 15px;
+}
+
+.btn-circle-profil {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border: 1px solid $blue;
+  background:url('images/handshake.svg') no-repeat;
+  background-size: 15px;
+}
+
+.btn-circle-new {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border: 1px solid $blue;
+  background:url('images/new.svg') no-repeat;
+  background-size: 15px;
+}
