@@ -15,8 +15,8 @@ User.destroy_all
                 "charismatic", "easygoing", "relaxed", "social", "critical thinker", "dependable", "detail-oriented", "focused",
                 "objective", "logical", "compassionate", "existential", "insightful", "observant", "sensitive", "supportive"]
 @soft_skills = ["Teamwork", "Problem solving", "Communication", "Adaptability", "Critical thinking", "Time management", "Interpersonal"]
-@hard_skills = ["Management", "Technical", "Marketing", "Computer"]
-@languages = ["French", "Spanish", "German", "Chinese", "Italian"]
+@expertise = ["Management", "Technical", "Marketing", "Computer"]
+@languages = ["Spanish", "English", "German", "Chinese", "Italian"]
 @mbti_profiles = ["Analyst", "Diplomat", "Sentinel", "Explorer"]
 
 def xp_calculation(job)
@@ -31,7 +31,7 @@ def xp_calculation(job)
   end
 end
 
-<<<<<<< HEAD
+
 COO_profiles = "app/assets/JSON/coo.json"
 file = File.read(COO_profiles)
 data = JSON.parse(file)
@@ -50,7 +50,6 @@ data.each do |infos|
     email: "#{infos["general"]["lastName"]}@gmail.com",
     password: "123456"
   )
-
   user.hobby_list.add(@hobbies.sample(2))
   user.personality_list.add(@personality.sample(3))
   user.soft_skill_list.add(@soft_skills.sample(2))

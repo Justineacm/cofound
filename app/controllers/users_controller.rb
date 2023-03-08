@@ -16,8 +16,41 @@ class UsersController < ApplicationController
     @values = @user.value_list
     @personalities = @user.personality_list
     @soft_skills = @user.soft_skill_list
-    @hard_skills = @user.hard_skill_list
+    @expertise = @user.expertise_list
     @languages = @user.language_list
+    @matches = matching_algo
+  end
+
+  def matching_algo
+    # S'assurer que user1 et user2 n'ont pas tous les deux un projet & que les matches ne comprennent pas son propre profil
+    if current_user.has_a_project
+      @matches = User.where(has_a_project: false).where.not(id: current_user.id)
+    else
+      @matches = User.where.not(id: current_user.id)
+    end
+
+    # Years of experience cumulées sur tous les jobs >= 10
+    @matches.select do |match|
+      current_user.total_experience + match.total_experience > 3 # changer après push
+    end
+
+    # Match complémentaire sur l'expertise ["Management", "Technical", "Marketing", "Computer"]
+    if current_user.expertise_list.include?("Management") || current_user.expertise_list.include?("Marketing")
+      @matches.select do |match|
+        match.expertise_list.include?("Technical" || "Computer")
+      end
+    else
+      @matches.select do |match|
+        match.expertise_list.include?("Management" || "Marketing")
+      end
+    end
+
+    # Match sur 1 langue en commun
+    @matches.select do |match|
+      match.language_list.include?(current_user.language_list)
+    end
+    return @matches
+    # @mbti_profiles = ["Analyst", "Diplomat", "Sentinel", "Explorer"]
   end
 
   def toggle_favorite
@@ -31,4 +64,5 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:hobby_list, :personality_list, :value_list, :soft_skill_list, :hard_skill_list, :language_list)
   end
+
 end
