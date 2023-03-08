@@ -10,4 +10,12 @@ class User < ApplicationRecord
 
   acts_as_favoritable
   acts_as_favoritor
+
+  def total_experience
+    current_user_xp = 0
+    self.jobs.each do |job|
+      current_user_xp += job.year_experience
+    end
+    return current_user_xp
+  end
 end
