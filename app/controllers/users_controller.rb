@@ -44,11 +44,13 @@ class UsersController < ApplicationController
         match.expertise_list.include?("Management" || "Marketing")
       end
     end
-    raise
+
+    # Match sur 1 langue en commun
+    @matches.select do |match|
+      match.language_list.include?(current_user.language_list)
+    end
     return @matches
-
-    # Expertises complémentaires
-
+    # @mbti_profiles = ["Analyst", "Diplomat", "Sentinel", "Explorer"]
   end
 
   def toggle_favorite
