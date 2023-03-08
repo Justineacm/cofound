@@ -15,8 +15,8 @@ User.destroy_all
                 "charismatic", "easygoing", "relaxed", "social", "critical thinker", "dependable", "detail-oriented", "focused",
                 "objective", "logical", "compassionate", "existential", "insightful", "observant", "sensitive", "supportive"]
 @soft_skills = ["Teamwork", "Problem solving", "Communication", "Adaptability", "Critical thinking", "Time management", "Interpersonal"]
-@hard_skills = ["Management", "Technical", "Marketing", "Computer"]
-@languages = ["French", "Spanish", "German", "Chinese", "Italian"]
+@expertise = ["Management", "Technical", "Marketing", "Computer"]
+@languages = ["Spanish", "English", "German", "Chinese", "Italian"]
 @mbti_profiles = ["Analyst", "Diplomat", "Sentinel", "Explorer"]
 
 def xp_calculation(job)
@@ -31,38 +31,31 @@ def xp_calculation(job)
   end
 end
 
-def gen_project(user)
-  return unless user.has_a_project?
+# def generate_project(user)
+#   return unless user.has_a_project?
+#   url = "https://www.kisskissbankbank.com/fr/discover?category=web-and-tech"
 
-  url = "https://www.indiegogo.com/explore/tech-innovation?project_type=campaign&project_timing=all&sort=trending"
+#   html_file = URI.open(url).read
+#   html_doc = Nokogiri::HTML.parse(html_file)
 
-  html_file = URI.open(url).read
-  html_doc = Nokogiri::HTML.parse(html_file)
 
-  debugger
+#   html_doc.search("a.k-ProjectCard").first(5).each do |element|
+#     url = element['href']
+#     html_file = URI.open(url).read
+#     html_doc = Nokogiri::HTML.parse(html_file)
+#     project = Project.new(
+#       name: html_doc.search("h1.k-Title").text.strip,
+#       industry: html_doc.search(".linkedLabelsList-tag").text.strip,
+#       pitch_deck: html_doc.search(".class=site-internet").text.strip,
+#       pitch: html_doc.search(".basicsSection-tagline").text.strip,
+#       city: html_doc.search(".basicsCampaignOwner-details-city").text.strip,
+#       user_id: user.id
+#     )
+#       p project
+#       project.save!
+#   end
+# end
 
-  html_doc.search(".discoverable-card").first(5).each do |element|
-    url = element['href']
-    html_file = URI.open(url).read
-    html_doc = Nokogiri::HTML.parse(html_file)
-
-    html_doc.search('.body').each do |element|
-      p element.search(".k-Title").text.strip
-
-    end
-
-      project = Project.new(
-        name: element.search(".basicsSection-title").text.strip,
-        industry: element.search(".linkedLabelsList-tag").text.strip,
-        pitch_deck: element.search(".class=site-internet").text.strip,
-        pitch: element.search(".basicsSection-tagline").text.strip,
-        city: element.search(".basicsCampaignOwner-details-city").text.strip,
-        user_id: user.id
-      )
-
-      project.save!
-  end
-end
 
 COO_profiles = "app/assets/JSON/coo.json"
 file = File.read(COO_profiles)
@@ -82,15 +75,13 @@ data.each do |infos|
     email: "#{infos["general"]["lastName"]}@gmail.com",
     password: "123456"
   )
-
   user.hobby_list.add(@hobbies.sample(2))
   user.personality_list.add(@personality.sample(3))
   user.soft_skill_list.add(@soft_skills.sample(2))
-  user.hard_skill_list.add(@hard_skills.sample)
+  user.expertise_list.add(@expertise.sample)
   user.language_list.add("French", @languages.sample)
   user.save!
 
-  gen_project(user)
 
   infos["jobs"].first(3).each do |job|
     company1 = Company.new(
@@ -126,10 +117,10 @@ data.each do |infos|
 
     training.save
   end
+
+  generate_project(user)
+
 end
-
-
-
 
 # /(.*)\s-\s(.*)\s·/.match("Sep 2021 - Jan 2022 · 1 yrs 5 mos")
 # matches = _

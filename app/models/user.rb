@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   has_many :jobs
 
-  acts_as_taggable_on :hobbies, :personalities, :values, :soft_skills, :hard_skills, :languages
+  acts_as_taggable_on :hobbies, :personalities, :values, :soft_skills, :expertise, :languages
 
   acts_as_favoritable
   acts_as_favoritor
