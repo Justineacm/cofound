@@ -61,3 +61,21 @@
   background:url('images/new.svg') no-repeat;
   background-size: 15px;
 }
+
+.btn-circle-heart {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border: 1px solid $blue;
+  background:url('images/heart.svg') no-repeat;
+  background-size: 15px;
+}
+
+.btn-circle-cross {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border: 1px solid $blue;
+  background:url('images/cross.svg') no-repeat;
+  background-size: 15px;
+}
