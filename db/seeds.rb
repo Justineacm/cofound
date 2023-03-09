@@ -34,23 +34,24 @@ end
 def generate_project(user)
   return unless user.has_a_project?
   url = "https://www.kisskissbankbank.com/fr/discover?category=web-and-tech"
+  industry = ["AI", "Web3", "cyber", "agrotech", "industry 4.0", "Fintech"]
+  city = ["Paris", "Saint-Ouen", "Versailles", "La Défense"]
 
   html_file = URI.open(url).read
   html_doc = Nokogiri::HTML.parse(html_file)
-
 
   html_doc.search("a.k-ProjectCard").first(10).each do |element|
     url = element['href']
     html_file = URI.open(url).read
     html_doc = Nokogiri::HTML.parse(html_file)
     project = Project.new(
-      name: html_doc.search("h1.k-Title").innertext.strip,
-      industry: html_doc.search("p.k-Paragraph").innertext.strip,
-      city: html_doc.search(".cGBzih"[1]).innertext.strip,
+      name: html_doc.search("h1.k-Title").text.strip,
+      industry: industry.sample,
+      city: city.sample,
       user_id: user.id
     )
-      p project
-      project.save!
+    puts "generating project"
+    project.save!
   end
 end
 
@@ -59,7 +60,7 @@ COO_profiles = "app/assets/JSON/coo.json"
 file = File.read(COO_profiles)
 data = JSON.parse(file)
 
-
+puts "creating COO"
 data.each do |infos|
   user = User.new(
     first_name: infos["general"]["firstName"],
@@ -79,7 +80,6 @@ data.each do |infos|
   user.expertise_list.add(@expertise.sample)
   user.language_list.add("French", @languages.sample)
   user.save!
-
 
   infos["jobs"].first(3).each do |job|
     company1 = Company.new(
@@ -116,6 +116,7 @@ data.each do |infos|
     training.save
   end
 
+  puts "..."
   generate_project(user)
 
 end
