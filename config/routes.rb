@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       get 'favprofils'
       get 'messages'
       get 'project'
+      post 'like'
     end
   end
 
