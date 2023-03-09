@@ -31,16 +31,19 @@ def xp_calculation(job)
   end
 end
 
-def generate_project(user)
-  return unless user.has_a_project?
+def kisskissbankbank_scrap
   url = "https://www.kisskissbankbank.com/fr/discover?category=web-and-tech"
+  html_file = URI.open(url).read
+  html_doc = Nokogiri::HTML.parse(html_file)
+  html_doc.search("a.k-ProjectCard")
+end
+
+def generate_project(user, index, kisskissprojects)
+  return unless user.has_a_project?
   industry = ["AI", "Web3", "cyber", "agrotech", "industry 4.0", "Fintech"]
   city = ["Paris", "Saint-Ouen", "Versailles", "La Défense"]
 
-  html_file = URI.open(url).read
-  html_doc = Nokogiri::HTML.parse(html_file)
-
-  html_doc.search("a.k-ProjectCard").first(10).each do |element|
+  element = kisskissprojects[index % kisskissprojects.size]
     url = element['href']
     html_file = URI.open(url).read
     html_doc = Nokogiri::HTML.parse(html_file)
@@ -52,16 +55,16 @@ def generate_project(user)
     )
     puts "generating project"
     project.save!
-  end
 end
 
 
 COO_profiles = "app/assets/JSON/coo.json"
 file = File.read(COO_profiles)
 data = JSON.parse(file)
+kisskissprojects = kisskissbankbank_scrap
 
 puts "creating COO"
-data.each do |infos|
+data.each_with_index do |infos, index|
   user = User.new(
     first_name: infos["general"]["firstName"],
     last_name: infos["general"]["lastName"],
@@ -117,7 +120,7 @@ data.each do |infos|
   end
 
   puts "..."
-  generate_project(user)
+  generate_project(user, index, kisskissprojects)
 
 end
 
