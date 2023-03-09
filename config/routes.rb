@@ -11,6 +11,10 @@ Rails.application.routes.draw do
       # The generated route will look like this: users/:id/toggle_favorite
     end
   end
+
+  resources :selections, only: :show do
+    resources :messages, only: :create
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

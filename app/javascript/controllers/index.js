@@ -4,5 +4,8 @@
 
 import { application } from "./application"
 
+import SelectionSubscriptionController from "./selection_subscription_controller"
+application.register("selection-subscription", SelectionSubscriptionController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
