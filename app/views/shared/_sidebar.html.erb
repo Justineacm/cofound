@@ -1,8 +1,9 @@
 <div class="menu_vertical">
   <ul>
-    <li class="mb-5"><%= image_tag "new.svg", class: "btn-circle-new"%></li>
-    <li class="mb-5"><%= image_tag "message.svg", class: "btn-circle-message"%></li>
-    <li class="mb-5"><%= image_tag "handshake.svg", class: "btn-circle-profil"%></li>
-    <li class="mb-5"><%= image_tag "project.svg", class: "btn-circle-project"%></li>
+    <%= link_to "matches", matches_dashboards_path, class: "btn-circle-new mb-5"%>
+    <%= link_to "fav profils",favprofils_dashboards_path, class: "btn-circle-new  mb-5"%>
+    <%= link_to "messages",messages_dashboards_path, class: "btn-circle-message  mb-5"%>
+    <%= link_to "project",project_dashboards_path, class: "btn-circle-message  mb-5"%>
+
   </ul>
 </div>
