@@ -31,8 +31,9 @@
   width: 50px;
   border-radius: 50%;
   border: 1px solid $blue;
-  background:url('images/message.svg') no-repeat;
-  background-size: 15px;
+  background: asset-url("message.svg") no-repeat;
+  background-position: center;
+  background-size: 55%;
 }
 
 .btn-circle-project {
@@ -40,8 +41,9 @@
   width: 50px;
   border-radius: 50%;
   border: 1px solid $blue;
-  background:url('images/project.svg') no-repeat;
-  background-size: 15px;
+  background: asset-url("project.svg") no-repeat;
+  background-position: center;
+  background-size: 40%;
 }
 
 .btn-circle-profil {
@@ -49,34 +51,37 @@
   width: 50px;
   border-radius: 50%;
   border: 1px solid $blue;
-  background:url('images/handshake.svg') no-repeat;
-  background-size: 15px;
+  background: asset-url("handshake.svg") no-repeat;
+  background-position: center;
+  background-size: 50%;
 }
 
 .btn-circle-new {
-  height: 50px;
   width: 50px;
+  height: 50px;
   border-radius: 50%;
   border: 1px solid $blue;
-  background:url('images/new.svg') no-repeat;
-  background-size: 15px;
+  background: asset-url("new.svg") no-repeat;
+  background-position: center;
+  background-size: 40%;
 }
 
 .btn-circle-heart {
-  height: 50px;
-  width: 50px;
+  height: 40px;
+  width: 40px;
   border-radius: 50%;
   border: 1px solid $blue;
-  background:url('images/heart.svg') no-repeat;
-  background-size: 15px;
-
+  background: asset-url("heart.svg") no-repeat;
+  background-position: center;
+  background-size: 50%;
 }
 
 .btn-circle-cross {
-  height: 50px;
-  width: 50px;
+  height: 40px;
+  width: 40px;
   border-radius: 50%;
   border: 1px solid $blue;
-  background:url('images/cross.svg') no-repeat;
-  background-size: 15px;
+  background: asset-url("cross.svg") no-repeat;
+  background-position: center;
+  background-size: 40%;
 }
