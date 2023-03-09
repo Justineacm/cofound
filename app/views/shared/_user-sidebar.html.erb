@@ -1,11 +1,16 @@
 <div class="profil_user">
-  <%= image_tag "avatar.svg", class: "avatar-large"%>
-  <h3>John Doe</h3>
-  <%= image_tag "location.svg", class: "tag-icon"%> Paris
-  <ul>
-    <li class="btn-tag"><%= image_tag "xp.svg", class: "tag-icon"%> XX years experience</li>
-    <li class="btn-tag"><%= image_tag "skill.svg", class: "tag-icon"%> Technologie</li>
-    <li class="btn-tag"><%= image_tag "project.svg", class: "tag-icon"%> I've got a project</li>
-  </ul>
-  <%= link_to "Update your profil", "#", class: "btn-cta" %>
+  <% @users.each do |user| %>
+    <%= image_tag "avatar.svg", class: "avatar-large"%>
+    <h3><%= user.first_name %><%= user.last_name %></h3>
+    <%= image_tag "location.svg", class: "tag-icon"%> <%= user.city %>
+    <ul>
+      <li class="btn-tag"><%= image_tag "xp.svg", class: "tag-icon"%><%= user.total_experience%> years experience</li>
+      <li class="btn-tag"><%= image_tag "skill.svg", class: "tag-icon"%><%= user.gender %></li>
+      <li class="btn-tag"><%= image_tag "skill.svg", class: "tag-icon"%><%= user.soft_skills.first(3) %></li>
+      <li class="btn-tag"><%= image_tag "skill.svg", class: "tag-icon"%><%= user.expertise %></li>
+
+      <li class="btn-tag"><%= image_tag "project.svg", class: "tag-icon"%><%=  %></li>
+    </ul>
+    <%= link_to "Update your profil", "#", class: "btn-cta" %>
+  <% end %>
 </div>
