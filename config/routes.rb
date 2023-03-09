@@ -2,7 +2,15 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
 
-  get "dashboard", to: "pages#dashboard", as: :dashboard
+  resources :dashboards, only: [] do
+    collection do
+      get 'matches'
+      get 'favprofils'
+      get 'messages'
+      get 'project'
+    end
+  end
+
   get "selections", to: "pages#selections", as: :selections
 
   resources :users, only: :show

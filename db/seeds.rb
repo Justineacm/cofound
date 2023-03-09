@@ -3,6 +3,9 @@ require "rest-client"
 require "open-uri"
 require "nokogiri"
 
+# login : fiszel@gmail.com
+# mot de passe : 123456
+
 School.destroy_all
 Training.destroy_all
 Job.destroy_all
