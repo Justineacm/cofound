@@ -80,15 +80,34 @@ class UsersController < ApplicationController
     return @matches
   end
 
-  def toggle_favorite
-    @user = User.find(params[:id])
-    current_user.favorited?(@user, scopes: [:favorite]) ? current_user.unfavorite(@user, scopes: [:favorite]) : current_user.favorite(@user, scopes: [:favorite])
-    # It checks if a user has liked it. If it’s been favourited before, it is now unfavorited and vice versa.
+  # User clique sur le coeur de la card du cofounder (non likée)
+  def favorite
+    current_user.favorite(@user)
+    set_selection
+  end
+
+  # User clique sur le coeur de la card du cofounder (précédemment likée)
+  def unfavorite
+    current_user.unfavorite(@user)
+    set_selection
+  end
+
+  # Créé une sélection entre un sender et un receiver dont le status change en fonction de la réciprocité
+  def set_selection
+    current_user.all_favorites.each do |favorite|
+      @selection = Selection.new(sender_id: current_user, receiver_id: favorite)
+      if favorite.all_favorites.include?(current_user)
+        @selection.status = "Accepted"
+      else
+        @selection.status = "Pending"
+      end
+    end
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:fist_name, :last_name, :hobby_list, :personality_list, :value_list, :soft_skill_list, :expertise, :language_list)
+    params.require(:user).permit(:fist_name, :last_name, :hobby_list, :personality_list, :value_list, :soft_skill_list,
+      :expertise, :language_list)
   end
 end
