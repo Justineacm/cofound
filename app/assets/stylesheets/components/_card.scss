@@ -12,7 +12,12 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
-.card_user li {
+.card-user ul {
+  font-size: 10px;
   display: inline;
   list-style-type: none;
+  padding: 0;
+  > li {
+    width: max-content;
+  }
 }

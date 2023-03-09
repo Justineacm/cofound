@@ -6,7 +6,7 @@
 
 .profil_user {
   margin: 30px;
-  padding: 30px;
+  padding: 30px 20px;
   border-radius: 30px;
   background-color: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
@@ -15,8 +15,15 @@
 }
 
 .profil_user ul {
+  font-size: 14px;
+  display: inline;
   list-style-type: none;
+  padding: 0;
+  > li {
+    width: max-content;
+  }
 }
+
 
 .profil-content {
   flex-grow: 1;
@@ -39,6 +46,7 @@
 .menu_vertical {
   background-color: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
 }
 
 .menu_vertical ul {
