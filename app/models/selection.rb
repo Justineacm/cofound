@@ -8,5 +8,4 @@ class Selection < ApplicationRecord
     accepted: 1,
     rejected: 2
   }
-
 end
