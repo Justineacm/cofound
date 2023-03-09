@@ -1,8 +1,9 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
-
 <div class="container">
-<% @matches.each do |match| %>
-<ul><li><%= match.first_name %> <%= match.last_name %> <%= match.mbti %></li></ul>
-<%end%>
+  <div class="user-description">
+    <h1><%= @user.first_name %> <%= @user.last_name %></h1>
+    <%= cl_image_tag @user.photo, crop: :fill, class: :profile_picture %>
+    <p><%= @user.description %></p>
+    <%= @user.mbti %>
+    <%= @user.mbti %>
+  </div>
 </div>

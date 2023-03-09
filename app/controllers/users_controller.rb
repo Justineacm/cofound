@@ -74,6 +74,7 @@ class UsersController < ApplicationController
   def city_match
     return @matches = @matches.select do |match|
       match.city == current_user.city
+    end
   end
 
   def matching_algo
