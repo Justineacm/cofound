@@ -18,7 +18,7 @@ class UsersController < ApplicationController
     @soft_skills = @user.soft_skill_list
     @expertise = @user.expertise_list
     @languages = @user.language_list
-    @matches = matching_algo
+    matching_algo
   end
 
   def matching_algo
@@ -77,8 +77,6 @@ class UsersController < ApplicationController
     end
 
     # Match on Mission
-    @matches = @matches/
-
     return @matches
   end
 
@@ -93,5 +91,4 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:fist_name, :last_name, :hobby_list, :personality_list, :value_list, :soft_skill_list, :expertise, :language_list)
   end
-
 end

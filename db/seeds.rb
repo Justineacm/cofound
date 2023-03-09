@@ -118,7 +118,7 @@ data.each do |infos|
     training.save
   end
 
-  generate_project(user)
+  # generate_project(user)
 
 end
 
