@@ -1,8 +1,8 @@
 <div class="main-container">
     <div class="profil-content">
-      <h3>Matches</h3>
+      <h3><%= @matches.count%> Matches</h3>
       <div class="main-content">
-        <%= render "shared/card-user" %>
+        <%= render partial: "shared/card-user", locals: {users: @matches} %>
       </div>
     </div>
 </div>
