@@ -31,30 +31,28 @@ def xp_calculation(job)
   end
 end
 
-# def generate_project(user)
-#   return unless user.has_a_project?
-#   url = "https://www.kisskissbankbank.com/fr/discover?category=web-and-tech"
+def generate_project(user)
+  return unless user.has_a_project?
+  url = "https://www.kisskissbankbank.com/fr/discover?category=web-and-tech"
 
-#   html_file = URI.open(url).read
-#   html_doc = Nokogiri::HTML.parse(html_file)
+  html_file = URI.open(url).read
+  html_doc = Nokogiri::HTML.parse(html_file)
 
 
-#   html_doc.search("a.k-ProjectCard").first(5).each do |element|
-#     url = element['href']
-#     html_file = URI.open(url).read
-#     html_doc = Nokogiri::HTML.parse(html_file)
-#     project = Project.new(
-#       name: html_doc.search("h1.k-Title").text.strip,
-#       industry: html_doc.search(".linkedLabelsList-tag").text.strip,
-#       pitch_deck: html_doc.search(".class=site-internet").text.strip,
-#       pitch: html_doc.search(".basicsSection-tagline").text.strip,
-#       city: html_doc.search(".basicsCampaignOwner-details-city").text.strip,
-#       user_id: user.id
-#     )
-#       p project
-#       project.save!
-#   end
-# end
+  html_doc.search("a.k-ProjectCard").first(10).each do |element|
+    url = element['href']
+    html_file = URI.open(url).read
+    html_doc = Nokogiri::HTML.parse(html_file)
+    project = Project.new(
+      name: html_doc.search("h1.k-Title").innertext.strip,
+      industry: html_doc.search("p.k-Paragraph").innertext.strip,
+      city: html_doc.search(".cGBzih"[1]).innertext.strip,
+      user_id: user.id
+    )
+      p project
+      project.save!
+  end
+end
 
 
 COO_profiles = "app/assets/JSON/coo.json"
