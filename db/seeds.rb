@@ -65,6 +65,76 @@ kisskissprojects = kisskissbankbank_scrap
 
 puts "creating COO"
 data.each_with_index do |infos, index|
+
+  user = User.new(
+    first_name: infos["general"]["firstName"],
+    last_name: infos["general"]["lastName"],
+    gender: "female",
+    description: infos["general"]["description"],
+    mbti: @mbti_profiles.sample,
+    mission: [true, false].sample,
+    city: infos["general"]["location"],
+    has_a_project: [true, false].sample,
+    email: "#{infos["general"]["lastName"]}@gmail.com",
+    password: "123456"
+  )
+  user.hobby_list.add(@hobbies.sample(2))
+  user.personality_list.add(@personality.sample(3))
+  user.soft_skill_list.add(@soft_skills.sample(2))
+  user.expertise_list.add(@expertise.sample)
+  user.language_list.add("French", @languages.sample)
+  user.save!
+
+
+  infos["jobs"].first(3).each do |job|
+    company1 = Company.new(
+      industry: job["companyName"],
+    )
+    company1.save!
+
+    job_new = Job.new(
+      description: job["description"],
+      title: job["jobTitle"],
+      city: job["location"],
+      year_experience: xp_calculation(job)
+    )
+
+    job_new.user = user
+    job_new.company = company1
+
+    job_new.save!
+  end
+
+  schools = infos["schools"]
+
+  schools.each do |dataSchool|
+
+    school = School.find_or_create_by(name: dataSchool["schoolName"])
+    training = Training.new(
+      title: dataSchool["degree"],
+      graduation_year: dataSchool["dateRange"]
+    )
+
+    training.user = user
+    training.school = school
+
+    training.save
+  end
+
+   puts "..."
+  generate_project(user, index, kisskissprojects)
+end
+
+CTO_profiles = "app/assets/JSON/cto.json"
+
+file = File.read(CTO_profiles)
+data = JSON.parse(file)
+kisskissprojects = kisskissbankbank_scrap
+
+puts "creating CTO"
+data.each_with_index do |infos, index|
+
+
   user = User.new(
     first_name: infos["general"]["firstName"],
     last_name: infos["general"]["lastName"],
@@ -121,7 +191,73 @@ data.each_with_index do |infos, index|
 
   puts "..."
   generate_project(user, index, kisskissprojects)
+end
 
+Malo_profile = "app/assets/JSON/malo.json"
+
+file = File.read(Malo_profile)
+data = JSON.parse(file)
+kisskissprojects = kisskissbankbank_scrap
+
+puts "creating CTO"
+data.each_with_index do |infos, index|
+  user = User.new(
+    first_name: infos["general"]["firstName"],
+    last_name: infos["general"]["lastName"],
+    gender: "female",
+    description: infos["general"]["description"],
+    mbti: @mbti_profiles.sample,
+    mission: [true, false].sample,
+    city: infos["general"]["location"],
+    has_a_project: [true, false].sample,
+    email: "#{infos["general"]["lastName"]}@gmail.com",
+    password: "123456"
+  )
+  user.hobby_list.add(@hobbies.sample(2))
+  user.personality_list.add(@personality.sample(3))
+  user.soft_skill_list.add(@soft_skills.sample(2))
+  user.expertise_list.add(@expertise.sample)
+  user.language_list.add("French", @languages.sample)
+  user.save!
+
+
+  infos["jobs"].first(3).each do |job|
+    company1 = Company.new(
+      industry: job["companyName"],
+    )
+    company1.save!
+
+    job_new = Job.new(
+      description: job["description"],
+      title: job["jobTitle"],
+      city: job["location"],
+      year_experience: xp_calculation(job)
+    )
+
+    job_new.user = user
+    job_new.company = company1
+
+    job_new.save!
+  end
+
+  schools = infos["schools"]
+
+  schools.each do |dataSchool|
+
+    school = School.find_or_create_by(name: dataSchool["schoolName"])
+    training = Training.new(
+      title: dataSchool["degree"],
+      graduation_year: dataSchool["dateRange"]
+    )
+
+    training.user = user
+    training.school = school
+
+    training.save
+  end
+  
+ puts "..."
+  generate_project(user, index, kisskissprojects)
 end
 
 # /(.*)\s-\s(.*)\s·/.match("Sep 2021 - Jan 2022 · 1 yrs 5 mos")
