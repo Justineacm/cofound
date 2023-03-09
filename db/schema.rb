@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_09_122338) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_09_123408) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -51,6 +52,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_09_122338) do
     t.datetime "updated_at", null: false
     t.index ["company_id"], name: "index_jobs_on_company_id"
     t.index ["user_id"], name: "index_jobs_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "content"
+    t.bigint "selection_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["selection_id"], name: "index_messages_on_selection_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -149,6 +160,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_09_122338) do
 
   add_foreign_key "jobs", "companies"
   add_foreign_key "jobs", "users"
+  add_foreign_key "messages", "selections"
+  add_foreign_key "messages", "users"
   add_foreign_key "projects", "users"
   add_foreign_key "selections", "users", column: "receiver_id"
   add_foreign_key "selections", "users", column: "sender_id"
