@@ -1,0 +1,9 @@
+.main-content ul {
+  font-size: 14px;
+  display: inline;
+  list-style-type: none;
+  padding: 0;
+  > li {
+    width: max-content;
+  }
+}
