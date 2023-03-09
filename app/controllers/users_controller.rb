@@ -30,27 +30,56 @@ class UsersController < ApplicationController
     end
 
     # Years of experience cumulées sur tous les jobs >= 10
-    @matches.select do |match|
+    @matches = @matches.select do |match|
       current_user.total_experience + match.total_experience > 3 # changer après push
     end
 
-    # Match complémentaire sur l'expertise ["Management", "Technical", "Marketing", "Computer"]
+    # # Match complémentaire sur l'expertise ["Management", "Technical", "Marketing", "Computer"]
     if current_user.expertise_list.include?("Management") || current_user.expertise_list.include?("Marketing")
-      @matches.select do |match|
-        match.expertise_list.include?("Technical" || "Computer")
+      @matches = @matches.select do |match|
+        match.expertise_list.include?("Technical") || match.expertise_list.include?("Computer")
       end
     else
-      @matches.select do |match|
-        match.expertise_list.include?("Management" || "Marketing")
+      @matches = @matches.select do |match|
+        match.expertise_list.include?("Management") || match.expertise_list.include?("Marketing")
       end
     end
 
-    # Match sur 1 langue en commun
-    @matches.select do |match|
-      match.language_list.include?(current_user.language_list)
+    # # Match sur 1 langue en commun
+    @matches = @matches.select do |match|
+      match.language_list.include?(current_user.language_list[0]) || match.language_list.include?(current_user.language_list[1])
     end
+
+    # # @mbti_profiles = ["Analyst", "Diplomat", "Sentinel", "Explorer"]
+    # # analyst/diplomat #sentinel/explorer #analyst/explorer #sentinel/diplomat
+
+    if current_user.mbti == "Analyst"
+      @matches = @matches.select do |match|
+        match.mbti == "Diplomat" || match.mbti == "Explorer"
+      end
+    elsif current_user.mbti == "Diplomat"
+      @matches = @matches.select do |match|
+        match.mbti == "Analyst" || match.mbti == "Sentinel"
+      end
+    elsif current_user.mbti == "Sentinel"
+      @matches = @matches.select do |match|
+        match.mbti == "Explorer" || match.mbti == "Diplomat"
+      end
+    else
+      @matches = @matches.select do |match|
+        match.mbti == "Sentinel" || match.mbti == "Analyst"
+      end
+    end
+
+    # Match on cities (current city)
+    @matches = @matches.select do |match|
+      match.city == current_user.city
+    end
+
+    # Match on Mission
+    @matches = @matches/
+
     return @matches
-    # @mbti_profiles = ["Analyst", "Diplomat", "Sentinel", "Explorer"]
   end
 
   def toggle_favorite
@@ -62,7 +91,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:fist_name, :last_name, :hobby_list, :personality_list, :value_list, :soft_skill_list, :hard_skill_list, :language_list)
+    params.require(:user).permit(:fist_name, :last_name, :hobby_list, :personality_list, :value_list, :soft_skill_list, :expertise, :language_list)
   end
 
 end

@@ -53,7 +53,7 @@ data.each do |infos|
   user.hobby_list.add(@hobbies.sample(2))
   user.personality_list.add(@personality.sample(3))
   user.soft_skill_list.add(@soft_skills.sample(2))
-  user.hard_skill_list.add(@hard_skills.sample)
+  user.expertise_list.add(@expertise.sample)
   user.language_list.add("French", @languages.sample)
   user.save!
 
