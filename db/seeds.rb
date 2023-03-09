@@ -74,6 +74,7 @@ data.each_with_index do |infos, index|
     mbti: @mbti_profiles.sample,
     mission: [true, false].sample,
     city: infos["general"]["location"],
+    photo: infos["general"]["imgUrl"],
     has_a_project: [true, false].sample,
     email: "#{infos["general"]["lastName"]}@gmail.com",
     password: "123456"
@@ -143,6 +144,7 @@ data.each_with_index do |infos, index|
     mbti: @mbti_profiles.sample,
     mission: [true, false].sample,
     city: infos["general"]["location"],
+    photo: infos["general"]["imgUrl"],
     has_a_project: [true, false].sample,
     email: "#{infos["general"]["lastName"]}@gmail.com",
     password: "123456"
@@ -199,7 +201,7 @@ file = File.read(Malo_profile)
 data = JSON.parse(file)
 kisskissprojects = kisskissbankbank_scrap
 
-puts "creating CTO"
+puts "creating Malo"
 data.each_with_index do |infos, index|
   user = User.new(
     first_name: infos["general"]["firstName"],
@@ -209,6 +211,7 @@ data.each_with_index do |infos, index|
     mbti: @mbti_profiles.sample,
     mission: [true, false].sample,
     city: infos["general"]["location"],
+    photo: infos["general"]["imgUrl"],
     has_a_project: [true, false].sample,
     email: "#{infos["general"]["lastName"]}@gmail.com",
     password: "123456"
@@ -255,7 +258,7 @@ data.each_with_index do |infos, index|
 
     training.save
   end
-  
+
  puts "..."
   generate_project(user, index, kisskissprojects)
 end
