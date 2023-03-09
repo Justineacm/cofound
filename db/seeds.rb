@@ -34,40 +34,41 @@ def xp_calculation(job)
   end
 end
 
+def kisskissbankbank_scrap
+  url = "https://www.kisskissbankbank.com/fr/discover?category=web-and-tech"
+  html_file = URI.open(url).read
+  html_doc = Nokogiri::HTML.parse(html_file)
+  html_doc.search("a.k-ProjectCard")
+end
 
+def generate_project(user, index, kisskissprojects)
+  return unless user.has_a_project?
+  industry = ["AI", "Web3", "cyber", "agrotech", "industry 4.0", "Fintech"]
+  city = ["Paris", "Saint-Ouen", "Versailles", "La Défense"]
 
-# def generate_project(user)
-#   return unless user.has_a_project?
-#   url = "https://www.kisskissbankbank.com/fr/discover?category=web-and-tech"
-
-#   html_file = URI.open(url).read
-#   html_doc = Nokogiri::HTML.parse(html_file)
-
-
-#   html_doc.search("a.k-ProjectCard").first(5).each do |element|
-#     url = element['href']
-#     html_file = URI.open(url).read
-#     html_doc = Nokogiri::HTML.parse(html_file)
-#     project = Project.new(
-#       name: html_doc.search("h1.k-Title").text.strip,
-#       industry: html_doc.search(".linkedLabelsList-tag").text.strip,
-#       pitch_deck: html_doc.search(".class=site-internet").text.strip,
-#       pitch: html_doc.search(".basicsSection-tagline").text.strip,
-#       city: html_doc.search(".basicsCampaignOwner-details-city").text.strip,
-#       user_id: user.id
-#     )
-#       p project
-#       project.save!
-#   end
-# end
+  element = kisskissprojects[index % kisskissprojects.size]
+    url = element['href']
+    html_file = URI.open(url).read
+    html_doc = Nokogiri::HTML.parse(html_file)
+    project = Project.new(
+      name: html_doc.search("h1.k-Title").text.strip,
+      industry: industry.sample,
+      city: city.sample,
+      user_id: user.id
+    )
+    puts "generating project"
+    project.save!
+end
 
 
 COO_profiles = "app/assets/JSON/coo.json"
 file = File.read(COO_profiles)
 data = JSON.parse(file)
+kisskissprojects = kisskissbankbank_scrap
 
-puts "creating COO profiles"
-data.each do |infos|
+puts "creating COO"
+data.each_with_index do |infos, index|
+
   user = User.new(
     first_name: infos["general"]["firstName"],
     last_name: infos["general"]["lastName"],
@@ -76,6 +77,7 @@ data.each do |infos|
     mbti: @mbti_profiles.sample,
     mission: [true, false].sample,
     city: infos["general"]["location"],
+    photo: infos["general"]["imgUrl"],
     has_a_project: [true, false].sample,
     email: "#{infos["general"]["lastName"]}@gmail.com",
     password: "123456"
@@ -123,16 +125,20 @@ data.each do |infos|
     training.save
   end
 
-  # generate_project(user)
+   puts "..."
+  generate_project(user, index, kisskissprojects)
 end
 
 CTO_profiles = "app/assets/JSON/cto.json"
 
 file = File.read(CTO_profiles)
 data = JSON.parse(file)
+kisskissprojects = kisskissbankbank_scrap
 
-puts "creating CTO profiles"
-data.each do |infos|
+puts "creating CTO"
+data.each_with_index do |infos, index|
+
+
   user = User.new(
     first_name: infos["general"]["firstName"],
     last_name: infos["general"]["lastName"],
@@ -141,6 +147,7 @@ data.each do |infos|
     mbti: @mbti_profiles.sample,
     mission: [true, false].sample,
     city: infos["general"]["location"],
+    photo: infos["general"]["imgUrl"],
     has_a_project: [true, false].sample,
     email: "#{infos["general"]["lastName"]}@gmail.com",
     password: "123456"
@@ -151,7 +158,6 @@ data.each do |infos|
   user.expertise_list.add(@expertise.sample)
   user.language_list.add("French", @languages.sample)
   user.save!
-
 
   infos["jobs"].first(3).each do |job|
     company1 = Company.new(
@@ -188,16 +194,18 @@ data.each do |infos|
     training.save
   end
 
-  # generate_project(user)
+  puts "..."
+  generate_project(user, index, kisskissprojects)
 end
 
 Malo_profile = "app/assets/JSON/malo.json"
 
 file = File.read(Malo_profile)
 data = JSON.parse(file)
+kisskissprojects = kisskissbankbank_scrap
 
-puts "creating Malo's profile"
-data.each do |infos|
+puts "creating Malo"
+data.each_with_index do |infos, index|
   user = User.new(
     first_name: infos["general"]["firstName"],
     last_name: infos["general"]["lastName"],
@@ -206,6 +214,7 @@ data.each do |infos|
     mbti: @mbti_profiles.sample,
     mission: [true, false].sample,
     city: infos["general"]["location"],
+    photo: infos["general"]["imgUrl"],
     has_a_project: [true, false].sample,
     email: "#{infos["general"]["lastName"]}@gmail.com",
     password: "123456"
@@ -253,7 +262,8 @@ data.each do |infos|
     training.save
   end
 
-  # generate_project(user)
+ puts "..."
+  generate_project(user, index, kisskissprojects)
 end
 
 # /(.*)\s-\s(.*)\s·/.match("Sep 2021 - Jan 2022 · 1 yrs 5 mos")
