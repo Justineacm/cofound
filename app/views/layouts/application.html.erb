@@ -11,13 +11,22 @@
   </head>
 
   <body class="<%= "#{controller_name}-#{action_name}" %>">
+    <%= render "shared/navbar" %>
+    <%= render "shared/flashes" %>
+    <%= yield %>
+    <%= render "shared/footer" %>
+
+    <% unless action_name == "dashboard" %>
       <%= render "shared/navbar" %>
       <%= render "shared/flashes" %>
+    <% end %>
+    <div class="main-container">
+      <%= render "shared/user-sidebar" if action_name == "dashboard" %>
       <%= yield %>
+      <%= render "shared/sidebar" %>
+    </div>
+    <% unless action_name == "dashboard" %>
       <%= render "shared/footer" %>
-      <% if action_name == 'dashboard' %>
-        <%= render "shared/user-sidebar"  %>
-        <%= render "shared/sidebar"  %>
-      <% end %>
+    <% end %>
   </body>
 </html>
