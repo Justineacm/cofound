@@ -6,6 +6,7 @@ require "nokogiri"
 # login : fiszel@gmail.com
 # mot de passe : 123456
 
+Selection.destroy_all
 School.destroy_all
 Training.destroy_all
 Job.destroy_all
@@ -56,19 +57,17 @@ def generate_project(user, index, kisskissprojects)
       city: city.sample,
       user_id: user.id
     )
-    puts "generating project"
-    project.save!
+  puts "creating #{user.first_name} #{user.last_name}'s startup project"
+  project.save!
 end
-
 
 COO_profiles = "app/assets/JSON/coo.json"
 file = File.read(COO_profiles)
 data = JSON.parse(file)
 kisskissprojects = kisskissbankbank_scrap
 
-puts "creating COO"
+puts "creating COOs"
 data.each_with_index do |infos, index|
-
   user = User.new(
     first_name: infos["general"]["firstName"],
     last_name: infos["general"]["lastName"],
@@ -79,7 +78,7 @@ data.each_with_index do |infos, index|
     city: infos["general"]["location"],
     photo: infos["general"]["imgUrl"],
     has_a_project: [true, false].sample,
-    email: "#{infos["general"]["lastName"]}@gmail.com",
+    email: "#{infos["general"]["lastName"].strip}@gmail.com",
     password: "123456"
   )
   user.hobby_list.add(@hobbies.sample(2))
@@ -88,7 +87,6 @@ data.each_with_index do |infos, index|
   user.expertise_list.add(@expertise.sample)
   user.language_list.add("French", @languages.sample)
   user.save!
-
 
   infos["jobs"].first(3).each do |job|
     company1 = Company.new(
@@ -112,7 +110,6 @@ data.each_with_index do |infos, index|
   schools = infos["schools"]
 
   schools.each do |dataSchool|
-
     school = School.find_or_create_by(name: dataSchool["schoolName"])
     training = Training.new(
       title: dataSchool["degree"],
@@ -125,7 +122,7 @@ data.each_with_index do |infos, index|
     training.save
   end
 
-   puts "..."
+  puts "creating #{user.first_name} #{user.last_name}"
   generate_project(user, index, kisskissprojects)
 end
 
@@ -135,10 +132,8 @@ file = File.read(CTO_profiles)
 data = JSON.parse(file)
 kisskissprojects = kisskissbankbank_scrap
 
-puts "creating CTO"
+puts "creating CTOs"
 data.each_with_index do |infos, index|
-
-
   user = User.new(
     first_name: infos["general"]["firstName"],
     last_name: infos["general"]["lastName"],
@@ -149,7 +144,7 @@ data.each_with_index do |infos, index|
     city: infos["general"]["location"],
     photo: infos["general"]["imgUrl"],
     has_a_project: [true, false].sample,
-    email: "#{infos["general"]["lastName"]}@gmail.com",
+    email: "#{infos["general"]["lastName"].strip}@gmail.com",
     password: "123456"
   )
   user.hobby_list.add(@hobbies.sample(2))
@@ -181,7 +176,6 @@ data.each_with_index do |infos, index|
   schools = infos["schools"]
 
   schools.each do |dataSchool|
-
     school = School.find_or_create_by(name: dataSchool["schoolName"])
     training = Training.new(
       title: dataSchool["degree"],
@@ -194,7 +188,7 @@ data.each_with_index do |infos, index|
     training.save
   end
 
-  puts "..."
+  puts "creating #{user.first_name} #{user.last_name}"
   generate_project(user, index, kisskissprojects)
 end
 
@@ -216,7 +210,7 @@ data.each_with_index do |infos, index|
     city: infos["general"]["location"],
     photo: infos["general"]["imgUrl"],
     has_a_project: [true, false].sample,
-    email: "#{infos["general"]["lastName"]}@gmail.com",
+    email: "#{infos["general"]["lastName"].strip}@gmail.com",
     password: "123456"
   )
   user.hobby_list.add(@hobbies.sample(2))
@@ -225,7 +219,6 @@ data.each_with_index do |infos, index|
   user.expertise_list.add(@expertise.sample)
   user.language_list.add("French", @languages.sample)
   user.save!
-
 
   infos["jobs"].first(3).each do |job|
     company1 = Company.new(
@@ -249,7 +242,6 @@ data.each_with_index do |infos, index|
   schools = infos["schools"]
 
   schools.each do |dataSchool|
-
     school = School.find_or_create_by(name: dataSchool["schoolName"])
     training = Training.new(
       title: dataSchool["degree"],
@@ -262,7 +254,7 @@ data.each_with_index do |infos, index|
     training.save
   end
 
- puts "..."
+  puts "creating #{user.first_name} #{user.last_name}"
   generate_project(user, index, kisskissprojects)
 end
 
