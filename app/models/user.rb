@@ -5,7 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :jobs
-  has_one :project
+  has_many :projects
+
 
   acts_as_taggable_on :hobbies, :personalities, :values, :soft_skills, :expertise, :languages
 
