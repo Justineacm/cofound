@@ -1,16 +1,19 @@
 <div class="profil_user">
-  <% @users.each do |user| %>
     <%= image_tag "avatar.svg", class: "avatar-large"%>
-    <h3><%= user.first_name %><%= user.last_name %></h3>
-    <%= image_tag "location.svg", class: "tag-icon"%> <%= user.city %>
+    <h3><%= current_user.first_name %> <%= current_user.last_name %></h3>
+    <%= image_tag "location.svg", class: "tag-icon"%> <%= current_user.city %>
     <ul>
-      <li class="btn-tag"><%= image_tag "xp.svg", class: "tag-icon"%><%= user.total_experience%> years experience</li>
-      <li class="btn-tag"><%= image_tag "skill.svg", class: "tag-icon"%><%= user.gender %></li>
-      <li class="btn-tag"><%= image_tag "skill.svg", class: "tag-icon"%><%= user.soft_skills.first(3) %></li>
-      <li class="btn-tag"><%= image_tag "skill.svg", class: "tag-icon"%><%= user.expertise %></li>
+      <li class="btn-tag"><%= image_tag "xp.svg", class: "tag-icon"%> <%= current_user.total_experience%> years experience</li>
+      <li class="btn-tag"><%= image_tag "skill.svg", class: "tag-icon"%> <%= current_user.mbti %></li>
+      <li class="btn-tag"><%= image_tag "skill.svg", class: "tag-icon"%> <%= current_user.language_list %></li>
+      <li class="btn-tag"><%= image_tag "skill.svg", class: "tag-icon"%> <%= current_user.expertise_list %></li>
 
-      <li class="btn-tag"><%= image_tag "project.svg", class: "tag-icon"%><%=  %></li>
+      <% if current_user.has_a_project%>
+      <li class="btn-tag"><%= image_tag "project.svg", class: "tag-icon"%> I've a project</li>
+      <% end %>
     </ul>
     <%= link_to "Update your profil", "#", class: "btn-cta" %>
-  <% end %>
+    <div class="mx-3">
+      <%= link_to "log out", "#" %>
+    </div>
 </div>

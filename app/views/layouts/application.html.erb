@@ -11,13 +11,9 @@
   </head>
 
   <body class="<%= "#{controller_name}-#{action_name}" %>">
-      <%= render "shared/navbar" %>
+      <%= render "shared/navbar" unless action_name == 'dashboard' %>
       <%= render "shared/flashes" %>
       <%= yield %>
-      <%= render "shared/footer" %>
-      <% if action_name == 'dashboard' %>
-        <%= render "shared/user-sidebar"  %>
-        <%= render "shared/sidebar"  %>
-      <% end %>
+      <%= render "shared/footer" unless action_name == 'dashboard' %>
   </body>
 </html>
