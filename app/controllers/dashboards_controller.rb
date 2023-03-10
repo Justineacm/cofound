@@ -17,13 +17,16 @@ class DashboardsController < ApplicationController
 
   def like
     @user = User.find(params[:user_id])
-    find_selection # Déclenchement : bouton like d'une card user
+    # find_selection # Déclenchement : bouton like d'une card user
+    @selection = current_user.selection_for(@user)
     # Si la sélection est vide - création d'une sélection pending où current_user = sender
     if @selection.nil?
       @selection = Selection.create(sender: current_user, receiver: @user) # status à 0 par défaut (pending)
     else
-      @selection.accepted! # Si non, update de la sélection en status "Accepted"
+      @selection.accepted! if @selection.receiver == current_user # Si non, update de la sélection en status "Accepted"
     end
+    # if request.renderrer
+    redirect_to user_path(@user)
   end
 
   def reject
@@ -112,6 +115,7 @@ class DashboardsController < ApplicationController
   end
 
   private
+
 
   def find_selection
     cofounder_ids = [current_user.id, @user.id]

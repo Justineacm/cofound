@@ -33,4 +33,17 @@ class User < ApplicationRecord
     end
     return current_user_xp
   end
+
+  def selection_for(user)
+    selection_as_sender = Selection.find_by(sender_id: self.id, receiver_id: user.id)
+    return selection_as_sender if selection_as_sender.present?
+
+    Selection.find_by(sender_id: user.id, receiver_id: self.id)
+  end
+
+  def can_see_profil_infos?(user)
+    selection = selection_for(user)
+
+    selection.present? && selection.accepted?
+  end
 end
