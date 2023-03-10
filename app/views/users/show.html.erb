@@ -1,39 +1,39 @@
-
 <div class="main-container">
-    <div class="profil_user">
+  <div class="profil_user">
     <% if @user.photo? %>
-        <%= cl_image_tag @user.photo, class: "avatar-show"%>
-      <% else %>
-        <%= image_tag "avatar.svg", class: "avatar-large"%>
+      <%= cl_image_tag @user.photo, class: "avatar-show"%>
+    <% else %>
+      <%= image_tag "avatar.svg", class: "avatar-large"%>
     <% end %>
+
     <h3 class="mx-3"><%= @user.first_name %> <%= @user.last_name %></h3>
     <%= image_tag "location.svg", class: "tag-icon mx-3"%> <%= @user.city %>
-    </div>
+  </div>
 
     <div class="profil-content">
       <div class="main-content">
-        <p><%= @user.description %></p>
         <ul class="list-unstyled list-inline">
           <li class="btn-tag list-inline-item"><%= image_tag "xp.svg", class: "tag-icon"%> <%= @user.total_experience%> years experience</li>
           <li class="btn-tag list-inline-item"><%= image_tag "mbti.svg", class: "tag-icon"%> <%= @user.mbti %></li>
           <li class="btn-tag list-inline-item"><%= image_tag "skill.svg", class: "tag-icon"%> <%= @user.language_list %></li>
           <li class="btn-tag list-inline-item"><%= image_tag "language.svg", class: "tag-icon"%> <%= @user.expertise_list %></li>
-          <li class="<%= "blocked-content" unless current_user.can_see_profil_infos?(@user) %>">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Amet ipsam ducimus delectus asperiores necessitatibus, possimus ipsa. Repellendus necessitatibus voluptates quaerat aperiam modi ex similique labore, aut, nihil culpa distinctio esse.</li>
           <% if @user.has_a_project%>
-          <li class="btn-tag list-inline-item"><%= image_tag "project_outline_bleu.svg", class: "tag-icon"%> I've a project</li>
+            <li class="btn-tag list-inline-item"><%= image_tag "project_outline_bleu.svg", class: "tag-icon"%> I've a project</li>
+          <% end %>
+        </ul>
+
+      <li class="<%= "blocked-content" unless current_user.can_see_profil_infos?(@user) %>">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</li>
+
+      <div class="text-center">
+        <ul class="list-unstyled list-inline">
+          <%= link_to matches_dashboards_path do %>
+            <li class="btn-circle-cross list-inline-item "></li>
+          <% end %>
+          <%= link_to like_dashboards_path(user_id: @user.id), data: { turbo_method: :post } do %>
+            <li class="btn-circle-heart list-inline-item"></li>
           <% end %>
         </ul>
       </div>
-
-    <div class="text-center">
-      <ul class="list-unstyled list-inline">
-        <%= link_to matches_dashboards_path do %>
-          <li class="btn-circle-cross list-inline-item "></li>
-        <% end %>
-        <%= link_to like_dashboards_path(user_id: @user.id), data: { turbo_method: :post } do %>
-          <li class="btn-circle-heart list-inline-item"></li>
-        <% end %>
-      </ul>
-    </div>
+      </div>
   </div>
 </div>
