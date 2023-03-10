@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       get 'messages'
       get 'project'
       post 'like'
+      post 'reject'
     end
   end
 
