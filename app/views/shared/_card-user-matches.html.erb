@@ -1,3 +1,4 @@
+
 <% @users.first(3).each do |user| %>
   <div class="card-user">
     <div class="text-center">
@@ -6,6 +7,7 @@
       <% else %>
         <%= image_tag "avatar.svg", class: "avatar"%>
       <% end %>
+
       <h5><%= user.first_name %> <%= user.last_name %></h5>
       <%= image_tag "location.svg", class: "tag-icon"%> <%= user.city %>
     </div>

@@ -6,15 +6,13 @@ class DashboardsController < ApplicationController
   end
 
   def messages
-
   end
 
   def project
-
   end
 
   def favprofils
-
+    @selections = find_selection
   end
 
   def like
@@ -48,7 +46,7 @@ class DashboardsController < ApplicationController
 
   # Match sur XX années d'xp cumulées au total
   def experience_match
-    return @matches = @matches.select do |match|
+    @matches = @matches.select do |match|
       current_user.total_experience + match.total_experience > 3 # changer après push
     end
   end
@@ -56,11 +54,11 @@ class DashboardsController < ApplicationController
   # Match complémentaire sur l'expertise ["Management", "Technical", "Marketing", "Computer"]
   def expertise_match
     if current_user.expertise_list.include?("Management") || current_user.expertise_list.include?("Marketing")
-      return @matches = @matches.select do |match|
+      @matches = @matches.select do |match|
         match.expertise_list.include?("Technical") || match.expertise_list.include?("Computer")
       end
     else
-      return @matches = @matches.select do |match|
+      @matches = @matches.select do |match|
         match.expertise_list.include?("Management") || match.expertise_list.include?("Marketing")
       end
     end
@@ -68,7 +66,7 @@ class DashboardsController < ApplicationController
 
   # Match sur 1 langue en commun au moins
   def language_match
-    return @matches = @matches.select do |match|
+    @matches = @matches.select do |match|
       match.language_list.include?(current_user.language_list[0]) || match.language_list.include?(current_user.language_list[1])
     end
   end
@@ -76,19 +74,19 @@ class DashboardsController < ApplicationController
   # analyst/diplomat #sentinel/explorer #analyst/explorer #sentinel/diplomat
   def mbti_match
     if current_user.mbti == "Analyst"
-      return @matches = @matches.select do |match|
+      @matches = @matches.select do |match|
         match.mbti == "Diplomat" || match.mbti == "Explorer"
       end
     elsif current_user.mbti == "Diplomat"
-      return @matches = @matches.select do |match|
+      @matches = @matches.select do |match|
         match.mbti == "Analyst" || match.mbti == "Sentinel"
       end
     elsif current_user.mbti == "Sentinel"
-      return @matches = @matches.select do |match|
+      @matches = @matches.select do |match|
         match.mbti == "Explorer" || match.mbti == "Diplomat"
       end
     else
-      return @matches = @matches.select do |match|
+      @matches = @matches.select do |match|
         match.mbti == "Sentinel" || match.mbti == "Analyst"
       end
     end
@@ -96,7 +94,7 @@ class DashboardsController < ApplicationController
 
   # Match on cities (current city)
   def city_match
-    return @matches = @matches.select do |match|
+    @matches = @matches.select do |match|
       match.city == current_user.city
     end
   end
@@ -114,16 +112,16 @@ class DashboardsController < ApplicationController
   private
 
   def find_selection
-    cofounder_ids = [current_user.id, @user.id]
-    @selection = Selection.find_by(sender_id: cofounder_ids, receiver_id: cofounder_ids)
+    # cofounder_ids = [current_user.id, @user.id]
+    # @selection = Selection.find_by(sender_id: cofounder_ids, receiver_id: cofounder_ids)
     # @receiver_selections = Selection.where(sender: @user, receiver: current_user)
-    # @senderselections = @selections.select do |selection| # Vérif sélections où current_user = sender et user = receiver
-    #   selection.sender_id == current_user.id && selection.receiver_id == user.id
-    # end
-    # @receiverselections = @selections.select do |selection| # Vérif sélections où current_user = receiver et user = sender
-    #   selection.sender_id == user.id && selection.receiver_id == current_user.id
-    # end
-    # @selection = @senderselections + @receiverselections # Identifier la sélection (si existante)
+    @senderselections = @selections.select do |selection| # Vérif sélections où current_user = sender et user = receiver
+      selection.sender_id == current_user.id && selection.receiver_id == user.id
+    end
+    @receiverselections = @selections.select do |selection| # Vérif sélections où current_user = receiver et user = sender
+      selection.sender_id == user.id && selection.receiver_id == current_user.id
+    end
+    @selection = @senderselections + @receiverselections # Identifier la sélection (si existante)
   end
 
   def set_users
