@@ -11,6 +11,7 @@ Training.destroy_all
 Job.destroy_all
 Project.destroy_all
 Company.destroy_all
+Selection.destroy_all
 User.destroy_all
 
 @hobbies = ["Reading", "Traveling", "Fishing", "Crafting", "Music", "Gardening", "Video Games", "Sport"]
