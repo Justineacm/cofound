@@ -28,6 +28,12 @@
           <li class="btn-tag list-inline-item"><%= image_tag "language.svg", class: "tag-icon"%> <%= @user.expertise_list %></li>
           <% if @user.has_a_project%>
             <li class="btn-tag list-inline-item"><%= image_tag "project_outline_bleu.svg", class: "tag-icon"%> I've a project</li>
+            <li class="<%= "blocked-content" unless current_user.can_see_profil_infos?(@user) %>">
+              <p>Name of the project : <%= @user.projects.first.name %></p>
+              <p>Pitch : <%= @user.projects.first.pitch %></p>
+              <p>City : <%= @user.projects.first.city %></p>
+              <p>Industry : <%= @user.projects.first.industry %></p>
+            </li>
           <% end %>
         </ul>
 
