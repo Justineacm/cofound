@@ -12,7 +12,7 @@ class DashboardsController < ApplicationController
   end
 
   def favprofils
-    @selections = find_selection
+    @selections = current_user.liked_users
   end
 
   def like
@@ -90,6 +90,8 @@ class DashboardsController < ApplicationController
         match.mbti == "Sentinel" || match.mbti == "Analyst"
       end
     end
+
+    User.where(id: @matches.map(&:id)).remaining
   end
 
   # Match on cities (current city)
@@ -112,16 +114,17 @@ class DashboardsController < ApplicationController
   private
 
   def find_selection
-    # cofounder_ids = [current_user.id, @user.id]
-    # @selection = Selection.find_by(sender_id: cofounder_ids, receiver_id: cofounder_ids)
+    cofounder_ids = [current_user.id, @user.id]
+    @selection = Selection.find_by(sender_id: cofounder_ids, receiver_id: cofounder_ids)
     # @receiver_selections = Selection.where(sender: @user, receiver: current_user)
-    @senderselections = @selections.select do |selection| # Vérif sélections où current_user = sender et user = receiver
-      selection.sender_id == current_user.id && selection.receiver_id == user.id
-    end
-    @receiverselections = @selections.select do |selection| # Vérif sélections où current_user = receiver et user = sender
-      selection.sender_id == user.id && selection.receiver_id == current_user.id
-    end
-    @selection = @senderselections + @receiverselections # Identifier la sélection (si existante)
+
+    # @senderselections = @selections.select do |selection| # Vérif sélections où current_user = sender et user = receiver
+    #   selection.sender_id == current_user.id && selection.receiver_id == user.id
+    # end
+    # @receiverselections = @selections.select do |selection| # Vérif sélections où current_user = receiver et user = sender
+    #   selection.sender_id == user.id && selection.receiver_id == current_user.id
+    # end
+    # @selection = @senderselections + @receiverselections # Identifier la sélection (si existante)
   end
 
   def set_users
