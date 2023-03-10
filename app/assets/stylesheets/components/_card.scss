@@ -1,6 +1,6 @@
 .card-user {
   width: 300px;
-  height: 300px;
+  height: 100hv;
   margin: 10px;
   padding: 15px;
   font-size: 10 px;
@@ -12,7 +12,7 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
-.card-user ul {
+.card-user > ul {
   font-size: 10px;
   display: inline;
   list-style-type: none;
