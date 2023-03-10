@@ -1,0 +1,13 @@
+.main-content ul {
+  font-size: 12px;
+  display: inline;
+  list-style-type: none;
+  padding: 0;
+  > li {
+    width: max-content;
+  }
+}
+
+.users-show .main-content {
+  display: block;
+}

@@ -1,8 +1,7 @@
 .card-user {
   width: 300px;
-  height: 300px;
   margin: 10px;
-  padding: 10px;
+  padding: 15px;
   font-size: 10 px;
   background-color: white;
   justify-content: center;
@@ -10,9 +9,33 @@
   border-bottom-left-radius: 30px;
   border-top-left-radius: 30px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  > .my-3 {
+    flex-grow: 1;
+  }
 }
 
-.card_user li {
+.card-user > ul {
+  font-size: 10px;
   display: inline;
   list-style-type: none;
+  padding: 0;
+  > li {
+    width: max-content;
+  }
+}
+
+.card-ribbon {
+  top: 7px;
+  left: -38px;
+  overflow: hidden;
+  position: relative;
+  transform: rotate(-45deg);
+  color: white;
+  font-weight: 500;
+  font-size: 12px;
+  text-align: center;
+  width: 107px;
+  background-color: $yellow;
 }
