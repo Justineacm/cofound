@@ -1,6 +1,7 @@
 <% users.last(3).each do |user| %>
 
   <div class="card-user">
+    <div class="card-ribbon overflow-hidden">Pending</div>
     <div class="text-center">
       <% if user.photo? %>
         <%= cl_image_tag user.photo, class: "avatar-large"%>
@@ -20,7 +21,8 @@
         <% if user.has_a_project%>
           <li class="btn-tag list-inline-item"><%= image_tag "project_outline_bleu.svg", class: "tag-icon"%> I've a project</li>
         <% end %>
-        <span class="btn-yellow d-inline-block"><%= link_to "See more", user_path(user) %></span>
+        <%= link_to "See more", user_path(user), class: "btn-yellow" %>
+
       </ul>
     </div>
     <div class="text-center">

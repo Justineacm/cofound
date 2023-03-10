@@ -25,3 +25,17 @@
     width: max-content;
   }
 }
+
+.card-ribbon {
+  top: 7px;
+  left: -38px;
+  overflow: hidden;
+  position: relative;
+  transform: rotate(-45deg);
+  color: white;
+  font-weight: 500;
+  font-size: 12px;
+  text-align: center;
+  width: 107px;
+  background-color: $yellow;
+}

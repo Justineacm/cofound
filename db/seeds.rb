@@ -79,7 +79,7 @@ data.each_with_index do |infos, index|
     city: infos["general"]["location"],
     photo: infos["general"]["imgUrl"],
     has_a_project: [true, false].sample,
-    email: "#{infos["general"]["lastName"].strip}@gmail.com",
+    email: "#{infos["general"]["lastName"]}@gmail.com",
     password: "123456"
   )
   user.hobby_list.add(@hobbies.sample(2))
@@ -145,7 +145,7 @@ data.each_with_index do |infos, index|
     city: infos["general"]["location"],
     photo: infos["general"]["imgUrl"],
     has_a_project: [true, false].sample,
-    email: "#{infos["general"]["lastName"].strip}@gmail.com",
+    email: "#{infos["general"]["lastName"]}@gmail.com",
     password: "123456"
   )
   user.hobby_list.add(@hobbies.sample(2))
