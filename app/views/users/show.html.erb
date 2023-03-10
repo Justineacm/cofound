@@ -8,15 +8,7 @@
 
     <h3 class="mx-3"><%= @user.first_name %> <%= @user.last_name %></h3>
     <%= image_tag "location.svg", class: "tag-icon mx-3"%> <%= @user.city %>
-    <% if current_user.selection_for(@user).status == "Accepted" %>
-      <div class="alert alert-success" role="alert">
-        It's a match!
-      </div>
-    <% else %>
-      <div class="alert alert-warning" role="alert">
-        Pending request!
-      </div>
-    <%end%>
+
   </div>
 
     <div class="profil-content">
@@ -47,12 +39,6 @@
           <%= link_to like_dashboards_path(user_id: @user.id), data: { turbo_method: :post } do %>
             <li class="btn-circle-heart list-inline-item"></li>
           <% end %>
-          <li class="<%= "blocked-content" unless current_user.can_see_profil_infos?(@user) %>">
-            <p>Name of the project : <%= @user.projects.first.name %></p>
-            <p>Pitch : <%= @user.projects.first.pitch %></p>
-            <p>City : <%= @user.projects.first.city %></p>
-            <p>Industry : <%= @user.projects.first.industry %></p>
-          </li>
         </ul>
       </div>
       </div>
