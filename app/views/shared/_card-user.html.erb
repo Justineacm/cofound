@@ -1,5 +1,4 @@
-
-<% @users.first(3).each do |user| %>
+<% users.last(3).each do |user| %>
 
   <div class="card-user">
     <div class="text-center">
@@ -8,6 +7,7 @@
       <% else %>
         <%= image_tag "avatar.svg", class: "avatar"%>
       <% end %>
+
       <h5 class="my-2"><%= user.first_name %> <%= user.last_name %></h5>
       <%= image_tag "location.svg", class: "tag-icon"%> <%= user.city %>
     </div>
@@ -25,11 +25,16 @@
     </div>
     <div class="text-center">
       <ul class="list-unstyled list-inline">
-        <%= link_to matches_dashboards_path do %>
+        <%= link_to reject_dashboards_path(user_id: user.id), data: { turbo_method: :post } do %>
           <li class="btn-circle-cross list-inline-item "></li>
         <% end %>
-        <%= link_to favprofils_dashboards_path do %>
-          <li class="btn-circle-orange-message list-inline-item"></li>
+        <% if !current_user.selection_for(user).nil? && current_user.selection_for(user).status == "Accepted" %>
+          <%= link_to favprofils_dashboards_path do %>
+            <li class="btn-circle-orange-message list-inline-item"></li>
+          <% end %>
+
         <% end %>
       </ul>
+    </div>
+  </div>
 <% end %>

@@ -12,7 +12,7 @@ class DashboardsController < ApplicationController
   end
 
   def favprofils
-    @selections = current_user.liked_users
+    @favorite_profiles = User.where(id: current_user.liked_users.map(&:id))
   end
 
   def like
@@ -31,12 +31,13 @@ class DashboardsController < ApplicationController
 
   def reject
     @user = User.find(params[:user_id])
-    find_selection # Déclenchement : bouton unlike ou reject d'une card user
+    @selection = current_user.selection_for(@user) # Déclenchement : bouton unlike ou reject d'une card user
     if @selection.nil?
-      @selection = Selection.create(sender: current_user, receiver: @user, status: 3)
+      @selection = Selection.create(sender: current_user, receiver: @user, status: :rejected)
     else
       @selection.rejected!
     end
+    redirect_to matches_dashboards_path
   end
 
   def project_match
@@ -104,6 +105,12 @@ class DashboardsController < ApplicationController
     end
   end
 
+  def remaining_matches
+    @matches = @matches.select do |match|
+      current_user.selection_for(match).nil?
+    end
+  end
+
   def matching_algo
     project_match
     experience_match
@@ -111,11 +118,11 @@ class DashboardsController < ApplicationController
     language_match
     mbti_match
     city_match
+    remaining_matches
     return @matches
   end
 
   private
-
 
   def find_selection
     cofounder_ids = [current_user.id, @user.id]

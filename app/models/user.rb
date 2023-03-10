@@ -10,7 +10,6 @@ class User < ApplicationRecord
   has_many :selection_receivers, class_name: 'Selection', foreign_key: 'receiver_id'
   # has_many :selections, class_name: 'Selection', foreign_key: 'receiver_id'
 
-
   acts_as_taggable_on :hobbies, :personalities, :values, :soft_skills, :expertise, :languages
 
   def selections

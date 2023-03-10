@@ -1,6 +1,5 @@
 .card-user {
   width: 300px;
-  height: 100hv;
   margin: 10px;
   padding: 15px;
   font-size: 10 px;
@@ -10,6 +9,11 @@
   border-bottom-left-radius: 30px;
   border-top-left-radius: 30px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  > .my-3 {
+    flex-grow: 1;
+  }
 }
 
 .card-user > ul {
