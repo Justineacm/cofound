@@ -14,4 +14,10 @@
 
 .navbar .nav-link {
   color: $blue;
+  margin: 0 10px;
+}
+
+.navbar .nav-link:hover {
+  color: $yellow;
+  margin: 0 10px;
 }
