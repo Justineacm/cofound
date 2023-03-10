@@ -25,6 +25,10 @@ class User < ApplicationRecord
     User.where(id: Selection.pending.where(sender_id: id).pluck(:receiver_id))
   end
 
+  def users_who_liked_me
+    User.where(id: selection_receivers.pending.map(&:sender_id))
+  end
+
   def total_experience
     current_user_xp = 0
     self.jobs.each do |job|
