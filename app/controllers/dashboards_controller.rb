@@ -24,6 +24,7 @@ class DashboardsController < ApplicationController
       @selection = Selection.create(sender: current_user, receiver: @user) # status à 0 par défaut (pending)
     else
       @selection.accepted! if @selection.receiver == current_user # Si non, update de la sélection en status "Accepted"
+      flash.now[:alert] = "It's a match!"
     end
     # if request.renderrer
     redirect_to user_path(@user)
@@ -109,6 +110,8 @@ class DashboardsController < ApplicationController
     @matches = @matches.select do |match|
       current_user.selection_for(match).nil?
     end
+
+    @matches = (User.where(id: @matches.map(&:id)) + current_user.users_who_liked_me).uniq
   end
 
   def matching_algo

@@ -210,8 +210,8 @@ data.each_with_index do |infos, index|
     mission: [true, false].sample,
     city: infos["general"]["location"],
     photo: infos["general"]["imgUrl"],
-    has_a_project: [true, false].sample,
-    email: "#{infos["general"]["lastName"]}@gmail.com",
+    has_a_project: false,
+    email: "#{infos["general"]["lastName"].strip}@gmail.com",
     password: "123456"
   )
   user.hobby_list.add(@hobbies.sample(2))
@@ -256,7 +256,6 @@ data.each_with_index do |infos, index|
   end
 
   puts "creating #{user.first_name} #{user.last_name}"
-  generate_project(user, index, kisskissprojects)
 end
 
 # /(.*)\s-\s(.*)\s·/.match("Sep 2021 - Jan 2022 · 1 yrs 5 mos")
