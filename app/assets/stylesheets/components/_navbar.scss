@@ -1,7 +1,5 @@
 .navbar {
   justify-content: space-between;
-  position: fixed;
-  top: 0;
   width: 100%;
   background: white;
 }
@@ -16,4 +14,10 @@
 
 .navbar .nav-link {
   color: $blue;
+  margin: 0 10px;
+}
+
+.navbar .nav-link:hover {
+  color: $yellow;
+  margin: 0 10px;
 }

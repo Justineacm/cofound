@@ -1,9 +1,19 @@
 <div class="menu_vertical">
   <ul>
-    <%= link_to "matches", matches_dashboards_path, class: "btn-circle-new mb-5"%>
-    <%= link_to "fav profils",favprofils_dashboards_path, class: "btn-circle-new  mb-5"%>
-    <%= link_to "messages",messages_dashboards_path, class: "btn-circle-message  mb-5"%>
-    <%= link_to "project",project_dashboards_path, class: "btn-circle-message  mb-5"%>
+    <%= link_to matches_dashboards_path do %>
+      <li class="mb-5 btn-circle-matches"></li>
+    <% end %>
 
+    <%= link_to favprofils_dashboards_path do %>
+      <li class="mb-5 btn-circle-profil"></li>
+    <% end %>
+
+    <%= link_to messages_dashboards_path do %>
+      <li class="mb-5 btn-circle-message"></li>
+    <% end %>
+
+    <%= link_to project_dashboards_path do %>
+      <li class="mb-5 btn-circle-project"></li>
+    <% end %>
   </ul>
 </div>

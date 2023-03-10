@@ -74,6 +74,7 @@ class UsersController < ApplicationController
   def city_match
     return @matches = @matches.select do |match|
       match.city == current_user.city
+    end
   end
 
   def matching_algo
@@ -120,6 +121,6 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:fist_name, :last_name, :hobby_list, :personality_list, :value_list, :soft_skill_list,
-      :expertise, :language_list)
+      :expertise, :language_list, :photo)
   end
 end

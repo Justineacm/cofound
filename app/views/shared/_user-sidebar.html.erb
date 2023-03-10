@@ -1,19 +1,26 @@
 <div class="profil_user">
-    <%= image_tag "avatar.svg", class: "avatar-large"%>
-    <h3><%= current_user.first_name %> <%= current_user.last_name %></h3>
+    <% if current_user.photo? %>
+      <%= cl_image_tag current_user.photo, class: "avatar-large"%>
+    <% else %>
+      <%= image_tag "avatar.svg", class: "avatar-large"%>
+    <% end %>
+    <h3 class="my-2"><%= current_user.first_name %> <%= current_user.last_name %></h3>
     <%= image_tag "location.svg", class: "tag-icon"%> <%= current_user.city %>
-    <ul>
-      <li class="btn-tag"><%= image_tag "xp.svg", class: "tag-icon"%> <%= current_user.total_experience%> years experience</li>
-      <li class="btn-tag"><%= image_tag "skill.svg", class: "tag-icon"%> <%= current_user.mbti %></li>
-      <li class="btn-tag"><%= image_tag "skill.svg", class: "tag-icon"%> <%= current_user.language_list %></li>
-      <li class="btn-tag"><%= image_tag "skill.svg", class: "tag-icon"%> <%= current_user.expertise_list %></li>
+    <hr>
+    <ul class="list-unstyled list-inline">
+      <li class="btn-tag list-inline-item"><%= image_tag "xp.svg", class: "tag-icon"%> <%= current_user.total_experience%> years experience</li>
+      <li class="btn-tag list-inline-item"><%= image_tag "mbti.svg", class: "tag-icon"%> <%= current_user.mbti %></li>
+      <li class="btn-tag list-inline-item"><%= image_tag "skill.svg", class: "tag-icon"%> <%= current_user.expertise_list %></li>
+      <li class="btn-tag list-inline-item"><%= image_tag "language.svg", class: "tag-icon"%> <%= current_user.language_list %></li>
 
       <% if current_user.has_a_project%>
-      <li class="btn-tag"><%= image_tag "project.svg", class: "tag-icon"%> I've a project</li>
+      <li class="btn-tag list-inline-item"><%= image_tag "project_outline_bleu.svg", class: "tag-icon"%> I've a project</li>
       <% end %>
     </ul>
-    <%= link_to "Update your profil", "#", class: "btn-cta" %>
-    <div class="mx-3">
-      <%= link_to "log out", "#" %>
+    <div class="my-3">
+      <%= link_to "Update your profil", "#", class: "btn-yellow" %>
+    </div>
+    <div class="text-center mt-5">
+      <%= link_to "Log out", new_user_session_path, class: "nav-link", data: {turbo_method: :delete} %>
     </div>
 </div>
