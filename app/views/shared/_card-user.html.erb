@@ -28,8 +28,11 @@
         <%= link_to reject_dashboards_path(user_id: user.id), data: { turbo_method: :post } do %>
           <li class="btn-circle-cross list-inline-item "></li>
         <% end %>
-        <%= link_to favprofils_dashboards_path do %>
-          <li class="btn-circle-orange-message list-inline-item"></li>
+        <% if !current_user.selection_for(user).nil? && current_user.selection_for(user).status == "Accepted" %>
+          <%= link_to favprofils_dashboards_path do %>
+            <li class="btn-circle-orange-message list-inline-item"></li>
+          <% end %>
+
         <% end %>
       </ul>
     </div>
