@@ -1,3 +1,5 @@
+
+
 <% @matches.sample(3).each do |user| %>
   <div class="card-user">
     <div class="text-center">
@@ -24,10 +26,10 @@
     </div>
     <div class="text-center">
       <ul class="list-unstyled list-inline">
-        <%= link_to matches_dashboards_path do %>
+        <%= link_to reject_dashboards_path(user_id: user.id), data: { turbo_method: :post } do %>
           <li class="btn-circle-cross list-inline-item "></li>
         <% end %>
-        <%= link_to favprofils_dashboards_path do %>
+        <%= link_to like_dashboards_path(user_id: user.id), data: { turbo_method: :post } do %>
           <li class="btn-circle-heart list-inline-item"></li>
         <% end %>
       </ul>

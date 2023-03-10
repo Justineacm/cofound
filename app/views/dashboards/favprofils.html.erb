@@ -1,8 +1,8 @@
 <div class="main-container">
     <div class="profil-content">
-      <h3>Favorite Profiles</h3>
+      <h3> <%= @favorite_profiles.count %> Favorite Profiles</h3>
       <div class="main-content">
-         <%= render partial: "shared/card-user", locals: {users: @selections} %>
+         <%= render partial: "shared/card-user", locals: {users: @favorite_profiles} %>
       </div>
     </div>
 </div>
