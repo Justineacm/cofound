@@ -1,5 +1,5 @@
 
-<% @users.first(3).each do |user| %>
+<% @matches.sample(3).each do |user| %>
   <div class="card-user">
     <div class="text-center">
       <% if user.photo? %>
@@ -27,7 +27,7 @@
           <li class="btn-circle-cross list-inline-item "></li>
         <% end %>
         <%= link_to favprofils_dashboards_path do %>
-          <li class="btn-circle-orange-message list-inline-item"></li>
+          <li class="btn-circle-heart list-inline-item"></li>
         <% end %>
       </ul>
     </div>

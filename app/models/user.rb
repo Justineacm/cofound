@@ -6,9 +6,25 @@ class User < ApplicationRecord
 
   has_many :jobs
   has_many :projects
+  has_many :selection_senders, class_name: 'Selection', foreign_key: 'sender_id'
+  has_many :selection_receivers, class_name: 'Selection', foreign_key: 'receiver_id'
+  # has_many :selections, class_name: 'Selection', foreign_key: 'receiver_id'
 
 
   acts_as_taggable_on :hobbies, :personalities, :values, :soft_skills, :expertise, :languages
+
+  def selections
+    (selection_senders + selection_receivers).uniq
+  end
+
+  def self.remaining
+    # à tester avec de la data
+    includes(:selection_senders).where(selection_senders: {id: nil})
+  end
+
+  def liked_users
+    User.where(id: Selection.pending.where(sender_id: id).pluck(:receiver_id))
+  end
 
   def total_experience
     current_user_xp = 0
