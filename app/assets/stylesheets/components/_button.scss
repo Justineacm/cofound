@@ -27,6 +27,7 @@
 }
 
 .btn-yellow {
+  font-size: 14px;
   text-decoration: none;
   color: white;
   background-color: $yellow;
@@ -159,8 +160,20 @@
   border: 1px solid $orange;
   background: asset-url("heart_outline_blanc.svg") no-repeat;
   background-position: center;
-  background-size: 60%;
+  background-size: 55%;
   opacity: 1;
+  background-color: $orange;
+}
+
+.btn-circle-heart:hover {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  border: 1px solid $orange;
+  background: asset-url("heart_outline_blanc.svg") no-repeat;
+  background-position: center;
+  background-size: 65%;
+  opacity: 0.8;
   background-color: $orange;
 }
 

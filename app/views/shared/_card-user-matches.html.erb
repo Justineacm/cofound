@@ -1,4 +1,3 @@
-
 <% @matches.sample(3).each do |user| %>
   <div class="card-user">
     <div class="text-center">
@@ -8,19 +7,21 @@
         <%= image_tag "avatar.svg", class: "avatar"%>
       <% end %>
 
-      <h5><%= user.first_name %> <%= user.last_name %></h5>
+      <h5  class="my-2"><%= user.first_name %> <%= user.last_name %></h5>
       <%= image_tag "location.svg", class: "tag-icon"%> <%= user.city %>
     </div>
+    <div class="my-3">
       <ul class="list-unstyled list-inline">
         <li class="btn-tag list-inline-item"><%= image_tag "xp.svg", class: "tag-icon"%> <%= user.total_experience%> years experience</li>
-        <li class="btn-tag list-inline-item"><%= image_tag "skill.svg", class: "tag-icon"%> <%= user.mbti %></li>
+        <li class="btn-tag list-inline-item"><%= image_tag "mbti.svg", class: "tag-icon"%> <%= user.mbti %></li>
         <li class="btn-tag list-inline-item"><%= image_tag "skill.svg", class: "tag-icon"%> <%= user.expertise_list %></li>
         <li class="btn-tag list-inline-item"><%= image_tag "language.svg", class: "tag-icon"%> <%= user.language_list %></li>
         <% if user.has_a_project%>
           <li class="btn-tag list-inline-item"><%= image_tag "project_outline_bleu.svg", class: "tag-icon"%> I've a project</li>
         <% end %>
-        <%= link_to "See more", user_path(user), class: "btn-yellow" %>
+      <%= link_to "See more", user_path(user), class: "btn-yellow" %>
       </ul>
+    </div>
     <div class="text-center">
       <ul class="list-unstyled list-inline">
         <%= link_to matches_dashboards_path do %>
