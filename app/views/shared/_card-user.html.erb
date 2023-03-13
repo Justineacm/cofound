@@ -1,7 +1,11 @@
-<% users.last(3).each do |user| %>
+<% users.each do |user| %>
 
   <div class="card-user">
-    <div class="card-ribbon overflow-hidden">Pending</div>
+  <% if current_user.selection_for(user).pending?%>
+    <div class="card-ribbon-pending overflow-hidden">Pending</div>
+  <% elsif current_user.selection_for(user).accepted?%>
+    <div class="card-ribbon-accepted overflow-hidden">Accepted</div>
+  <%end%>
     <div class="text-center">
       <% if user.photo? %>
         <%= image_tag user.photo, class: "avatar-large"%>

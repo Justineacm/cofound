@@ -1,7 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
 import Swal from 'sweetalert2'
 
-// Connects to data-controller="sweetalert"
 export default class extends Controller {
   connect() {
 
@@ -62,5 +61,26 @@ export default class extends Controller {
       icon: 'success',
       title: 'You just received a new message'
     })
+
+  upload(){
+    const { value: file } = await Swal.fire({
+      title: 'Select image',
+      input: 'file',
+      inputAttributes: {
+        'accept': 'image/*',
+        'aria-label': 'Upload your profile picture'
+      }
+    })
+    if (file) {
+      const reader = new FileReader()
+      reader.onload = (e) => {
+        Swal.fire({
+          title: 'Your uploaded picture',
+          imageUrl: e.target.result,
+          imageAlt: 'The uploaded picture'
+        })
+      }
+      reader.readAsDataURL(file)
+    }
   }
 }
