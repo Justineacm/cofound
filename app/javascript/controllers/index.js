@@ -4,8 +4,11 @@
 
 import { application } from "./application"
 
+import HelloController from "./hello_controller"
+application.register("hello", HelloController)
+
 import SelectionSubscriptionController from "./selection_subscription_controller"
 application.register("selection-subscription", SelectionSubscriptionController)
 
-import HelloController from "./hello_controller"
-application.register("hello", HelloController)
+import TypedJsController from "./typed_js_controller"
+application.register("typed-js", TypedJsController)

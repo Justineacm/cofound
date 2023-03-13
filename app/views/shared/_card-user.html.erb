@@ -4,7 +4,7 @@
     <div class="card-ribbon overflow-hidden">Pending</div>
     <div class="text-center">
       <% if user.photo? %>
-        <%= cl_image_tag user.photo, class: "avatar-large"%>
+        <%= image_tag user.photo, class: "avatar-large"%>
       <% else %>
         <%= image_tag "avatar.svg", class: "avatar"%>
       <% end %>
