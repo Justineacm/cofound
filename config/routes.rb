@@ -5,11 +5,12 @@ Rails.application.routes.draw do
   resources :dashboards, only: [] do
     collection do
       get 'matches'
+      get 'suggestions'
       get 'favprofils'
       get 'messages'
       get 'project'
-      post 'like'
-      post 'reject'
+      get 'like'
+      get 'reject'
     end
   end
 

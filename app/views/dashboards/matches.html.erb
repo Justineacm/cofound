@@ -1,8 +1,13 @@
 <div class="main-container">
-  <div class="profil-content">
-    <h3>Matches</h3>
-    <div class="main-content">
-      <%= render partial: "shared/card-user-matches", locals: {users: @matches} %>
-    </div>
+  <div class="profil-content" data-controller="generate-matches">
+    <h3><%= @suggestions.count %> Matches</h3>
+    <span class="loader"></span>
+    <% unless session[:suggestions] == true %>
+      <%= link_to "Generate Matches", suggestions_dashboards_path, class: "btn-cta"%>
+    <% else %>
+      <div class="main-content" data-generate-matches-target="cards">
+        <%= render partial: "shared/card-user-matches", locals: {users: @suggestions} %>
+      </div>
+    <% end %>
   </div>
 </div>
