@@ -1,6 +1,5 @@
-
-<% @matches.last(3).each do |user| %>
-  <div class="card-user">
+<% users.each do |user| %>
+  <div class="card-user" class="swiper-slide">
     <div class="text-center">
       <% if user.photo? %>
         <%= image_tag user.photo, class: "avatar-large"%>
@@ -25,10 +24,10 @@
     </div>
     <div class="text-center" data-controller="sweetalert">
       <ul class="list-unstyled list-inline">
-        <%= link_to reject_dashboards_path(user_id: user.id), data: { turbo_method: :post, action: "click->sweetalert#deny" } do %>
+        <%= link_to reject_dashboards_path(user_id: user.id) do %>
           <li class="btn-circle-cross list-inline-item mx-2"></li>
         <% end %>
-        <%= link_to like_dashboards_path(user_id: user.id), data: { turbo_method: :post, action: "click->sweetalert#accept" } do %>
+        <%= link_to like_dashboards_path(user_id: user.id) do %>
           <li class="btn-circle-heart list-inline-item mx-2"></li>
         <% end %>
       </ul>

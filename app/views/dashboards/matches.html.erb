@@ -1,20 +1,27 @@
 <div class="main-container">
-  <div class="profil-content profil-content-matches">
-
-    <h3>Matches</h3>
-    <div class="main-content ">
-      <%= render partial: "shared/card-user-matches", locals: {users: @matches} %>
+  <div class="profil-content profil-content-matches" data-controller="generate-matches">
+  <% if session[:suggestions] == true %>
+    <h3><%= @suggestions.count %> Matches</h3>
+  <% end %>
+    <span class="loader"></span>
+    <% unless session[:suggestions] == true %>
+    <div class= "container-matches", style="background-image: linear-gradient(rgba(0,0,0,0.0),rgba(0,0,0,0.0)), url(<%= image_path 'matches.jpg'%>);">
+      <%= link_to "Generate Matches", suggestions_dashboards_path, class: "btn-cta"%>
     </div>
+    <% else %>
+      <div class="main-content" data-generate-matches-target="cards">
+        <%= render partial: "shared/card-user-matches", locals: {users: @suggestions} %>
+      </div>
+    <% end %>
     <div class="mt-5 mb-3">
       <h3>My favorites profils</h3>
     </div>
     <div class="main-content">
-      <%= render partial: "shared/card-user", locals: {users: @matches} %>
+      <%= render partial: "shared/card-user", locals: { users: @favorite_profiles } %>
     </div>
 
     <div id="btn-scrollUp">
       <a href="#top"><i class="fa-solid fa-arrow-up"></i></a>
     </div>
-
   </div>
 </div>
