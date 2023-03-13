@@ -1,7 +1,8 @@
-<div class="main-container">
-    <div class="profil-content">
-      <h3>Messages</h3>
-      <div class="main-content">
-      </div>
+<div class="container chatroom">
+<h3><%= "Last conversations" %></h3>
+  <div class="messages">
+    <% @selections.each do |selection| %>
+      <%= render "messages/message", message: selection.messages.last %>
     </div>
+  <% end %>
 </div>

@@ -7,7 +7,7 @@ class MessagesController < ApplicationController
     if @message.save
       SelectionChannel.broadcast_to(
         @selection,
-        render_to_string(partial: "message", locals: {message: @message})
+        render_to_string(partial: "message", locals: { message: @message })
       )
       head :ok
     else

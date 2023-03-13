@@ -29,6 +29,7 @@ class DashboardsController < ApplicationController
   end
 
   def messages
+    @selections = current_user.selections
   end
 
   def project
@@ -153,5 +154,6 @@ class DashboardsController < ApplicationController
 
   def set_users
     @users = User.all
+    @user = current_user
   end
 end

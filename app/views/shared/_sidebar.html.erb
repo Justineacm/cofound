@@ -1,19 +1,18 @@
 <div class="menu_vertical">
   <ul>
-    <%= link_to matches_dashboards_path do %>
-      <li class="mb-5 btn-circle-matches"></li>
+    <%= link_to "", :back, class:"text-decoration-none" %>
+      <li class="btn-circle-back"></li><p class="mb-5">Back</p>
+
+    <%= link_to matches_dashboards_path, class:"text-decoration-none text-center" do %>
+      <li class="btn-circle-matches"></li><p class="mb-5">Matches</p>
     <% end %>
 
-    <%= link_to favprofils_dashboards_path do %>
-      <li class="mb-5 btn-circle-profil"></li>
+    <%= link_to messages_dashboards_path, class:"text-decoration-none text-center" do %>
+      <li class="btn-circle-message"></li><p class="mb-5">Chat</p>
     <% end %>
 
-    <%= link_to messages_dashboards_path do %>
-      <li class="mb-5 btn-circle-message"></li>
-    <% end %>
-
-    <%= link_to project_dashboards_path do %>
-      <li class="mb-5 btn-circle-project"></li>
+    <%= link_to project_dashboards_path, class:"text-decoration-none text-center" do %>
+      <li class="btn-circle-project"></li><p class="mb-5">Project</p>
     <% end %>
   </ul>
 </div>

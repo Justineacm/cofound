@@ -12,8 +12,11 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @selection = current_user.selection_for(@user)
+    @message = Message.new
   end
-  
+
+
   private
 
   def user_params
