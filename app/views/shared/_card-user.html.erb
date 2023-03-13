@@ -1,7 +1,7 @@
 <% users.last(3).each do |user| %>
 
   <div class="card-user">
-    <div class="card-ribbon overflow-hidden">Pending</div>
+    <div class="card-ribbon">Pending</div>
     <div class="text-center">
       <% if user.photo? %>
         <%= image_tag user.photo, class: "avatar-large"%>
