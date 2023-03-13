@@ -31,15 +31,14 @@
     </div>
     <div class="text-center">
       <ul class="list-unstyled list-inline">
-        <%= link_to reject_dashboards_path(user_id: user.id), data: { turbo_method: :post } do %>
-          <li class="btn-circle-cross list-inline-item mx-2"></li>
+        <% if current_user.selection_for(user).pending? %>
+          <%= link_to reject_dashboards_path(user_id: user.id) do %>
+            <li class="btn-circle-cross list-inline-item mx-2"></li>
+          <% end %>
         <% end %>
-        <% if !current_user.selection_for(user).nil? && current_user.selection_for(user).status == "Accepted" %>
+        <% if current_user.selection_for(user).accepted? %>
           <%= link_to favprofils_dashboards_path do %>
             <li class="btn-circle-orange-message list-inline-item mx-2"></li>
-          <% end %>
-          <%= link_to like_dashboards_path(user_id: user.id), data: { turbo_method: :post } do %>
-            <li class="btn-circle-message list-inline-item mx-2"></li>
           <% end %>
         <% end %>
       </ul>

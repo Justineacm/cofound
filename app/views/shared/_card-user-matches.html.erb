@@ -1,4 +1,4 @@
-<% users.each do |user| %>
+<% users.last(3).each do |user| %>
   <div class="card-user" class="swiper-slide">
     <div class="text-center">
       <% if user.photo? %>
