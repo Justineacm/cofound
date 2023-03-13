@@ -1,0 +1,6 @@
+<h1><%= @suggestions.blank? ? 0 : @suggestions.count %> potentiels matches</h1>
+<ul>
+  <% @suggestions.each do |suggestion| %>
+  <li><%= suggestion.first_name %></li>
+  <%end%>
+</ul>

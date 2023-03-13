@@ -2,3 +2,55 @@
   color: transparent;
   text-shadow: 0 0 8px #000;
 }
+
+.main-content-show {
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  background-color: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  padding: 20px;
+  min-height: 300px;
+  display: flex;
+  flex-wrap: flex;
+}
+
+.main-content ul {
+  font-size: 12px;
+  display: inline;
+  list-style-type: none;
+  padding: 0;
+  > li {
+    width: max-content;
+  }
+}
+
+.profil-content-show {
+  height: 100%;
+  overflow-y: auto;
+  margin: 30px 30px 30px 15px;
+
+  &.profil-content-project {
+    background-color: white;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    padding: 20px;
+    .main-content {
+      background-color: transparent;
+      box-shadow: none;
+      padding: 0;
+      margin-bottom: 50px;
+    }
+  }
+}
+
+.users-show .main-content {
+  display: block;
+}
+
+.user-show-project {
+  color: transparent;
+  flex-direction: column;
+}

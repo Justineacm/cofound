@@ -44,9 +44,27 @@ export default class extends Controller {
     })
   }
 
+  message() {
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+      }
+    })
+
+    Toast.fire({
+      icon: 'success',
+      title: 'You just received a new message'
+    })
+  }
+
   upload() {
-    console.log('upload');
-    const file = Swal.fire({
+    const { value: file } = await Swal.fire({
       title: 'Select image',
       input: 'file',
       inputAttributes: {

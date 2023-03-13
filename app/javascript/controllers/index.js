@@ -4,8 +4,8 @@
 
 import { application } from "./application"
 
-import HelloController from "./hello_controller"
-application.register("hello", HelloController)
+import GenerateMatchesController from "./generate_matches_controller"
+application.register("generate-matches", GenerateMatchesController)
 
 import SelectionSubscriptionController from "./selection_subscription_controller"
 application.register("selection-subscription", SelectionSubscriptionController)

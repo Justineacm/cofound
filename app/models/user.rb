@@ -12,17 +12,18 @@ class User < ApplicationRecord
 
   acts_as_taggable_on :hobbies, :personalities, :values, :soft_skills, :expertise, :languages
 
-  def selections
-    (selection_senders + selection_receivers).uniq
-  end
+  # def selections
+  #   (selection_senders + selection_receivers).uniq
+  # end
 
-  def self.remaining
-    # à tester avec de la data
-    includes(:selection_senders).where(selection_senders: {id: nil})
-  end
+  # def self.remaining
+  #   # à tester avec de la data
+  #   includes(:selection_senders).where(selection_senders: {id: nil})
+  # end
 
   def liked_users
-    User.where(id: Selection.pending.where(sender_id: id).pluck(:receiver_id))
+    selection_ids = Selection.pending.where(sender_id: id).pluck(:receiver_id) + Selection.accepted.where(sender_id: id).pluck(:receiver_id) + Selection.accepted.where(receiver_id: id).pluck(:sender_id)
+    User.where(id: selection_ids)
   end
 
   def users_who_liked_me
@@ -46,7 +47,13 @@ class User < ApplicationRecord
 
   def can_see_profil_infos?(user)
     selection = selection_for(user)
-
     selection.present? && selection.accepted?
+  end
+
+  def keep_suggestion?(user)
+    selection = selection_for(user)
+    selection.nil? ||
+    ( selection && selection.suggestion? ) ||
+    ( selection && selection.pending? && selection.receiver_id == id )
   end
 end

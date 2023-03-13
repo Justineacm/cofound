@@ -14,13 +14,23 @@
 
   <body class="<%= "#{controller_name}-#{action_name}" %>">
 
-      <% if controller_name == 'dashboards' %>
+      <% if controller_name == 'dashboards'%>
         <div class="main-container">
           <%= render "shared/flashes" %>
           <%= render "shared/user-sidebar" %>
           <%= yield %>
           <%= render "shared/sidebar" %>
         </div>
+
+      <% elsif controller_name == 'users' %>
+        <div class="main-container">
+          <%= render "shared/flashes" %>
+          <%= render "shared/user-sidebar-show" %>
+          <%= yield %>
+          <%= render "shared/sidebar" %>
+
+        </div>
+
       <% else %>
         <%= render "shared/navbar" %>
         <%= render "shared/flashes" %>
