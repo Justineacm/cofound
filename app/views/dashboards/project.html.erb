@@ -1,10 +1,21 @@
 <div class="main-container">
   <div class="profil-content">
     <h3>Project</h3>
-    <div class="main-content">
-      <ul class="list-inline-item">
-        <li class="list-unstyled list-inline">
-        </li>
+    <div class="main-content" data-controller="sweetalert">
+      <ul class="list-inline-item mt-5 mb-3">
+        <% current_user.projects.each do |project| %>
+          <li class="list-unstyled list-inline">
+            <p>Name of the project : <%= @current_user.projects.first.name %></p>
+            <p>Pitch : <%= @current_user.projects.first.pitch %></p>
+            <p>City : <%= @current_user.projects.first.city %></p>
+            <p>Industry : <%= @current_user.projects.first.industry %></p>
+            <p>Pitchdeck : <%= @current_user.projects.first.pitch %></p>
+
+            <%= link_to reject_dashboards_path(user_id: current_user), data: { turbo_method: :post, action: "click->sweetalert#upload" } do %>
+              <li class="btn-circle-cross list-inline-item mx-2"></li>
+            <% end %>
+          </li>
+        <% end %>
       </ul>
     </div>
   </div>
