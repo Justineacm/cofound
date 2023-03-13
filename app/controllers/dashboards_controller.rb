@@ -28,17 +28,21 @@ class DashboardsController < ApplicationController
       flash.now[:alert] = "It's a match!"
     end
     # if request.renderrer
+    sleep 3
     redirect_to user_path(@user)
   end
 
   def reject
     @user = User.find(params[:user_id])
+
     @selection = current_user.selection_for(@user) # Déclenchement : bouton unlike ou reject d'une card user
     if @selection.nil?
       @selection = Selection.create(sender: current_user, receiver: @user, status: :rejected)
     else
       @selection.rejected!
     end
+
+    sleep 3
     redirect_to matches_dashboards_path
   end
 

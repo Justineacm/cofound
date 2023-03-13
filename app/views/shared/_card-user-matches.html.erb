@@ -23,12 +23,12 @@
       <%= link_to "See more", user_path(user), class: "btn-yellow" %>
       </ul>
     </div>
-    <div class="text-center">
+    <div class="text-center" data-controller="sweetalert">
       <ul class="list-unstyled list-inline">
-        <%= link_to reject_dashboards_path(user_id: user.id), data: { turbo_method: :post } do %>
+        <%= link_to reject_dashboards_path(user_id: user.id), data: { turbo_method: :post, action: "click->sweetalert#deny" } do %>
           <li class="btn-circle-cross list-inline-item mx-2"></li>
         <% end %>
-        <%= link_to like_dashboards_path(user_id: user.id), data: { turbo_method: :post } do %>
+        <%= link_to like_dashboards_path(user_id: user.id), data: { turbo_method: :post, action: "click->sweetalert#accept" } do %>
           <li class="btn-circle-heart list-inline-item mx-2"></li>
         <% end %>
       </ul>
