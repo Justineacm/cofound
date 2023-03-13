@@ -31,7 +31,7 @@
   }
 }
 
-.card-ribbon {
+.card-ribbon-pending {
   top: 7px;
   left: -38px;
   position: relative;
@@ -42,4 +42,17 @@
   text-align: center;
   width: 107px;
   background-color: $yellow;
+}
+
+.card-ribbon-accepted {
+  top: 7px;
+  left: -38px;
+  position: relative;
+  transform: rotate(-45deg);
+  color: white;
+  font-weight: 500;
+  font-size: 12px;
+  text-align: center;
+  width: 107px;
+  background-color: $blue;
 }

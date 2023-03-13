@@ -9,7 +9,7 @@ class DashboardsController < ApplicationController
     else
       @suggestions = []
     end
-    @pending_matches = matching_algo
+    @favorite_profiles = User.where(id: current_user.liked_users.map(&:id))
   end
 
   def suggestions
@@ -25,7 +25,7 @@ class DashboardsController < ApplicationController
       Selection.create(sender_id: current_user.id, receiver_id: user.id) if current_user.selection_for(user).blank?
     end
     session[:suggestions] = true
-    render :matches
+    redirect_to matches_dashboards_path
   end
 
   def messages

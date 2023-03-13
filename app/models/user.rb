@@ -22,7 +22,8 @@ class User < ApplicationRecord
   # end
 
   def liked_users
-    User.where(id: Selection.pending.where(sender_id: id).pluck(:receiver_id))
+    selection_ids = Selection.pending.where(sender_id: id).pluck(:receiver_id) + Selection.accepted.where(sender_id: id).pluck(:receiver_id) + Selection.accepted.where(receiver_id: id).pluck(:sender_id)
+    User.where(id: selection_ids)
   end
 
   def users_who_liked_me
