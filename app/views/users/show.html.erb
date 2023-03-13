@@ -1,13 +1,13 @@
 <div class="main-container">
   <div class="profil_user">
     <% if @user.photo? %>
-      <%= image_tag @user.photo, class: "avatar-show"%>
+      <%= cl_image_tag @user.photo, class: "avatar-large"%>
     <% else %>
       <%= image_tag "avatar.svg", class: "avatar-large"%>
     <% end %>
 
-    <h3 class="mx-3"><%= @user.first_name %> <%= @user.last_name %></h3>
-    <%= image_tag "location.svg", class: "tag-icon mx-3"%> <%= @user.city %>
+    <h4 class="mx-3"><%= @user.first_name %> <%= @user.last_name %></h4>
+    <%= image_tag "location_orange.svg", class: "tag-icon mx-3"%> <%= @user.city %>
 
   </div>
 
