@@ -3,7 +3,7 @@ import Swal from 'sweetalert2'
 
 export default class extends Controller {
   connect() {
-
+    console.log('sweeet');
   }
 
   deny() {
@@ -44,8 +44,9 @@ export default class extends Controller {
     })
   }
 
-  upload(){
-    const { value: file } = await Swal.fire({
+  upload() {
+    console.log('upload');
+    const file = Swal.fire({
       title: 'Select image',
       input: 'file',
       inputAttributes: {
@@ -53,6 +54,7 @@ export default class extends Controller {
         'aria-label': 'Upload your profile picture'
       }
     })
+    console.log(file);
     if (file) {
       const reader = new FileReader()
       reader.onload = (e) => {
