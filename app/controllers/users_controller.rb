@@ -12,6 +12,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @selection = current_user.selection_for(@user)
+    @message = Message.new
   end
 
   def project_match
@@ -90,12 +92,12 @@ class UsersController < ApplicationController
   def find_selection
     @selections = Selection.all
     @senderselections = @selections.select do |selection| # Vérif sélections où current_user = sender et user = receiver
-      selection.sender_id == current_user.id && selection.receiver_id == user.id
+      selection.sender_id == current_user.id && selection.receiver_id == @user.id
     end
     @receiverselections = @selections.select do |selection| # Vérif sélections où current_user = receiver et user = sender
       selection.sender_id == user.id && selection.receiver_id == current_user.id
     end
-    @selection = @senderselections + receiverselections # Identifier la sélection (si existante)
+    @senderselections if @senderselections == @receiverselections # Identifier la sélection (si existante)
   end
 
   def like
