@@ -1,5 +1,11 @@
 <div class="main-container">
-
+  <div class="profil_user">
+    <% if @user.photo? %>
+      <%= image_tag @user.photo, class: "avatar-large"%>
+    <% else %>
+      <%= image_tag "avatar.svg", class: "avatar-large"%>
+    <% end %>
+    
     <div class="profil-content-show .profil-content-project">
       <div class="main-content-show">
       <div>
@@ -38,6 +44,16 @@
           <%= render "shared/chatroom" %>
         </div>
 
+        <div class="text-center">
+          <ul class="list-unstyled list-inline">
+            <%= link_to reject_dashboards_path(user_id: @user.id) do %>
+              <li class="btn-circle-cross list-inline-item "></li>
+            <% end %>
+            <%= link_to like_dashboards_path(user_id: @user.id) do %>
+              <li class="btn-circle-heart list-inline-item"></li>
+            <% end %>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
