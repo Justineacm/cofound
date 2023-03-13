@@ -7,14 +7,18 @@
 
 .banner h1 {
   color: $blue;
+  margin-bottom: 6vh;
 }
 
 .banner p {
   color: $blue;
+  margin-bottom: 6vh;
 }
 
 .banner-img {
   background-size: cover;
+  background-position: center;
+  border-radius: 25px 0px 0px 25px;
 }
 
 .container-banner {

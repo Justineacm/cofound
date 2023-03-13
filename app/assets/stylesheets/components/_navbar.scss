@@ -1,7 +1,7 @@
 .navbar {
   justify-content: space-between;
   width: 100%;
-  background: white;
+  background: transparent;
 }
 
 .navbar .navbar-collapse {
@@ -20,4 +20,8 @@
 .navbar .nav-link:hover {
   color: $yellow;
   margin: 0 10px;
+}
+
+.container-fluid {
+  padding: 0px 50px;
 }
