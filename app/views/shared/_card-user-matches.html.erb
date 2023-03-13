@@ -24,10 +24,10 @@
     </div>
     <div class="text-center" data-controller="sweetalert">
       <ul class="list-unstyled list-inline">
-        <%= link_to reject_dashboards_path(user_id: user.id) do %>
+        <%= link_to reject_dashboards_path(user_id: user.id), data: {action: "click->sweetalert#deny" } do %>
           <li class="btn-circle-cross list-inline-item mx-2"></li>
         <% end %>
-        <%= link_to like_dashboards_path(user_id: user.id) do %>
+        <%= link_to like_dashboards_path(user_id: user.id), data: {action: "click->sweetalert#accept" } do %>
           <li class="btn-circle-heart list-inline-item mx-2"></li>
         <% end %>
       </ul>
