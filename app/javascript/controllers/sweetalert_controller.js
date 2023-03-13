@@ -61,8 +61,9 @@ export default class extends Controller {
       icon: 'success',
       title: 'You just received a new message'
     })
+  }
 
-  upload(){
+  upload() {
     const { value: file } = await Swal.fire({
       title: 'Select image',
       input: 'file',
