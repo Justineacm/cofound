@@ -6,6 +6,7 @@ class DashboardsController < ApplicationController
   end
 
   def messages
+    @selections = current_user.selections
   end
 
   def project

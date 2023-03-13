@@ -28,3 +28,31 @@ export default class extends Controller {
   }
 
 }
+
+
+// const chatBox = document.getElementById("chatbox");
+//     const chatBoxUserAvatar = document.getElementById("chatbox__user-avatar");
+//     const chatBoxUserName = document.getElementById("chatbox__user-name");
+//     const chatBoxClose = document.getElementById("chatbox__close");
+//     const messageBottom = document.getElementById("message-bottom");
+//     const messageContainer = document.getElementById("message__container");
+
+//     window.openChatBox = (id, firt_name, photo) => {
+//       if (id && first_name && photo && !isCurrentUser(selectedUser, selectedUid)) {
+//         selectedUser = { id: selectedUid };
+//         chatBox.classList.remove("hide");
+//         chatBoxUserName.innerHTML = first_name;
+//         chatBoxUserAvatar.src = photo;
+//         messageContainer.innerHTML = '';
+//         loadMessages();
+//       }
+//     }
+
+//     if (chatBoxClose) {
+//       chatBoxClose.addEventListener('click', function() {
+//         messageContainer.innerHTML = '';
+//         chatBox.classList.add("hide");
+//         channel.removeMessageListener(selectedContact.uid);
+//         selectedContact = null;
+//       });
+//     }
