@@ -3,3 +3,13 @@
   height: 14px;
   object-fit: contain;
 }
+
+.lock-icon {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border: 1px solid $blue;
+  background: asset-url("lock_outline_bleu.svg") no-repeat;
+  background-position: center;
+  background-size: 45%;
+}
