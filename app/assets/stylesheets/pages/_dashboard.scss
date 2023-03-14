@@ -13,12 +13,15 @@
 
 .profil_user {
   margin: 30px 15px 30px 30px;
-  padding: 30px 10px;
+  padding: 0;
   border-radius: 30px;
   background-color: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   text-align: center;
   color: $blue;
+}
+
+.dashboards-matches .profil_user {
   width: 250px;
 }
 
@@ -86,9 +89,6 @@
   background-color: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
-  position: absolute;
-  right: 0;
-  top: 0;
   height: 100%
 ;
 }
