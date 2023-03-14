@@ -32,8 +32,6 @@
 }
 
 .profil-content-show {
-  height: 100%;
-  overflow-y: auto;
   margin: 30px 30px 30px 15px;
 
   &.profil-content-project {
@@ -54,10 +52,6 @@
 
 .users-show .main-content {
   display: block;
-}
-
-.users-show .profil-content-show {
-  width: 100%;
 }
 
 .user-show-project {
