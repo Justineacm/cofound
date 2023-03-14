@@ -223,7 +223,7 @@ data.each_with_index do |infos, index|
 
   infos["jobs"].first(3).each do |job|
     company1 = Company.new(
-      industry: job["companyName"],
+      industry: job["companyName"]
     )
     company1.save!
 
