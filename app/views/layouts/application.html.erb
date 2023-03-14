@@ -19,14 +19,16 @@
           <%= render "shared/flashes" %>
           <%= render "shared/user-sidebar" %>
           <%= yield %>
+          <%= render "shared/sidebar" %>
         </div>
-        <%= render "shared/sidebar" %>
 
       <% elsif controller_name == 'users' %>
         <div class="main-container">
-          <%= render "shared/flashes" %>
-          <%= render "shared/user-sidebar-show" %>
-          <%= yield %>
+          <div class='d-flex w-100'>
+            <%= render "shared/flashes" %>
+            <%= render "shared/user-sidebar-show" %>
+            <%= yield %>
+          </div>
         </div>
         <%= render "shared/sidebar" %>
 
