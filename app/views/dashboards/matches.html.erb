@@ -1,25 +1,6 @@
-<div class="main-container">
-  <div class="profil-content profil-content-matches" data-controller="generate-matches">
-  <% if session[:suggestions] == true %>
-    <h3><%= @suggestions.count %> matches</h3>
-  <% end %>
-    <% unless session[:suggestions] == true %>
-    <div class= "container-matches", style="background-image: linear-gradient(rgba(0,0,0,0.0),rgba(0,0,0,0.0)), url(<%= image_path 'matches.jpg'%>);">
-        <%= form_with url: suggestions_dashboards_path, class:"form-check form-switch", method: :get do |form| %>
-          <%= form.submit "Generate Matches", class: "btn-cta"%>
-        <% end %>
-    </div>
-    <% else %>
-      <div data-controller="filter">
-        <%= form_with url: filtered_suggestions_dashboards_path, class:"form-check form-switch", method: :get, data: {filter_target: "form"} do |form| %>
-          <%= form.check_box :project, class:"form-check-input", type:"checkbox", role:"switch", id:"flexSwitchCheckChecked", data: {action: "change->filter#submit"}%>
-          <%= form.label :project, "I want profiles with projects only", class:"form-check-label", for:"flexSwitchCheckChecked" %>
-        <% end %>
-        <div class="main-content" data-generate-matches-target="cards" data-filter-target="list">
-          <%= render partial: "shared/card-user-matches", locals: {users: @suggestions} %>
-        </div>
-      </div>
-    <% end %>
+<div class="main">
+  <div class="profil-content profil-content-matches" data-controller="filter" >
+    <%= render "selections/suggestions", session: session, suggestions: @suggestions, has_project: params[:has_project] %>
     <div class="mt-5 mb-3">
       <h3>My matches</h3>
     </div>
