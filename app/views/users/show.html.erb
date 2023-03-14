@@ -1,16 +1,24 @@
 <div class="col-10">
   <div class="profil-content-show .profil-content-project">
     <div class="main-content-show">
-      <ul class="list-unstyled list-inline">
-        <li class="btn-tag list-inline-item"><%= image_tag "xp.svg", class: "tag-icon"%> <%= @current_user.total_experience%> years experience</li>
-        <li class="btn-tag list-inline-item"><%= image_tag "mbti.svg", class: "tag-icon"%> <%= @current_user.mbti %></li>
-        <li class="btn-tag list-inline-item"><%= image_tag "skill.svg", class: "tag-icon"%> <%= @current_user.language_list %></li>
-        <li class="btn-tag list-inline-item"><%= image_tag "language.svg", class: "tag-icon"%> <%= @current_user.expertise_list %></li>
-      </ul>
+        <ul class="list-unstyled list-inline">
+          <li class="btn-tag list-inline-item"><%= image_tag "xp.svg", class: "tag-icon"%> <%= @current_user.total_experience%> years experience</li>
+          <li class="btn-tag list-inline-item"><%= image_tag "mbti.svg", class: "tag-icon"%> <%= @current_user.mbti %></li>
+          <li class="btn-tag list-inline-item"><%= image_tag "skill.svg", class: "tag-icon"%> <%= @current_user.language_list %></li>
+          <li class="btn-tag list-inline-item"><%= image_tag "language.svg", class: "tag-icon"%> <%= @current_user.expertise_list %></li>
+        </ul>
+
+      <div class="profil-content profil-content-matches">
+          <%# <% if @user.has_a_project %>
+          <%= render "shared/user-project" %>
+      </div>
+
+      <div class="chatroom">
+          <%= render "shared/chatroom2" %>
+      </div>
+
     </div>
   </div>
 </div>
 
-<div class="profil-content profil-content-matches">
-  <%# <% if @user.has_a_project %>
-<%= render "shared/user-project" %>
+
