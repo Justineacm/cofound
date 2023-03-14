@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import ChatappController from "./chatapp_controller"
+application.register("chatapp", ChatappController)
+
 import FilterController from "./filter_controller"
 application.register("filter", FilterController)
 
@@ -15,6 +18,9 @@ application.register("hello", HelloController)
 
 import SelectionSubscriptionController from "./selection_subscription_controller"
 application.register("selection-subscription", SelectionSubscriptionController)
+
+import CarouselController from "./carousel_controller"
+application.register("carousel", CarouselController)
 
 import SweetalertController from "./sweetalert_controller"
 application.register("sweetalert", SweetalertController)
