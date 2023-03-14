@@ -19,6 +19,16 @@
   margin: 3px;
 }
 
+#carouselExample .btn-tag{
+  font-size: 15px;
+  color: $blue;
+  border: 1px solid $blue;
+  padding: 4px 9px;
+  border-radius: 10px;
+  font-weight: 500;
+  margin: 3px;
+}
+
 .btn-cta {
   text-decoration: none;
   color: white;
@@ -48,6 +58,8 @@
   transition: background 0.3s ease;
   display: inline-block;
 }
+
+
 
 .btn-yellow:hover {
   background: $yellow;
