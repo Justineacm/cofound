@@ -1,7 +1,12 @@
-<div id="message-<%= message.id %>">
-  <small>
+<div class="MessageAvatar p-4" style="background-image: url(<%= message.user.photo %>); background-size: cover;"></div>
+<div class="d-flex flex-column">
+  <div class="d-flex">
     <strong><%= message.user.first_name %></strong>
+    <small>
     <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
-  </small>
-  <p><%= message.content %></p>
+    </small>
+  </div>
+  <div class = "messages">
+    <p><%= message.content %></p>
+  </div>
 </div>

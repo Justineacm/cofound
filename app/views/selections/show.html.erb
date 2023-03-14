@@ -1,7 +1,8 @@
 <div class="container chatroom"
   data-controller="selection-subscription"
   data-selection-subscription-selection-id-value="<%= @selection.id %>"
->
+  data-selection-subscription-current-user-id-value="<%= current_user.id %>">
+
   <h1>#<%= "Your awesome chat" %></h1>
 
   <div class="messages" data-selection-subscription-target="messages">

@@ -1,25 +1,29 @@
 
  <div class="chatroom <%#= "d-none" unless current_user.can_see_profil_infos?(@user)%>"
     data-controller="selection-subscription"
-    data-selection-subscription-selection-id-value="<%= @selection.id %>"
-    data-selection-subscription-user-id-value="<%= current_user.id %>"
+    data-selection-subscription-selection-id-value="<%= selection.id %>"
+    data-selection-subscription-current-user-id-value="<%= current_user.id %>"
   >
-  <h3>Your chat with <%= @user.first_name %></h3>
+  <h3>Your chat with <%= user.first_name %></h3>
 
   <div class="messages" data-selection-subscription-target="messages">
-    <% @selection.messages.each do |message| %>
-      <%= render "messages/message", message: message %>
+    <% selection.messages.each do |message| %>
+      <div class="message-row d-flex <%= message.sender?(current_user) ? 'justify-content-end' : 'justify-content-start' %>">
+        <div class="<%= message.sender?(current_user) ? 'sender-style' : 'receiver-style' %>">
+          <%= render "messages/message", message: message %>
+        </div>
+      </div>
     <% end %>
 
     <span data-selection-subscription-target="typing"></span>
   </div>
 
-  <%= simple_form_for [@selection, @message], html: { data: { action: "turbo:submit-end->selection-subscription#resetForm" }, class: "d-flex" } do |f| %>
-    <%= f.input :content,
-      label: false,
-      placeholder: "Send a message to" + @user.first_name,
-      wrapper_html: {class: "flex-grow-1"}, input_html: { data: { action: "keyup->selection-subscription#isTyping" } }
-    %>
-    <%= f.submit "Send", class: "btn-yellow mb-3" %>
-  <% end %>
+    <%= simple_form_for [selection, message], html: { data: { action: "turbo:submit-end->selection-subscription#resetForm" }, class: "d-flex" } do |f| %>
+      <%= f.input :content,
+        label: false,
+        placeholder: "Send a message to" + user.first_name,
+        wrapper_html: {class: "flex-grow-1"}, input_html: { data: { action: "keyup->selection-subscription#isTyping" } }
+      %>
+      <%= f.submit "Send", class: "conv-button mb-3" %>
+    <% end %>
 </div>
