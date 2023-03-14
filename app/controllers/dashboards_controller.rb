@@ -14,7 +14,9 @@ class DashboardsController < ApplicationController
   end
 
   def suggestions
-    @suggestions = project_condition
+    @suggestions = @suggestions = matching_algo.select do |user|
+      current_user.keep_suggestion?(user)
+    end
     @suggestions.each do |user|
       Selection.create(sender_id: current_user.id, receiver_id: user.id) if current_user.selection_for(user).blank?
     end
@@ -26,8 +28,9 @@ class DashboardsController < ApplicationController
     @suggestions = matching_algo.select do |user|
       current_user.keep_suggestion?(user)
     end
+    p params[:has_project]
     @suggestions = @suggestions.select(&:has_a_project?) if params[:has_project]
-    render partial: "shared/card-user-matches", locals: { users: @suggestions }
+    render partial: "shared/card-user-matches", locals: { users: @suggestions }, formats: :html
   end
 
   def messages
@@ -58,17 +61,6 @@ class DashboardsController < ApplicationController
 
   def matching_algo
     excluding_self
-    experience_match
-    expertise_match
-    language_match
-    mbti_match
-    city_match
-    return @matches
-  end
-
-  def matching_algo_projects
-    excluding_self
-    project_match
     experience_match
     expertise_match
     language_match
