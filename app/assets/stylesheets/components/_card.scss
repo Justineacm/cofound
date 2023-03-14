@@ -56,3 +56,28 @@
   width: 107px;
   background-color: $blue;
 }
+
+#carouselExample .card-user {
+  width: 75%;
+  margin: 10px auto;
+  font-size: 20px;
+  max-width: 800px;
+}
+
+#carouselExample .card-user > ul {
+  font-size: 30px;
+  display: inline;
+  list-style-type: none;
+  padding: 0;
+  > li {
+    width: max-content;
+  }
+}
+
+#carouselExample button{
+  filter: brightness(0.5);
+}
+
+#carouselExemple{
+  justify-content: center;
+}
