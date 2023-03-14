@@ -4,8 +4,14 @@
 
 import { application } from "./application"
 
+import FilterController from "./filter_controller"
+application.register("filter", FilterController)
+
 import GenerateMatchesController from "./generate_matches_controller"
 application.register("generate-matches", GenerateMatchesController)
+
+import HelloController from "./hello_controller"
+application.register("hello", HelloController)
 
 import SelectionSubscriptionController from "./selection_subscription_controller"
 application.register("selection-subscription", SelectionSubscriptionController)

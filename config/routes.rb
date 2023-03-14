@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       get 'project'
       get 'like'
       get 'reject'
+      get 'filtered_suggestions'
     end
   end
 
