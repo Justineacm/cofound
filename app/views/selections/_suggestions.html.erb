@@ -11,10 +11,10 @@
   <% else %>
     <div>
       <%= form_with url: filtered_suggestions_dashboards_path, class:"form-check form-switch", method: :get, data: {filter_target: "form"} do |form| %>
-        <%= form.check_box :project, class:"form-check-input", type:"checkbox", role:"switch", id:"flexSwitchCheckChecked", data: {action: "change->filter#submit"}%>
+        <%= form.check_box :project, class:"form-check-input", type:"checkbox", role:"switch", id:"flexSwitchCheckChecked", data: {action: "change->filter#submit"}, checked: has_project %>
         <%= form.label :project, "I want profiles with projects only", class:"form-check-label", for:"flexSwitchCheckChecked" %>
       <% end %>
-      <div class="main-content" data-generate-matches-target="cards">
+      <div class="main-content">
         <%= render partial: "shared/card-user-matches", locals: {users: suggestions} %>
       </div>
     </div>

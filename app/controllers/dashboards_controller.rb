@@ -28,8 +28,8 @@ class DashboardsController < ApplicationController
     @suggestions = matching_algo.select do |user|
       current_user.keep_suggestion?(user)
     end
-    @suggestions = @suggestions.select(&:has_a_project?) if params[:has_project]
-    render partial: "selections/suggestions", locals: { session: session, suggestions: @suggestions }, formats: :html
+    @suggestions = @suggestions.select(&:has_a_project?) if params[:has_project] == "true"
+    render partial: "selections/suggestions", locals: { session: session, suggestions: @suggestions, has_project: params[:has_project] == "true" }, formats: :html
   end
 
   def messages
