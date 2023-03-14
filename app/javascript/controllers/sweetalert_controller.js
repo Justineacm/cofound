@@ -44,7 +44,6 @@ export default class extends Controller {
     })
   }
 
-
   message() {
     const Toast = Swal.mixin({
       toast: true,
