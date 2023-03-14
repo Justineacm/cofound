@@ -50,11 +50,35 @@
   display: block;
 }
 
+.users-show .profil-content-show {
+  width: 100%;
+}
+
 .user-show-project {
   color: transparent;
   flex-direction: column;
 }
 
+.users-show .main-container {
+  margin-right: 6rem;
+}
+
+#connect-user {
+  display: flex;
+  justify-content: space-around;
+  align-items: baseline;
+  color: white;
+  background-color:$blue;
+
+  h5 {
+    margin-bottom: 0;
+  }
+
+  i {
+    display: flex;
+    align-items: center;
+  }
+  
 .box {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
