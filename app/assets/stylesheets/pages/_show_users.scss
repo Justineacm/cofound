@@ -1,6 +1,12 @@
+#locked-screen {
+  position: absolute;
+  left: 40%;
+  top: 40%;
+  margin: auto;
+}
+
 .blocked-content {
-  color: transparent;
-  text-shadow: 0 0 8px #000;
+  filter: blur(6px);
 }
 
 .main-content-show {
