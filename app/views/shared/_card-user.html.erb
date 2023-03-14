@@ -1,10 +1,12 @@
 <% users.each do |user| %>
 
   <div class="card-user">
-  <% if current_user.selection_for(user).pending?%>
-    <div class="card-ribbon-pending overflow-hidden">Pending</div>
-  <% elsif current_user.selection_for(user).accepted?%>
-    <div class="card-ribbon-accepted overflow-hidden">Accepted</div>
+  <% unless Selection.all.empty?%>
+    <% if current_user.selection_for(user).pending?%>
+      <div class="card-ribbon-pending overflow-hidden">Pending</div>
+    <% elsif current_user.selection_for(user).accepted?%>
+      <div class="card-ribbon-accepted overflow-hidden">Accepted</div>
+    <%end%>
   <%end%>
     <div class="text-center">
       <% if user.photo? %>
@@ -31,17 +33,19 @@
     </div>
     <div class="text-center" data-controller="sweetalert">
       <ul class="list-unstyled list-inline">
+      <% unless Selection.all.empty?%>
         <% if current_user.selection_for(user).pending? %>
           <%= link_to reject_dashboards_path(user_id: user.id), data: {action: "click->sweetalert#deny" } do %>
             <li class="btn-circle-cross list-inline-item mx-2"></li>
           <% end %>
         <% end %>
-        
+
         <% if current_user.selection_for(user).accepted? %>
           <%= link_to user_path(user) do %>
             <li class="btn-circle-orange-message list-inline-item mx-2"></li>
           <% end %>
         <% end %>
+      <% end %>
       </ul>
     </div>
   </div>
