@@ -24,6 +24,12 @@
         placeholder: "Send a message to" + user.first_name,
         wrapper_html: {class: "flex-grow-1"}, input_html: { data: { action: "keyup->selection-subscription#isTyping" } }
       %>
-      <%= f.submit "Send", class: "conv-button mb-3" %>
     <% end %>
+      <div class = "convSendMessage d-flex flex-row">
+        <div class= "conv-input" >
+        </div>
+        <div class= "conv-button d-flex flex-center">
+          <i class="fa-light fa-paper-plane-top"></i>
+        </div>
+      </div>
 </div>

@@ -91,3 +91,27 @@
 .convButton:hover {
 	background-color: #3c559c;
 }
+
+.convInput {
+	float: left;
+	height: 40px;
+	border: none;
+	padding: 0.5rem 1rem;
+	border-radius: 40px;
+	margin: 0 0.5rem 0 0;
+	width: calc(100% - 52px);
+	background-color: #dedfed;
+	box-shadow: inset 0 0 0 2px #dedfed;
+	font-size: 14px;
+	font-family: 'Quicksand', sans-serif;
+	font-weight: bold;
+	transition: 0.15s all ease-in-out;
+	box-sizing: border-box;
+}
+
+.convSendMessage {
+	position: relative;
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
+	background-color: #fff;
+}
