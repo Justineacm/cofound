@@ -5,7 +5,7 @@
     <% else %>
       <%= image_tag "avatar.svg", class: "avatar-large"%>
     <% end %>
-    
+
     <div class="profil-content-show .profil-content-project">
       <div class="main-content-show">
       <div>
@@ -40,9 +40,6 @@
           </ul>
         </div>
         </div>
-        <div class="chatroom">
-          <%= render "shared/chatroom" %>
-        </div>
 
         <div class="text-center">
           <ul class="list-unstyled list-inline">
@@ -61,8 +58,8 @@
 
 
 </div>
+        <div class="chatroom">
+          <%= render "shared/chatroom" %>
+        </div>
 
 </div>
-
-
-<%# 2. if status accepted, chatroom pops dans la show de user. %>

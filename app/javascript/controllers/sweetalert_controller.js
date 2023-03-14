@@ -44,11 +44,7 @@ export default class extends Controller {
     })
   }
 
-<<<<<<< HEAD
-  upload() {
-    console.log('upload');
-    const file = Swal.fire({
-=======
+
   message() {
     const Toast = Swal.mixin({
       toast: true,
@@ -70,7 +66,6 @@ export default class extends Controller {
 
   upload() {
     const { value: file } = await Swal.fire({
->>>>>>> e6cf1c85ca6b9394e945f801e26e356cbc10b5d8
       title: 'Select image',
       input: 'file',
       inputAttributes: {
