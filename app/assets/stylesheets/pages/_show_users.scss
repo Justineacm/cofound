@@ -54,3 +54,22 @@
   color: transparent;
   flex-direction: column;
 }
+
+.box {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
+.project-label {
+  margin-right: 10px;
+  font-size: 18px;
+  grid-column: span 1;
+}
+
+.project-text {
+  font-size: 14px;
+  vertical-align: middle;
+  border-left: 2px solid $yellow;
+  padding-left: 10px;
+  grid-column: span 4;
+}
