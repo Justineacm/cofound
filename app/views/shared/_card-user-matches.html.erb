@@ -1,4 +1,5 @@
-<div id="carouselExample" class="carousel slide">
+<div class="container-suggestions">
+<ul class="cards-suggestions">
   <div class="carousel-inner">
   <% users.each_with_index do |user, index| %>
     <div class="carousel-item  <%= "active" if index == 0 %>" >
@@ -49,3 +50,4 @@
     <span class="visually-hidden">Next</span>
   </button>
 </div>
+</ul>
