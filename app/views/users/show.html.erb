@@ -1,4 +1,5 @@
 <div class="main-container">
+
   <div class="profil_user">
     <% if @user.photo? %>
       <%= image_tag @user.photo, class: "avatar-large"%>
@@ -58,3 +59,14 @@
     <%= render "shared/chatroom2" %>
   </div>
 </div>
+
+
+  <div class="profil-content profil-content-matches">
+      <%# <% if @user.has_a_project %>
+      <%= render "shared/user-project" %>
+      <%# <% end %> 
+    </div>
+</div>
+
+
+
