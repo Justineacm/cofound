@@ -19,6 +19,10 @@ Rails.application.routes.draw do
 
   resources :selections, only: :show do
     resources :messages, only: :create
+
+    member do
+      get "/is_typing", to: "selections#is_typing"
+    end
   end
 
   resources :users, only: :show

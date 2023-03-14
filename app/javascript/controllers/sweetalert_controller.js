@@ -63,7 +63,7 @@ export default class extends Controller {
     })
   }
 
-  upload() {
+  async upload() {
     const { value: file } = await Swal.fire({
       title: 'Select image',
       input: 'file',
@@ -72,6 +72,7 @@ export default class extends Controller {
         'aria-label': 'Upload your profile picture'
       }
     })
+
     console.log(file);
     if (file) {
       const reader = new FileReader()

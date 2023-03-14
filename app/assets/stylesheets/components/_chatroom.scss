@@ -14,17 +14,24 @@
   }
 
   .messages {
-    height: 100%;
-    overflow: scroll;
-    padding: 1rem;
+    position: relative;
+	max-width: 50%;
+	min-height: 40px;
+	padding: 0.75rem;
+	border-radius: 4px;
+	font-size: 14px;
+	line-height: 18px;
+	font-weight: bold;
+	box-shadow: 0px 10px 10px -8px rgba(0,0,0,0.08);
+	box-sizing: border-box;
+	overflow: hidden;
+	text-overflow: ellipsis;
   }
 
   #new_message {
-    border-top: 1px solid $gray-200;
-    padding: 1rem;
-
-    .form-group {
-      margin-bottom: 0;
-    }
+    position: relative;
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
+	background-color: #fff;
   }
 }
