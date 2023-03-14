@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 import { createConsumer } from "@rails/actioncable"
 
 export default class extends Controller {
-  static values = { selectionId: Number, userId: Number }
+  static values = { selectionId: Number, currentUserId: Number }
   static targets = ["messages", "typing"]
 
   connect() {
@@ -10,7 +10,7 @@ export default class extends Controller {
       { channel: "SelectionChannel", id: this.selectionIdValue },
       { received: (data) => {
         if (data.typing) {
-          if (data.user_id === this.userIdValue) { return };
+          if (data.user_id === this.currentUserIdValue) { return };
           this.typingTarget.innerText = data.content
 
           setTimeout(() => {
@@ -25,6 +25,7 @@ export default class extends Controller {
     // console.log(`Join your cofounder with the id ${this.selectionIdValue}.`)
   }
 
+
   resetForm(event) {
     event.target.reset()
   }
@@ -35,8 +36,28 @@ export default class extends Controller {
   }
 
   #insertMessageAndScrollDown(data) {
-    this.messagesTarget.insertAdjacentHTML("beforeend", data)
+    const currentUserIsSender = this.currentUserIdValue === data.sender_id
+    const messageElement = this.#buildMessageElement(currentUserIsSender, data.message)
+    this.messagesTarget.insertAdjacentHTML("beforeend", messageElement)
     this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight)
+  }
+
+  #buildMessageElement(currentUserIsSender, message) {
+    return `
+      <div class="message-row d-flex ${this.#justifyClass(currentUserIsSender)}">
+        <div class="${this.#userStyleClass(currentUserIsSender)}">
+          ${message}
+        </div>
+      </div>
+    `
+  }
+
+  #justifyClass(currentUserIsSender) {
+    return currentUserIsSender ? "justify-content-end" : "justify-content-start"
+  }
+
+  #userStyleClass(currentUserIsSender) {
+    return currentUserIsSender ? "sender-style" : "receiver-style"
   }
 
   async isTyping(evt) {

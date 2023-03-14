@@ -14,11 +14,10 @@
       </div>
 
       <div class="chatroom">
-          <%= render "shared/chatroom2" %>
       </div>
 
     </div>
+
+    <%= render "shared/chatroom2", selection: @selection, message: @message, user: @user %>
   </div>
 </div>
-
-

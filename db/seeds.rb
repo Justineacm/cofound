@@ -99,6 +99,7 @@ data.each_with_index do |infos, index|
       description: job["description"],
       title: job["jobTitle"],
       city: job["location"],
+      logo: job["logoUrl"],
       year_experience: xp_calculation(job)
     )
 
