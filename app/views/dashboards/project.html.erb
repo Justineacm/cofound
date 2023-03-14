@@ -2,9 +2,28 @@
   <div class="profil-content">
     <h3>Project</h3>
     <div class="main-content">
-      <ul class="list-inline-item">
-        <li class="list-unstyled list-inline">
-        </li>
+      <ul class="list-inline-item mt-5 mb-3">
+        <% current_user.projects.each do |project| %>
+          <li class="list-unstyled list-inline">
+            <p>Name of the project : <%= @current_user.projects.first.name %></p>
+            <p>Pitch : <%= @current_user.projects.first.pitch %></p>
+            <p>City : <%= @current_user.projects.first.city %></p>
+            <p>Industry : <%= @current_user.projects.first.industry %></p>
+            <p>Pitchdeck : <%= @current_user.projects.first.pitch %></p>
+
+
+              <div class="input-group mb-3" data-controller="sweetalert">
+                <input type="file" class="form-control" id="inputGroupFile02">
+                <label class="input-group-text" for="inputGroupFile02">Upload</label>
+              <%= link_to project_dashboards_path(user_id: current_user), data: { turbo_method: :post, action: "click->sweetalert#upload" } do %>              </div>
+            <% end %>
+
+            <template id="my-template">
+              <h1>modal</h1>
+            </template>
+
+          </li>
+        <% end %>
       </ul>
     </div>
   </div>
