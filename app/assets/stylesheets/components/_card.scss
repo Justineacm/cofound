@@ -134,6 +134,58 @@ a {
   text-decoration: none;
 }
 
+.card-highlights {
+  overflow: hidden;
+  height: 120px;
+  background: white;
+  min-width:30%;
+  flex-grow:1;
+  align-items: center;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid $yellow;
+
+  > ul {
+    font-size: 16px;
+    font-weight: bold;
+  }
+}
+
+.card-highlights img {
+  height: 100%;
+  width: 120px;
+  object-fit: scale-down;
+  margin: 0;
+
+}
+.card-highlights-icon {
+  height: 120px;
+  width: 120px;
+  margin: 0;
+}
+
+.card-highlights h3 {
+  font-weight: bold;
+  margin: 0;
+  color:$orange;
+}
+
+.card-highlights h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+  color:$blue;
+}
+
+.card-highlights p {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+}
+
+.card-highlights .card-highlights-infos {
+  padding: 16px;
+
 .users-show {
   display: flex;
   flex-direction: column;

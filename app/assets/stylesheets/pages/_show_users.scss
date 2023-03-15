@@ -1,7 +1,7 @@
 #locked-screen {
   position: absolute;
-  left: 40%;
-  top: 40%;
+  left: 50%;
+  top: 50%;
   margin: auto;
 }
 
@@ -14,9 +14,15 @@
   background-color: white;
   margin: 0 0 15px 0;
   padding: 30px;
-  min-height: 300px;
+  height: fit-content;
   display: flex;
-  flex-wrap: flex;
+  flex-wrap:wrap;
+  gap: 1em;
+}
+
+.highlights-content {
+  display: flex;
+  justify-content:space-between;
 }
 
 .main-content ul {
@@ -89,6 +95,25 @@ i {
 }
 
 .project-text {
+  font-size: 14px;
+  vertical-align: middle;
+  border-left: 2px solid $yellow;
+  padding-left: 10px;
+  grid-column: span 4;
+}
+
+.box-highlights {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
+.highlights-label {
+  margin-right: 10px;
+  font-size: 18px;
+  grid-column: span 1;
+}
+
+.highlights-text {
   font-size: 14px;
   vertical-align: middle;
   border-left: 2px solid $yellow;
