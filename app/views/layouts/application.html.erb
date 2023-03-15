@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= meta_title %></title>
     <meta name="description" content="<%= meta_description %>">
 
@@ -30,7 +31,6 @@
   </head>
 
   <body class="<%= "#{controller_name}-#{action_name}" %>">
-
       <% if action_name == "home" %>
         <%= render "shared/navbar" %>
         <%= render "shared/flashes" %>
@@ -48,6 +48,5 @@
           <%= render "shared/sidebar" %>
         </div>
       <% end %>
-
   </body>
 </html>
