@@ -28,10 +28,10 @@
           </div>
           <div class="text-center row justify-content-center my-2" data-controller="sweetalert">
             <ul class="list-unstyled list-inline justify-content-center my-2">
-              <%= link_to reject_dashboards_path(user_id: user.id), data: {action: "click->sweetalert#deny" } do %>
+              <%= link_to reject_dashboards_path(user_id: user.id, has_project: has_project ), data: {action: "click->sweetalert#deny" } do %>
                 <li class="btn-circle-cross list-inline-item mx-2"></li>
               <% end %>
-              <%= link_to like_dashboards_path(user_id: user.id), data: {action: "click->sweetalert#accept" } do %>
+              <%= link_to like_dashboards_path(user_id: user.id, has_project: has_project ), data: {action: "click->sweetalert#accept" } do %>
                 <li class="btn-circle-heart list-inline-item mx-2"></li>
               <% end %>
             </ul>

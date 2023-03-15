@@ -43,14 +43,14 @@ class DashboardsController < ApplicationController
     @selection = current_user.selection_for(@user)
     @selection.accepted! if @selection.pending?
     @selection.pending! if @selection.suggestion?
-    redirect_to matches_dashboards_path
+    redirect_to matches_dashboards_path(has_project: params[:has_project])
   end
 
   def reject
     @user = User.find(params[:user_id])
     @selection = current_user.selection_for(@user)
     @selection.rejected!
-    redirect_to matches_dashboards_path
+    redirect_to matches_dashboards_path(has_project: params[:has_project])
   end
 
   private
