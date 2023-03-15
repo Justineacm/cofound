@@ -50,6 +50,25 @@
   }
 }
 
+.profil-content section{
+  min-height: 618px;
+  display: flex;
+  flex-direction: column;
+}
+
+.profil-content .btn-cta{
+  text-decoration: none;
+  color: white;
+  background-color: #FF4D00;
+  padding: 8px 24px;
+  border: 1px solid #FF4D00;
+  border-radius: 50px;
+  opacity: 1;
+  transition: background 0.3s ease;
+  padding: 1.2rem 2.9rem;
+  margin-top: 250px
+}
+
 .main-content {
   border-radius: 30px;
   background-color: white;
