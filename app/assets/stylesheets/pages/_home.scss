@@ -2,3 +2,30 @@
 .pages-home {
   background-color: white;
 }
+
+* { /* reset margins and paddings on all elements */
+	margin:0;
+	padding:0;
+}
+
+body::before {
+		content:""; /* required for ::before */
+		position:fixed; /* don't scroll with page */
+		z-index:-100; /* place behind elements on page */
+		width:100%;
+		height:100%;
+		background-color: #FF4D00;
+    color: #DDDCE3;
+		background-image:
+		radial-gradient(circle farthest-side at top right, transparent,  #0F0042), radial-gradient(ellipse farthest-corner at 0% 100%, transparent, #FF4D00);
+		animation:bg-change 10s infinite;
+}
+
+@keyframes bg-change {
+	0%, 100% {
+		filter:hue-rotate(-15deg);
+	}
+	50% {
+		filter:hue-rotate(-45deg);
+	}
+}
