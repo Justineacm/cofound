@@ -25,14 +25,26 @@ User.destroy_all
 @mbti_profiles = ["Analyst", "Diplomat", "Sentinel", "Explorer"]
 
 def xp_calculation(job)
-  begin
+  (end_date(job) - start_date(job)).fdiv(365.25)
+end
+
+def end_date(job)
   date_range = job["dateRange"]
-  end_date = date_range.split(" - ")[1].split(" · ")[0]
-  end_date = end_date == 'Present' ? Date.today : end_date.to_date
-  start_date = date_range.split(" - ")[0].to_date
-  (end_date - start_date).fdiv(365.25)
-  rescue
-    3.5
+  end_date = date_range.split(" - ")[1].nil? ? start_date(job) + 1.month : date_range.split(" - ")[1].split(" · ")[0]
+  if end_date.is_a?(String) && end_date.to_i.to_s == end_date
+    Date.new(end_date.to_i, 1, 1)
+  else
+    end_date == 'Present' ? Date.today : end_date.to_date
+  end
+end
+
+def start_date(job)
+  date_range = job["dateRange"]
+  p date_range
+  if date_range.split(" - ")[0].to_i.to_s == date_range.split(" - ")[0]
+    Date.new(date_range.split(" - ")[0].to_i, 1, 1)
+  else
+    date_range.split(" - ")[0].to_date
   end
 end
 
@@ -100,6 +112,8 @@ data.each_with_index do |infos, index|
       title: job["jobTitle"],
       city: job["location"],
       logo: job["logoUrl"],
+      start_date: start_date(job),
+      end_date: end_date(job),
       year_experience: xp_calculation(job)
     )
 
@@ -166,6 +180,9 @@ data.each_with_index do |infos, index|
       description: job["description"],
       title: job["jobTitle"],
       city: job["location"],
+      logo: job["logoUrl"],
+      start_date: start_date(job),
+      end_date: end_date(job),
       year_experience: xp_calculation(job)
     )
 
@@ -194,13 +211,13 @@ data.each_with_index do |infos, index|
   generate_project(user, index, kisskissprojects)
 end
 
-Malo_profile = "app/assets/JSON/malo.json"
+Nico_profile = "app/assets/JSON/NB.json"
 
-file = File.read(Malo_profile)
+file = File.read(Nico_profile)
 data = JSON.parse(file)
 kisskissprojects = kisskissbankbank_scrap
 
-puts "creating Malo"
+puts "creating Nico"
 data.each_with_index do |infos, index|
   user = User.new(
     first_name: infos["general"]["firstName"],
@@ -232,6 +249,9 @@ data.each_with_index do |infos, index|
       description: job["description"],
       title: job["jobTitle"],
       city: job["location"],
+      logo: job["logoUrl"],
+      start_date: start_date(job),
+      end_date: end_date(job),
       year_experience: xp_calculation(job)
     )
 
