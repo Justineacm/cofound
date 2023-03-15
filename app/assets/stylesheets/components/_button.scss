@@ -1,13 +1,13 @@
-#btn-scrollUp {
-  position: fixed;
-  bottom : 60px;
-  right: 30px;
-  height: 30px;
-}
+// #btn-scrollUp {
+//   position: fixed;
+//   bottom : 60px;
+//   right: 30px;
+//   height: 30px;
+// }
 
-  #btn-scrollUp i {
-    color :$yellow;
-  }
+//   #btn-scrollUp i {
+//     color :$yellow;
+//   }
 
 .btn-tag {
   font-size: 11px;
@@ -58,8 +58,6 @@
   transition: background 0.3s ease;
   display: inline-block;
 }
-
-
 
 .btn-yellow:hover {
   background: $yellow;
@@ -240,6 +238,27 @@
   background-position: center;
   background-size: 50%;
   opacity: 0.6;
+}
+
+.btn-circle-log-out {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border: 1px solid $blue;
+  background: asset-url("log-out_bleu.svg") no-repeat;
+  background-position: center;
+  background-size: 45%;
+  transition: background 0.3s ease;
+}
+
+.btn-circle-log-out:hover {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border: 1px solid $orange;
+  background: asset-url("log-out_orange.svg") no-repeat;
+  background-position: center;
+  background-size: 55%;
 }
 
 /* The switch - the box around the slider */

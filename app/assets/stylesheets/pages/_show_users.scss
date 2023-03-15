@@ -10,9 +10,7 @@
 }
 
 .main-content-show {
-  border-top-left-radius: 30px;
-  border-bottom-left-radius: 30px;
-  border-bottom-right-radius: 30px;
+  border-radius: 20px;
   background-color: white;
   margin: 0 0 15px 0;
   padding: 30px;
@@ -36,9 +34,7 @@
 
   &.profil-content-project {
     background-color: white;
-    border-top-left-radius: 30px;
-    border-bottom-left-radius: 30px;
-    border-bottom-right-radius: 30px;
+    border-radius: 20px;
     padding: 20px;
     .main-content {
       background-color: transparent;
@@ -116,11 +112,11 @@ i {
   }
 
   .profil-content.profil-content-matches {
-    border-radius: 14px;
+    border-radius: 20px;
   }
 
   .main-content-show {
-    border-radius: 14px;
+    border-radius: 20px;
   }
 }
 

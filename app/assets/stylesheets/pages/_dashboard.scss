@@ -13,7 +13,7 @@
 .profil_user {
   margin: 30px 15px 30px 30px;
   padding: 10px;
-  border-radius: 30px;
+  border-radius: 20px;
   background-color: white;
   text-align: center;
   color: $blue;
@@ -34,16 +34,13 @@
 }
 
 .profil-content {
-  margin: 15px;
+  margin: 30px 30px 15px 15px;
 
   &.profil-content-matches {
     position: relative;
     background-color: white;
-    // box-shadow: 0 0 15px rgba(0,0,0,0.2);
-    border-top-left-radius: 30px;
-    border-bottom-left-radius: 30px;
-    border-bottom-right-radius: 30px;
-    padding: 20px;
+    border-radius: 20px;
+    padding: 30px;
     .main-content {
       background-color: transparent;
       box-shadow: none;
@@ -54,9 +51,7 @@
 }
 
 .main-content {
-  border-top-left-radius: 30px;
-  border-bottom-left-radius: 30px;
-  border-bottom-right-radius: 30px;
+  border-radius: 30px;
   background-color: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   padding: 20px;
