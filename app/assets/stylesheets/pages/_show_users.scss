@@ -132,8 +132,8 @@ i {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 350px;
     padding: 0;
+    flex: 0 0 350px;
   }
 
   .profil-content.profil-content-matches {

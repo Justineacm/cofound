@@ -185,4 +185,36 @@ a {
 
 .card-highlights .card-highlights-infos {
   padding: 16px;
+
+.users-show {
+  display: flex;
+  flex-direction: column;
+  .user-sidebar-top {
+    flex-grow: 1;
+  }
+
+.profil-bloc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5px 0px;
+}
+}
+
+.user-sidebar-top .btn-yellow {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  padding: 0;
+  font-size: small;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 0.7rem;
+  background: transparent;
+  color: #F9B300;
+  i {
+    position: relative;
+    left: 1px;
+  }
 }
