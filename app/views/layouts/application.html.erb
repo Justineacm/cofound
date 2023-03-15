@@ -31,7 +31,6 @@
   </head>
 
   <body class="<%= "#{controller_name}-#{action_name}" %>">
-
       <% if action_name == "home" %>
         <%= render "shared/navbar" %>
         <%= render "shared/flashes" %>
@@ -49,6 +48,5 @@
           <%= render "shared/sidebar" %>
         </div>
       <% end %>
-
   </body>
 </html>
