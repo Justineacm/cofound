@@ -22,7 +22,7 @@
       <% else %>
         <div class="main-container">
           <%= render "shared/flashes" %>
-          <%= render "shared/user-sidebar" %>
+          <%= render "shared/user-sidebar" unless devise_controller? %>
           <%= yield %>
           <%= render "shared/sidebar" %>
         </div>
