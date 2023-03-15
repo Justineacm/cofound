@@ -3,9 +3,10 @@
     <h3><%= pluralize( suggestions.count, 'match' )%></h3>
   <% end %>
   <% unless session[:suggestions] == true %>
-    <div class= "container-matches", style="background-image: linear-gradient(rgba(0,0,0,0.0),rgba(0,0,0,0.0)), url(<%= image_path 'matches.jpg'%>);">
+    <div class="container-matches" style="background-image: linear-gradient(rgba(0,0,0,0.0),rgba(0,0,0,0.0)), url(<%= image_path 'matches.jpg'%>);">
         <%= form_with url: suggestions_dashboards_path, class:"form-check form-switch", method: :get do |form| %>
-          <%= form.submit "Generate Matches", class: "btn-cta"%>
+          <%= form.submit "Find new cofounders", class: "btn-cta", data: {matchloader_target: "submit",
+                        action: "click->matchloader#submit"}%>
         <% end %>
     </div>
   <% else %>
@@ -19,4 +20,9 @@
       </div>
     </div>
   <% end %>
+  <div class="container-matches-blurred">
+  </div>
+  <div id="loader">
+    <span class="loader"></span>
+  </div>
 </section>

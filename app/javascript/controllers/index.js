@@ -13,6 +13,9 @@ application.register("generate-matches", GenerateMatchesController)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import MatchloaderController from "./matchloader_controller"
+application.register("matchloader", MatchloaderController)
+
 import SelectionSubscriptionController from "./selection_subscription_controller"
 application.register("selection-subscription", SelectionSubscriptionController)
 
