@@ -1,6 +1,6 @@
 <section data-filter-target="suggestionsContainer">
   <% if session[:suggestions] == true %>
-    <h3><%= suggestions.count %> matches</h3>
+    <h3><%= pluralize( suggestions.count, 'match' )%></h3>
   <% end %>
   <% unless session[:suggestions] == true %>
     <div class= "container-matches", style="background-image: linear-gradient(rgba(0,0,0,0.0),rgba(0,0,0,0.0)), url(<%= image_path 'matches.jpg'%>);">
