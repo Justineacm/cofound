@@ -15,13 +15,12 @@
   padding: 10px;
   border-radius: 30px;
   background-color: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
   text-align: center;
   color: $blue;
 }
 
 .dashboards-matches .profil_user {
-  width: 250px;
+  width: 350px;
 }
 
 .profil_user ul {
@@ -35,12 +34,12 @@
 }
 
 .profil-content {
-  margin: 30px 30px 30px 15px;
+  margin: 15px;
 
   &.profil-content-matches {
     position: relative;
     background-color: white;
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    // box-shadow: 0 0 15px rgba(0,0,0,0.2);
     border-top-left-radius: 30px;
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
@@ -85,7 +84,7 @@
 
 .menu_vertical {
   background-color: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  // box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
   height: 100%
 ;
