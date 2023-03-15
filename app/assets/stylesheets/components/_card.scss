@@ -1,4 +1,5 @@
 .card-user {
+  height: 100%;
   width: 300px;
   margin: 10px;
   padding: 15px;
@@ -83,10 +84,10 @@
 }
 
 .cards-suggestions {
-  display: grid;
-  grid-auto-columns: 100%;
-  grid-column-gap: 10px;
-  grid-auto-flow: column;
+  display: flex;
+  // grid-auto-columns: 100%;
+  // grid-column-gap: 10px;
+  // grid-auto-flow: column;
   padding: 25px 0px;
   list-style: none;
   overflow-x: scroll;
@@ -99,12 +100,34 @@
   padding: 20px;
   background: var(--white);
   border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 15%);
+  // box-shadow: 0 5px 15px rgba(0, 0, 0, 15%);
   scroll-snap-align: start;
-  transition: all 0.2s;
+  transition: all 0.1s;
 }
 
-.card-suggestion:hover {
-  color: var(--white);
-  background: var(--orange);
+
+.cards-suggestions::-webkit-scrollbar {
+  height: 12px;
+}
+
+.cards-suggestions::-webkit-scrollbar-thumb,
+.cards-suggestions::-webkit-scrollbar-track {
+  border-radius: 92px;
+}
+
+.cards-suggestions::-webkit-scrollbar-thumb {
+  background: var(--darkorange);
+}
+
+.cards-suggestions::-webkit-scrollbar-track {
+  background: var(--thumb);
+}
+
+:root {
+  --orange: #fd9940;
+  --darkorange: #FF4D00;
+  --platinum: #e5e5e5;
+  --black: #2b2d42;
+  --white: #fff;
+  --thumb: #edf2f4;
 }
