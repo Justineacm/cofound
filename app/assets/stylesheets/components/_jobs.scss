@@ -23,11 +23,12 @@ $dot-diameter: 8px;
 // }
 
 .main-content-project {
+  position:relative;
   border-radius: 14px;
-  padding: 20px;
+  padding: 30px;
   background: white;
   margin: 15px 0;
-  height: calc(100vh - 75px);
+  height: calc(100% - 75px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -36,7 +37,7 @@ $dot-diameter: 8px;
 
 .timeline {
   background:#fff;
-  padding: 50px 0;
+  padding: 40px 0 0 0;
   position: relative;
 
   // box-shadow: $container-shadow;
@@ -67,6 +68,10 @@ $dot-diameter: 8px;
     padding-right: $gutter;
     text-align: right;
     position: relative;
+    > ul {
+      list-style:none;
+      font-size: 80%;
+    }
     &:before {
       content: '';
       position: absolute;
@@ -88,7 +93,7 @@ $dot-diameter: 8px;
     }
   }
   .body {
-    margin: 0 0 3em;
+    // margin: 0 0 3em;
     float: right;
     width: 66%;
     padding-left: $gutter;
@@ -102,7 +107,7 @@ $dot-diameter: 8px;
     ul {
       color:$yellow;
       padding-left: 0;
-      list-style-type: none;
+      list-style: none;
       li:before {
         content: "–";
         margin-right: .5em;

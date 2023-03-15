@@ -1,19 +1,22 @@
-<h3>Experience</h3>
+<h3>Work experiences</h3>
 <hr>
 <% @user.jobs.each do |job| %>
   <div class="timeline">
     <div class="entry">
       <div class="title">
-        <h5>2014 - Present</h5>
-        <%# <h5> <%= user.jobs.start_date- <%= user.jobs.end_date</h5>  %>
-        <p><%= job.title %> <%= job.city %></p>
+        <h5> <%= job.start_date.year %> ~ <%= job.end_date.year %></h5>
+        <ul>
+          <li><%= job.title %> </li>
+          <li><%= job.company.industry %> </li>
+          <li><%= job.city %> </li>
+        </ul>
       </div>
       <div class="body">
         <p><%= job.description %></p>
         <ul>
-        <% if job.year_experience > 0 %>
-          <li><%= job.year_experience %> years of work experience </li>
-        <% end %>
+          <% if job.year_experience > 0 %>
+            <li><%= job.year_experience %> years of work experience </li>
+          <% end %>
         </ul>
       </div>
     </div>
