@@ -22,7 +22,7 @@
                 <li class="btn-tag list-inline-item col-auto"><%= image_tag "project_outline_bleu.svg", class: "tag-icon"%> I've a project</li>
               <% end %>
             <div class="row justify-content-center my-2">
-            <%= link_to "See more", user_path(user), class: "btn-yellow col-auto" %>
+            <%= link_to "See more", user_path(user, has_project: has_project), class: "btn-yellow col-auto" %>
             </div>
             </ul>
           </div>
