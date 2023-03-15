@@ -16,5 +16,9 @@
     <%= link_to project_dashboards_path, class:"text-decoration-none text-center" do %>
       <li class="btn-circle-project"></li><p class="mb-5">Project</p>
     <% end %>
+
+    <%= link_to destroy_user_session_path, data: {turbo_method: :delete}, class:"text-decoration-none text-center" do%>
+      <li class="btn-circle-log-out"></li><p class="mb-5">Log out</p>
+    <% end %>
   </ul>
 </div>

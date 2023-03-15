@@ -1,4 +1,4 @@
-<div class="profil_user">
+<div class="users-show profil_user">
     <% if current_user.photo? %>
       <%= image_tag current_user.photo, class: "avatar-large"%>
     <% else %>
@@ -24,9 +24,6 @@
     <div class="align-items-end">
       <div>
         <%= image_tag "Logo_coFound_2.svg", class: "logo"%>
-      </div>
-      <div class="text-center mt-3">
-        <%= link_to "Log out", destroy_user_session_path, class: "nav-link", data: {turbo_method: :delete} %>
       </div>
     </div>
 </div>

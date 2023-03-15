@@ -28,10 +28,10 @@
     <%# <div class="main-content-project">
       <%= render "shared/user-schools" %>
     <%# </div> %>
-    <div class="main-content-project d-none">
-        <% if @user.has_a_project %>
+      <% if @user.has_a_project %>
+        <div class="main-content-project">
         <%= render "shared/user-project" %>
-        <% end %>
-    </div>
+        </div>
+      <% end %>
   </div>
 </div>
