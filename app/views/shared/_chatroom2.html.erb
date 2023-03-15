@@ -1,5 +1,5 @@
 
- <div class="chatroom <%#= "d-none" unless current_user.can_see_profil_infos?(@user)%>"
+ <div class="chatroom-content <%#= "d-none" unless current_user.can_see_profil_infos?(@user)%>"
     data-controller="selection-subscription"
     data-selection-subscription-selection-id-value="<%= selection.id %>"
     data-selection-subscription-current-user-id-value="<%= current_user.id %>"
@@ -14,23 +14,16 @@
         </div>
       </div>
     <% end %>
-
     <span data-selection-subscription-target="typing"></span>
   </div>
-
+  
     <%= simple_form_for [selection, message], html: { data: { action: "turbo:submit-end->selection-subscription#resetForm" }, class: "d-flex" } do |f| %>
       <%= f.input :content,
         label: false,
-        placeholder: "Send a message to" + user.first_name,
+        placeholder: "Send a message to " + user.first_name,
         wrapper_html: {class: "flex-grow-1"}, input_html: { data: { action: "keyup->selection-subscription#isTyping" } }
       %>
       <%= f.submit :content %>
     <% end %>
-     <%#  <div class = "convSendMessage d-flex flex-row">
-        <div class= "conv-input" >
-        </div>
-        <div class= "conv-button d-flex flex-center">
-          <i class="fa-light fa-paper-plane-top"></i>
-        </div>
-      </div> %>
+
 </div>

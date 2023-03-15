@@ -32,10 +32,11 @@
   flex-grow: 1;
   height: 100%;
   overflow-y: auto;
+  padding-top: 15px;
 }
 
 .container-suggestions {
-  max-width: 1400px;
+  max-width: auto;
   padding: 0 15px;
-  margin: 0 auto;
+  margin: 0;
 }

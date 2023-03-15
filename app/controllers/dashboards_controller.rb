@@ -6,9 +6,11 @@ class DashboardsController < ApplicationController
       @suggestions = matching_algo.select do |user|
         current_user.keep_suggestion?(user)
       end
+      @suggestions = @suggestions.select(&:has_a_project?) if params[:has_project] == "true"
     else
       @suggestions = []
     end
+
     @matched_profiles = User.where(id: current_user.matched_users.map(&:id))
     @pending_requests = User.where(id: current_user.liked_users.map(&:id))
   end
@@ -41,14 +43,14 @@ class DashboardsController < ApplicationController
     @selection = current_user.selection_for(@user)
     @selection.accepted! if @selection.pending?
     @selection.pending! if @selection.suggestion?
-    redirect_to matches_dashboards_path
+    redirect_to matches_dashboards_path(has_project: params[:has_project])
   end
 
   def reject
     @user = User.find(params[:user_id])
     @selection = current_user.selection_for(@user)
     @selection.rejected!
-    redirect_to matches_dashboards_path
+    redirect_to matches_dashboards_path(has_project: params[:has_project])
   end
 
   private

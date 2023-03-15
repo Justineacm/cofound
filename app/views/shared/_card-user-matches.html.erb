@@ -22,16 +22,16 @@
                 <li class="btn-tag list-inline-item col-auto"><%= image_tag "project_outline_bleu.svg", class: "tag-icon"%> I've a project</li>
               <% end %>
             <div class="row justify-content-center my-2">
-            <%= link_to "See more", user_path(user), class: "btn-yellow col-auto" %>
+            <%= link_to "See more", user_path(user, has_project: has_project), class: "btn-yellow col-auto" %>
             </div>
             </ul>
           </div>
           <div class="text-center row justify-content-center my-2" data-controller="sweetalert">
             <ul class="list-unstyled list-inline justify-content-center my-2">
-              <%= link_to reject_dashboards_path(user_id: user.id), data: {action: "click->sweetalert#deny" } do %>
+              <%= link_to reject_dashboards_path(user_id: user.id, has_project: has_project ), data: {action: "click->sweetalert#deny" } do %>
                 <li class="btn-circle-cross list-inline-item mx-2"></li>
               <% end %>
-              <%= link_to like_dashboards_path(user_id: user.id), data: {action: "click->sweetalert#accept" } do %>
+              <%= link_to like_dashboards_path(user_id: user.id, has_project: has_project ), data: {action: "click->sweetalert#accept" } do %>
                 <li class="btn-circle-heart list-inline-item mx-2"></li>
               <% end %>
             </ul>
