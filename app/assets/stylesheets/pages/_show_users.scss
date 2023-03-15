@@ -14,8 +14,8 @@
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
   background-color: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  padding: 20px;
+  margin: 0 0 15px 0;
+  padding: 30px;
   min-height: 300px;
   display: flex;
   flex-wrap: flex;
@@ -36,7 +36,6 @@
 
   &.profil-content-project {
     background-color: white;
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
     border-top-left-radius: 30px;
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
@@ -69,10 +68,12 @@
   height: 40px;
   border-radius: 0px 0px 30px 30px;
   align-items: center;
+  font-weight: bold;
 }
 
 h5 {
   margin-bottom: 0;
+  color: $orange;
 }
 
 i {
@@ -102,7 +103,7 @@ i {
 .users-show {
 
   .profil-content {
-    margin: 30px 0px;
+    margin: 15px 0px;
   }
 
   .profil_user {
@@ -110,6 +111,8 @@ i {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    width: 350px;
+    padding: 0;
   }
 
   .profil-content.profil-content-matches {
@@ -125,6 +128,7 @@ i {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 0;
 }
 
 .name-title {
@@ -134,9 +138,17 @@ i {
   padding-left: 1rem;
   padding-right: 1rem;
   gap: 1rem;
+  margin: 5px;
 
   h4 {
     line-break: anywhere;
     text-align: left;
   }
+}
+
+.bloc {
+  display: flex;
+  margin: 5px;
+  padding: 5px;
+  align-items: center;
 }

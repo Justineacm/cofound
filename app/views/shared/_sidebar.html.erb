@@ -1,6 +1,7 @@
 <div class="menu_vertical">
   <ul>
-    <%= link_to :back, class:"text-decoration-none" do %>
+
+    <%= link_to params[:has_project].present? ? matches_dashboards_path(has_project: params[:has_project]) : :back, class:"text-decoration-none" do %>
       <li class="btn-circle-back"></li><p class="mb-5">Back</p>
     <% end %>
 

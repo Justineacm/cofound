@@ -1,4 +1,4 @@
-<div class="profil_user col-3">
+<div class="profil_user">
   <div class="name-title">
     <h4 class="my-2"><%= @user.first_name %> <%= @user.last_name %></h4>
     <a href="#"><i class="fab fa-linkedin"></i></a>
@@ -25,7 +25,8 @@
   </div>
 
   <div id='connect-user'>
-    <h5>I want to connect</h5>
-    <i class="fa-solid fa-heart"></i>
+    <%= link_to like_dashboards_path(user_id: @user.id), class: "nav-link", data: {action: "click->sweetalert#accept" } do %>
+    <i class="fa-solid fa-heart">I want to connect</i>
+    <%end%>
   </div>
 </div>
