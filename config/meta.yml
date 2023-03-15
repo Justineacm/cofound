@@ -1,0 +1,5 @@
+meta_product_name: "Cofound"
+meta_title: "Cofound - Your co-founder, one click away"
+meta_description: "Cofound is the top solution to find a cofounder and found your next startup"
+meta_image: "favicon.svg" # should exist in `app/assets/images/`
+twitter_account: "@cofound"   # required for Twitter Cards
