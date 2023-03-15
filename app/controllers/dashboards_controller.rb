@@ -6,9 +6,11 @@ class DashboardsController < ApplicationController
       @suggestions = matching_algo.select do |user|
         current_user.keep_suggestion?(user)
       end
+      @suggestions = @suggestions.select(&:has_a_project?) if params[:has_project] == "true"
     else
       @suggestions = []
     end
+
     @matched_profiles = User.where(id: current_user.matched_users.map(&:id))
     @pending_requests = User.where(id: current_user.liked_users.map(&:id))
   end
