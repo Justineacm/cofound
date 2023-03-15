@@ -25,7 +25,8 @@
   </div>
 
   <div id='connect-user'>
-    <%= link_to "I want to connect", destroy_user_session_path, class: "nav-link" %>
-    <i class="fa-solid fa-heart"></i>
+    <%= link_to like_dashboards_path(user_id: @user.id), class: "nav-link", data: {action: "click->sweetalert#accept" } do %>
+    <i class="fa-solid fa-heart">I want to connect</i>
+    <%end%>
   </div>
 </div>
