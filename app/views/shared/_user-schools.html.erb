@@ -1,18 +1,13 @@
-<h3>Academy</h3>
+<h3>Education</h3>
 <hr>
 <% @user.trainings.each do |training| %>
   <div class="timeline">
     <div class="entry">
       <div class="title">
-        <h5>2014 - Present</h5>
-        <%# <h5> <%= user.school.start_date- <%= user.school.end_date</h5>  %>
-        <p><%= training.title %></p>
+        <h5><%= training.graduation_year %></h5>
       </div>
       <div class="body">
-        <ul>
-          <li><%= training.title %></li>
-          <li><%= training.graduation_year %></li>
-        </ul>
+        <p><%= training.title %></p>
       </div>
     </div>
   </div>

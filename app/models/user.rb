@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :jobs
   has_many :projects
+  has_many :trainings
   has_many :selection_senders, class_name: 'Selection', foreign_key: 'sender_id'
   has_many :selection_receivers, class_name: 'Selection', foreign_key: 'receiver_id'
   # has_many :selections, class_name: 'Selection', foreign_key: 'receiver_id'
