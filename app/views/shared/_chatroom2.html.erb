@@ -4,8 +4,6 @@
     data-selection-subscription-selection-id-value="<%= selection.id %>"
     data-selection-subscription-current-user-id-value="<%= current_user.id %>"
   >
-  <h3>Your chat with <%= user.first_name %></h3>
-
   <div class="messages" data-selection-subscription-target="messages">
     <% selection.messages.each do |message| %>
       <div class="message-row d-flex <%= message.sender?(current_user) ? 'justify-content-end' : 'justify-content-start' %>">
@@ -16,14 +14,16 @@
     <% end %>
     <span data-selection-subscription-target="typing"></span>
   </div>
-  
+
     <%= simple_form_for [selection, message], html: { data: { action: "turbo:submit-end->selection-subscription#resetForm" }, class: "d-flex" } do |f| %>
       <%= f.input :content,
         label: false,
         placeholder: "Send a message to " + user.first_name,
         wrapper_html: {class: "flex-grow-1"}, input_html: { data: { action: "keyup->selection-subscription#isTyping" } }
       %>
-      <%= f.submit :content %>
+      <%= button_tag type: "submit", class: "btn_cta_message" do %>
+        <i class="fa-regular fa-paper-plane" ></i>
+      <% end %>
     <% end %>
 
 </div>

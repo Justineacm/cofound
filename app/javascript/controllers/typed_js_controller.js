@@ -6,7 +6,7 @@ export default class extends Controller {
     new Typed(this.element, {
       strings: ["Your next cofounder", "One click away"],
       typeSpeed: 100,
-      loop: false
+      loop: true,
     })
   }
 }

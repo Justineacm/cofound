@@ -3,11 +3,11 @@
   <div class="d-flex flex-column">
     <div class="d-flex flex-row">
       <strong><%= message.user.first_name %></strong>
-      <small>
+      <small style= "margin-left: 0.5rem">
       <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
       </small>
     </div>
-    <div class = "messages">
+    <div class="messages">
       <p><%= message.content %></p>
     </div>
   </div>

@@ -10,13 +10,16 @@
   max-width: 400px;
   border-radius: 20px;
   padding: 8px;
-  min-height: 80px;
 }
 
 .sender-style {
   background-color: #fff;
+  box-shadow: 0px 4px 16px rgba(0,0,0,0.2);
+  border-bottom-right-radius: 0;
 }
 
 .receiver-style {
   background-color: #4870df;
+  box-shadow: 0px 4px 16px rgba(0,0,0,0.2);
+  border-bottom-left-radius: 0;
 }
