@@ -68,6 +68,7 @@
   height: 40px;
   border-radius: 0px 0px 30px 30px;
   align-items: center;
+  font-weight: bold;
 }
 
 h5 {
@@ -110,6 +111,7 @@ i {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    width: 350px;
   }
 
   .profil-content.profil-content-matches {
@@ -125,6 +127,7 @@ i {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 0;
 }
 
 .name-title {
@@ -134,9 +137,17 @@ i {
   padding-left: 1rem;
   padding-right: 1rem;
   gap: 1rem;
+  margin: 5px;
 
   h4 {
     line-break: anywhere;
     text-align: left;
   }
+}
+
+.bloc {
+  display: flex;
+  margin: 5px;
+  padding: 5px;
+  align-items: center;
 }
