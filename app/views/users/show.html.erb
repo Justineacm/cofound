@@ -12,10 +12,12 @@
     </div>
 
     <%#= render "shared/user-sidebar-show" %>
-   
-    <div class="chatroom">
-      <%= render "shared/chatroom2", selection: @selection, message: @message, user: @user %>
-    </div>
+
+    <% if @current_user.selection_for(@user).accepted? %>
+      <div class="chatroom">
+        <%= render "shared/chatroom2", selection: @selection, message: @message, user: @user %>
+      </div>
+    <% end %>
     <div class="main-content-project">
       <%= render "shared/user-jobs" %>
     </div>
