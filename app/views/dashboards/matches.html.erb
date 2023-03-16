@@ -6,7 +6,7 @@
     </div>
     <% unless @matched_profiles.nil?%>
     <div class="main-content">
-      <%= render partial: "shared/card-user", locals: { users: @matched_profiles } %>
+      <%= render partial: "shared/card-user", locals: { users: @matched_profiles, has_project: params[:has_project] } %>
     </div>
     <%end%>
     <%# <div id="btn-scrollUp">
