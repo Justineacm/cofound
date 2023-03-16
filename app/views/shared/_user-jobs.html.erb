@@ -8,7 +8,9 @@
           <li><%= job.title %> </li>
           <li><%= job.company.industry %> </li>
           <li><%= job.city %> </li>
+          <% if job.logo%>
           <li><%= image_tag job.logo, class:"avatar-logo"%> </li>
+          <%end%>
         </ul>
       </div>
       <div class="body list-unstyled">
