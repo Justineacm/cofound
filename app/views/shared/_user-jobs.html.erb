@@ -14,12 +14,15 @@
         </ul>
       </div>
       <div class="body list-unstyled">
-        <p><%= job.description %></p>
         <ul class="list-unstyled">
           <% if job.year_experience > 0 %>
             <li><%= job.year_experience %> years of work experience </li>
+          <% else %>
+            <li> 1 year of work experience </li>
+
           <% end %>
         </ul>
+        <p><%= job.description %></p>
       </div>
     </div>
   </div>
