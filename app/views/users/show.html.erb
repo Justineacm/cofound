@@ -5,10 +5,6 @@
 <div class="main">
   <div class="profil-content-show">
 
-    <div class="main-content-project">
-      <%= render "shared/user-jobs" %>
-    </div>
-
     <div class="main-content-show">
       <h3>Highlights</h3>
       <div class="highlights-content">
@@ -80,7 +76,7 @@
         </div>
         <%# <div class="card-highlights"> %>
           <%# <div class="card-highlights-icon"> %>
-            <%# <%= image_tag "hobbies_orange.svg", class: "highlights-icon"%> 
+            <%# <%= image_tag "hobbies_orange.svg", class: "highlights-icon"%>
           <%# </div> %>
           <%# <div class="card-highlights-infos"> %>
             <%# <h2>Hobbies</h2> %>
@@ -99,6 +95,10 @@
       <%= render "shared/user-project" %>
       </div>
     <% end %>
+
+    <div class="main-content-project">
+      <%= render "shared/user-jobs" %>
+    </div>
 
     <div class="main-content-project">
       <%= render "shared/user-schools" %>
