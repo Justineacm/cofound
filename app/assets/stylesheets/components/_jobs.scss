@@ -3,6 +3,7 @@ $container-shadow: 0.5rem 0.5rem 2rem 0 rgba(black, 0.2);
 $gutter: 30px;
 $border-width: 4px;
 $dot-diameter: 8px;
+$half-dot-diameter: 4px;
 
 // body {
 //   background: linear-gradient(55deg,$yellow 30%,$orange 90%);
@@ -45,7 +46,8 @@ $dot-diameter: 8px;
     content: '';
     position: absolute;
     top: 0px;
-    left:calc(33% + 15px); //$gutter/2
+    //left:calc(33% + 15px); //$gutter/2
+    left:calc(33%); //$gutter/2
     bottom: 0px;
     width: $border-width;
     background: $light-gray;
@@ -81,7 +83,9 @@ $dot-diameter: 8px;
       background-color:#fff;
       border-radius:100%;
       top: 15%;
-      right: -$dot-diameter;
+      //right: -$dot-diameter;
+      right: -$half-dot-diameter;
+
       z-index: 99;
     }
     h3 {

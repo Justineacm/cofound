@@ -35,3 +35,9 @@
   border: 5px solid transparent;
   background-image: linear-gradient(30deg, $orange, $blue)1;
 }
+
+.avatar-logo {
+  height: 30px;
+  object-fit: cover;
+  background-position: center;
+}
