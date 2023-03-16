@@ -5,33 +5,37 @@
 <div class="main">
   <div class="profil-content-show">
 
+    <div class="main-content-project">
+      <%= render "shared/user-jobs" %>
+    </div>
+
     <div class="main-content-show">
       <h3>Highlights</h3>
-      <hr>
       <div class="highlights-content">
         <div class="card-highlights">
           <div class="card-highlights-icon">
-            <%= image_tag "xp.svg"%>
+            <%= image_tag "xp_orange.svg"%>
           </div>
           <div class="card-highlights-infos">
             <h3><%= @user.total_experience%></h3>
-            <p>years experience</p>
+            <p>years of work experience</p>
           </div>
         </div>
         <div class="card-highlights">
           <div class="card-highlights-icon">
-            <%= image_tag "mbti.svg", class: "highlights-icon"%>
+            <%= image_tag "mbti_orange.svg", class: "highlights-icon"%>
           </div>
           <div class="card-highlights-infos">
-            <h2><%= @user.mbti %></h2>
-            <p>Product description with <strong>relevant info</strong> only.</p>
+            <h2>MBTI</h2>
+            <p><%= @user.mbti %></p>
           </div>
         </div>
         <div class="card-highlights">
           <div class="card-highlights-icon">
-            <%= image_tag "language.svg", class: "highlights-icon"%>
+            <%= image_tag "language_orange.svg", class: "highlights-icon"%>
           </div>
           <div class="card-highlights-infos">
+            <h2>Language</h2>
             <% @user.language_list.each do |language| %>
               <ul>
                 <li><%= language %></li>
@@ -41,17 +45,19 @@
         </div>
         <div class="card-highlights">
           <div class="card-highlights-icon">
-            <%= image_tag "expertise.svg", class: "highlights-icon"%>
+            <%= image_tag "expertise_orange.svg", class: "highlights-icon"%>
           </div>
           <div class="card-highlights-infos">
-            <h2><%= @user.expertise_list %></h2>
+            <h2>Expertise</h2>
+            <p><%= @user.expertise_list %></p>
           </div>
         </div>
         <div class="card-highlights">
           <div class="card-highlights-icon">
-            <%= image_tag "skill_bleu.svg", class: "highlights-icon"%>
+            <%= image_tag "skill_orange.svg", class: "highlights-icon"%>
           </div>
           <div class="card-highlights-infos">
+            <h2>Soft skill</h2>
             <% @user.soft_skill_list.each do |skill| %>
               <ul>
                 <li><%= skill %></li>
@@ -61,9 +67,10 @@
         </div>
         <div class="card-highlights">
           <div class="card-highlights-icon">
-            <%= image_tag "language.svg", class: "highlights-icon"%>
+            <%= image_tag "personality_orange.svg", class: "highlights-icon"%>
           </div>
           <div class="card-highlights-infos">
+            <h2>Personality</h2>
             <% @user.personality_list.each do |personality| %>
               <ul>
                 <li><%= personality %></li>
@@ -73,9 +80,10 @@
         </div>
         <div class="card-highlights">
           <div class="card-highlights-icon">
-            <%= image_tag "language.svg", class: "highlights-icon"%>
+            <%= image_tag "hobbies_orange.svg", class: "highlights-icon"%>
           </div>
           <div class="card-highlights-infos">
+            <h2>Hobbies</h2>
             <% @user.hobby_list.each do |hobby| %>
               <ul>
                 <li><%= hobby %></li>
@@ -91,10 +99,6 @@
       <%= render "shared/user-project" %>
       </div>
     <% end %>
-
-    <div class="main-content-project">
-      <%= render "shared/user-jobs" %>
-    </div>
 
     <div class="main-content-project">
       <%= render "shared/user-schools" %>

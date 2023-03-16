@@ -136,55 +136,50 @@ a {
 
 .card-highlights {
   overflow: hidden;
-  height: 120px;
+  height: 100px;
   background: white;
-  min-width:30%;
-  flex-grow:1;
-  align-items: center;
-  padding-right: 10px;
-  padding-bottom: 10px;
+  width:28%;
+  // flex-grow:1;
   border-bottom: 2px solid $yellow;
-
-  > ul {
-    font-size: 16px;
-    font-weight: bold;
-  }
+  display: flex;
+  align-items: center;
 }
 
 .card-highlights img {
   height: 100%;
-  width: 120px;
+  width: 40px;
+  justify-content: center;
   object-fit: scale-down;
   margin: 0;
 
-}
-.card-highlights-icon {
-  height: 120px;
-  width: 120px;
-  margin: 0;
 }
 
 .card-highlights h3 {
   font-weight: bold;
   margin: 0;
-  color:$orange;
+  color:$blue;
 }
 
 .card-highlights h2 {
   font-size: 16px;
   font-weight: bold;
-  margin: 0;
+  margin: 0 0 10px 0;
   color:$blue;
 }
 
 .card-highlights p {
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.4;
-  opacity: .7;
+  margin-bottom: 0;
 }
 
 .card-highlights .card-highlights-infos {
-  padding: 16px;
+  padding-left: 25px;
+  > ul {
+    font-size: 14px;
+    line-height: .3;
+    padding-left: 10px;
+  }
 }
 
 .users-show {

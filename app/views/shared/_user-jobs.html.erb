@@ -1,14 +1,14 @@
 <h3>Work experiences</h3>
-<hr>
 <% @user.jobs.each do |job| %>
   <div class="timeline">
     <div class="entry">
       <div class="title">
-        <h5> <%= job.start_date.year %> ~ <%= job.end_date.year %></h5>
+        <h5> <%= job.start_date.year %> • <%= job.end_date.year %></h5>
         <ul>
           <li><%= job.title %> </li>
           <li><%= job.company.industry %> </li>
           <li><%= job.city %> </li>
+          <li class="avatar-logo"><%= image_tag job.logo %> </li>
         </ul>
       </div>
       <div class="body list-unstyled">
