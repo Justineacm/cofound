@@ -15,14 +15,13 @@
   margin: 0 0 15px 0;
   padding: 30px;
   height: fit-content;
-  display: flex;
-  flex-wrap:wrap;
-  gap: 1em;
 }
 
 .highlights-content {
   display: flex;
-  justify-content:space-between;
+  flex-wrap:wrap;
+  gap: 4em;
+  justify-content: center;
 }
 
 .main-content ul {

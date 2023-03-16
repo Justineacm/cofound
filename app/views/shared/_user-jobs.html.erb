@@ -1,5 +1,4 @@
 <h3>Work experiences</h3>
-<hr>
 <% @user.jobs.each do |job| %>
   <div class="timeline">
     <div class="entry">
@@ -8,6 +7,7 @@
         <ul>
           <li><%= job.title %> </li>
           <li><%= job.company.industry %> </li>
+          <li><%= job.city %> </li>
           <li><%= job.city %> </li>
         </ul>
       </div>
