@@ -33,7 +33,7 @@
       </div>
     </div>
 
-    <div class="text-center row justify-content-center my-2" data-controller="sweetalert">
+    <div class="text-center row justify-content-center my-2" data-controller="sweetalert" data-sweetalert-background-url-value="<%= asset_path('Gif_itsamatch.gif') %>" data-sweetalert-backdrop-url-value="<%= asset_path('heart.svg') %> ">
       <ul class="list-unstyled list-inline">
       <% unless Selection.all.empty?%>
         <% if current_user.selection_for(user).pending? %>

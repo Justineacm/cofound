@@ -24,9 +24,9 @@
     </div>
   </div>
 
-  <div id='connect-user'>
-    <%= link_to params[:has_project].present? ? like_dashboards_path(user_id: @user.id, has_project: params[:has_project]) : like_dashboards_path(user_id: @user.id), class: "nav-link", data: {action: "click->sweetalert#accept" } do %>
-    <p class="mb-0"><i class="fa-solid fa-heart"></i> I want to connect</p>
+  <div id='connect-user' data-controller="sweetalert" data-sweetalert-background-url-value="<%= asset_path('Gif_itsamatch.gif') %>" data-sweetalert-backdrop-url-value="<%= asset_path('heart.svg') %> ">
+    <%= link_to params[:has_project].present? ? like_dashboards_path(user_id: @user.id, has_project: params[:has_project]) : like_dashboards_path(user_id: @user.id), class: "nav-link", data: {action: "#{current_user.received_request_from?(@user) ? 'click->sweetalert#itsamatch' : 'click->sweetalert#accept'}" } do %>
+    <i class="fa-solid fa-heart">I want to connect</i>
     <%end%>
   </div>
 </div>

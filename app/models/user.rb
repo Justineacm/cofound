@@ -62,4 +62,8 @@ class User < ApplicationRecord
     ( selection && selection.suggestion? ) ||
     ( selection && selection.pending? && selection.receiver_id == id )
   end
+
+  def received_request_from?(user)
+    user.selection_senders.where(status: 'pending', receiver: self).any?
+  end
 end
