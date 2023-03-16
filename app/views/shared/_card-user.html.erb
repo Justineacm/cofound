@@ -1,54 +1,56 @@
-<% users.each do |user| %>
-
-  <div class="card-user" style="height: unset !important;">
-    <% unless Selection.all.empty?%>
-      <% if current_user.selection_for(user).pending?%>
-        <div class="card-ribbon-pending overflow-hidden">Pending</div>
-      <% elsif current_user.selection_for(user).accepted?%>
-        <div class="card-ribbon-accepted overflow-hidden">Accepted</div>
-      <%end%>
-    <%end%>
-    <div class="text-center">
-      <% if user.photo? %>
-        <%= image_tag user.photo, class: "avatar-large"%>
-      <% else %>
-        <%= image_tag "avatar.svg", class: "avatar"%>
-      <% end %>
-      <h5 class="my-2"><%= user.first_name %> <%= user.last_name %></h5>
-      <%= image_tag "location_orange.svg", class: "tag-icon"%> <%= user.city %>
-    </div>
-
-    <div class="flex-grow-1 row mx-0 w-100 d-flex flex-column justify-content-between">
-      <ul class="d-flex flex-wrap px-0 my-2 justify-content-center">
-        <li class="btn-tag list-inline-item col-auto"><%= image_tag "xp.svg", class: "tag-icon"%> <%= user.total_experience%> years experience</li>
-        <li class="btn-tag list-inline-item col-auto"><%= image_tag "mbti.svg", class: "tag-icon"%> <%= user.mbti %></li>
-        <li class="btn-tag list-inline-item col-auto"><%= image_tag "skill_bleu.svg", class: "tag-icon"%> <%= user.expertise_list %></li>
-        <li class="btn-tag list-inline-item col-auto"><%= image_tag "language.svg", class: "tag-icon"%> <%= user.language_list %></li>
-        <% if user.has_a_project?%>
-          <li class="btn-tag list-inline-item col-auto"><%= image_tag "project_outline_bleu.svg", class: "tag-icon"%> I've a project</li>
-        <% end %>
-      </ul>
-      <div class="d-flex justify-content-center my-2">
-        <%= link_to "See more", user_path(user, has_project: has_project), class: "btn-yellow col-auto" %>
-      </div>
-    </div>
-
-    <div class="text-center row justify-content-center my-2" data-controller="sweetalert" data-sweetalert-background-url-value="<%= asset_path('Gif_itsamatch.gif') %>" data-sweetalert-backdrop-url-value="<%= asset_path('heart.svg') %> ">
-      <ul class="list-unstyled list-inline">
-      <% unless Selection.all.empty?%>
-        <% if current_user.selection_for(user).pending? %>
-          <%= link_to reject_dashboards_path(user_id: user.id), data: {action: "click->sweetalert#deny" } do %>
-            <li class="btn-circle-cross list-inline-item mx-2"></li>
-          <% end %>
-        <% end %>
-
-        <% if current_user.selection_for(user).accepted? %>
-          <%= link_to user_path(user) do %>
-            <li class="btn-circle-orange-message list-inline-item mx-2"></li>
-          <% end %>
-        <% end %>
-      <% end %>
-      </ul>
-    </div>
-  </div>
-<% end %>
+<div class="container-suggestions">
+  <ul class="cards-suggestions">
+    <% users.each do |user| %>
+      <li class="card-suggestion">
+        <div class="card-user">
+          <% unless Selection.all.empty?%>
+            <% if current_user.selection_for(user).pending?%>
+              <div class="card-ribbon-pending overflow-hidden">Pending</div>
+            <% elsif current_user.selection_for(user).accepted?%>
+              <div class="card-ribbon-accepted overflow-hidden">Accepted</div>
+            <%end%>
+          <%end%>
+          <div class="text-center">
+            <% if user.photo? %>
+              <%= image_tag user.photo, class: "avatar-large"%>
+            <% else %>
+              <%= image_tag "avatar.svg", class: "avatar"%>
+            <% end %>
+            <h5 class="my-2"><%= user.first_name %> <%= user.last_name %></h5>
+            <%= image_tag "location_orange.svg", class: "tag-icon"%> <%= user.city %>
+          </div>
+          <div class="flex-grow-1 row mx-0 w-100 d-flex flex-column justify-content-between">
+            <ul class="d-flex flex-wrap px-0 my-2 justify-content-center">
+              <li class="btn-tag list-inline-item col-auto"><%= image_tag "xp.svg", class: "tag-icon"%> <%= user.total_experience%> years experience</li>
+              <li class="btn-tag list-inline-item col-auto"><%= image_tag "mbti.svg", class: "tag-icon"%> <%= user.mbti %></li>
+              <li class="btn-tag list-inline-item col-auto"><%= image_tag "skill_bleu.svg", class: "tag-icon"%> <%= user.expertise_list %></li>
+              <li class="btn-tag list-inline-item col-auto"><%= image_tag "language.svg", class: "tag-icon"%> <%= user.language_list %></li>
+              <% if user.has_a_project?%>
+                <li class="btn-tag list-inline-item col-auto"><%= image_tag "project_outline_bleu.svg", class: "tag-icon"%> I've a project</li>
+              <% end %>
+            </ul>
+            <div class="d-flex justify-content-center my-2">
+              <%= link_to "See more", user_path(user, has_project: has_project), class: "btn-yellow col-auto" %>
+            </div>
+          </div>
+          <div class="text-center row justify-content-center my-2" data-controller="sweetalert">
+            <ul class="list-unstyled list-inline">
+              <% unless Selection.all.empty?%>
+                <% if current_user.selection_for(user).pending? %>
+                  <%= link_to reject_dashboards_path(user_id: user.id), data: {action: "click->sweetalert#deny" } do %>
+                    <li class="btn-circle-cross list-inline-item mx-2"></li>
+                  <% end %>
+                <% end %>
+                <% if current_user.selection_for(user).accepted? %>
+                  <%= link_to user_path(user) do %>
+                    <li class="btn-circle-orange-message list-inline-item mx-2"></li>
+                  <% end %>
+                <% end %>
+            <% end %>
+            </ul>
+          </div>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>

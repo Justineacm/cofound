@@ -5,10 +5,10 @@
   margin: auto;
 }
 
-.chatroom #locked-screen{
+#chatroom-locked-screen{
     position: absolute;
-    left: 11.5%;
-    top: 63%;
+    left: 40%;
+    top: 43%;
     margin: auto;
   }
 
@@ -72,6 +72,34 @@
   align-items: baseline;
   color: white;
   background-color:$orange;
+  margin-top: 10px;
+  height: 40px;
+  border-radius: 0px 0px 20px 20px;
+  align-items: center;
+  font-size: 22px;
+  opacity: 1;
+}
+
+#connect-user:hover {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  color: white;
+  background-color:$orange;
+  margin-top: 10px;
+  height: 40px;
+  border-radius: 0px 0px 20px 20px;
+  align-items: center;
+  font-size: 22px;
+  opacity: 0.8;
+}
+
+#connect-user-accepted {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  color: white;
+  background-color:$yellow;
   margin-top: 10px;
   height: 40px;
   border-radius: 0px 0px 20px 20px;

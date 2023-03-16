@@ -183,6 +183,21 @@
   transition: background 0.3s ease;
 }
 
+.btn-circle-matches-current {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid $orange;
+  background: asset-url("matches_outline_orange.svg") no-repeat;
+  background-position: center;
+  background-size: 55%;
+  transition: background 0.3s ease;
+}
+
+.orange-color{
+  color: $orange;
+}
+
 .btn-circle-matches:hover {
   width: 50px;
   height: 50px;
@@ -256,7 +271,7 @@
   background: asset-url("cross.svg") no-repeat;
   background-position: center;
   background-size: 50%;
-  opacity: 0.6;
+  opacity: 0.9;
 }
 
 .btn-circle-log-out {
