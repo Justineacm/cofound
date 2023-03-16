@@ -113,7 +113,7 @@ $half-dot-diameter: 7px;
       color:$yellow;
       padding-left: 0;
       li:before {
-        content: "–";
+        // content: "–";
         margin-right: .5em;
       }
     }
