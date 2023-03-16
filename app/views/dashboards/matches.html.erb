@@ -5,7 +5,7 @@
     <div class="mt-5 mb-3 blue-color">
       <h3> <%= pluralize( @matched_profiles.count, 'connection' )%></h3>
     </div>
-    <div class="main-content">
+    <div class="main">
       <%= render partial: "shared/card-user", locals: { users: @matched_profiles, has_project: params[:has_project] } %>
     </div>
     <% end %>
