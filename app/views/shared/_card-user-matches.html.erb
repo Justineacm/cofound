@@ -26,7 +26,7 @@
               <%= link_to "See more", user_path(user, has_project: has_project), class: "btn-yellow col-auto" %>
             </div>
           </div>
-          <div class="text-center row justify-content-center my-2" data-controller="sweetalert" data-sweetalert-background-url-value="<%= asset_path('Gif_itsamatch.gif') %>" data-sweetalert-backdrop-url-value="<%= asset_path('heart.svg') %> ">
+          <div class="text-center row justify-content-center my-2" data-controller="sweetalert">
             <ul class="list-unstyled list-inline justify-content-center my-2">
               <%= link_to reject_dashboards_path(user_id: user.id, has_project: has_project ), data: {action: "click->sweetalert#deny" } do %>
                 <li class="btn-circle-cross list-inline-item mx-2"></li>
