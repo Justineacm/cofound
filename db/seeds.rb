@@ -3,9 +3,6 @@ require "rest-client"
 require "open-uri"
 require "nokogiri"
 
-# login : fiszel@gmail.com
-# mot de passe : 123456
-
 Selection.destroy_all
 School.destroy_all
 Training.destroy_all
@@ -85,6 +82,7 @@ data.each_with_index do |infos, index|
     first_name: infos["general"]["firstName"],
     last_name: infos["general"]["lastName"],
     gender: "female",
+    linkedin: infos["general"]["profileUrl"],
     description: infos["general"]["description"],
     mbti: @mbti_profiles.sample,
     mission: [true, false].sample,
@@ -153,7 +151,8 @@ data.each_with_index do |infos, index|
   user = User.new(
     first_name: infos["general"]["firstName"],
     last_name: infos["general"]["lastName"],
-    gender: "female",
+    gender: "male",
+    linkedin: infos["general"]["profileUrl"],
     description: infos["general"]["description"],
     mbti: @mbti_profiles.sample,
     mission: [true, false].sample,
@@ -222,7 +221,8 @@ data.each_with_index do |infos, index|
   user = User.new(
     first_name: infos["general"]["firstName"],
     last_name: infos["general"]["lastName"],
-    gender: "male",
+    gender: "female",
+    linkedin: infos["general"]["profileUrl"],
     description: infos["general"]["description"],
     mbti: "Diplomat",
     mission: [true, false].sample,
