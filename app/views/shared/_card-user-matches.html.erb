@@ -14,12 +14,12 @@
           </div>
           <div class="flex-grow-1 row mx-0 w-100 d-flex flex-column justify-content-between">
             <ul class="d-flex flex-wrap px-0 my-2 justify-content-center">
-              <li class="btn-tag list-inline-item col-auto"><%= image_tag "xp.svg", class: "tag-icon"%> <%= user.total_experience%> years experience</li>
-              <li class="btn-tag list-inline-item col-auto"><%= image_tag "mbti.svg", class: "tag-icon"%> <%= user.mbti %></li>
-              <li class="btn-tag list-inline-item col-auto"><%= image_tag "skill_bleu.svg", class: "tag-icon"%> <%= user.expertise_list %></li>
-              <li class="btn-tag list-inline-item col-auto"><%= image_tag "language.svg", class: "tag-icon"%> <%= user.language_list %></li>
+              <li class="btn-tag list-inline-item col-auto"><%= image_tag "xp_orange.svg", class: "tag-icon"%> <%= user.total_experience%> years experience</li>
+              <li class="btn-tag list-inline-item col-auto"><%= image_tag "mbti_orange.svg", class: "tag-icon"%> <%= user.mbti %></li>
+              <li class="btn-tag list-inline-item col-auto"><%= image_tag "skill_orange.svg", class: "tag-icon"%> <%= user.expertise_list %></li>
+              <li class="btn-tag list-inline-item col-auto"><%= image_tag "language_orange.svg", class: "tag-icon"%> <%= user.language_list %></li>
               <% if user.has_a_project?%>
-                <li class="btn-tag list-inline-item col-auto"><%= image_tag "project_outline_bleu.svg", class: "tag-icon"%> I've a project</li>
+                <li class="btn-tag list-inline-item col-auto"><%= image_tag "project_outline_orange.svg", class: "tag-icon"%> I've a project</li>
               <% end %>
             </ul>
             <div class="d-flex justify-content-center my-2">

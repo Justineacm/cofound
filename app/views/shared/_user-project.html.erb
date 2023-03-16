@@ -13,7 +13,7 @@
       <p class="project-text"><%= @user.projects.first.industry %></p>
     </div>
 
-    <%# <% if user === current_user%>
+    <div class="d-none" <% unless @user === @current_user %>>
       <h5 class="my-3">Pitchdeck</h5>
       <div class="input-group mb-3" data-controller="sweetalert">
         <input type="file" class="form-control" id="inputGroupFile02">
@@ -21,7 +21,7 @@
         <%= link_to user_path(user_id: @user), data: { turbo_method: :post, action: "click->sweetalert#upload" } do %>
         <% end %>
       </div>
-     <%# <% end %>
+     <% end %>
 
     <template id="my-template">
       <h1>modal</h1>
