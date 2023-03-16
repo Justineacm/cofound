@@ -12,7 +12,7 @@
             <h5  class="my-2"><%= user.first_name %> <%= user.last_name %></h5>
             <%= image_tag "location_orange.svg", class: "tag-icon"%> <%= user.city %>
           </div>
-          <div class="row mx-0 w-100 d-flex flex-column justify-content-center">
+          <div class="flex-grow-1 row mx-0 w-100 d-flex flex-column justify-content-between">
             <ul class="d-flex flex-wrap px-0 my-2 justify-content-center">
               <li class="btn-tag list-inline-item col-auto"><%= image_tag "xp.svg", class: "tag-icon"%> <%= user.total_experience%> years experience</li>
               <li class="btn-tag list-inline-item col-auto"><%= image_tag "mbti.svg", class: "tag-icon"%> <%= user.mbti %></li>

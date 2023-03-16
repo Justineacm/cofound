@@ -1,14 +1,14 @@
 <div class="main" >
   <div class="profil-content profil-content-matches" data-controller="filter matchloader" >
     <%= render "selections/suggestions", session: session, suggestions: @suggestions, has_project: params[:has_project] %>
+    <% unless @matched_profiles.empty?%>
     <div class="mt-5 mb-3 blue-color">
-      <h3> <%= pluralize( @matched_profiles.count, 'connections' )%></h3>
+      <h3> <%= pluralize( @matched_profiles.count, 'connection' )%></h3>
     </div>
-    <% unless @matched_profiles.nil?%>
     <div class="main-content">
       <%= render partial: "shared/card-user", locals: { users: @matched_profiles, has_project: params[:has_project] } %>
     </div>
-    <%end%>
+    <% end %>
     <%# <div id="btn-scrollUp">
       <a href="#top"><i class="fa-solid fa-arrow-up"></i></a>
     </div> %>

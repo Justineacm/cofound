@@ -20,10 +20,10 @@
 
       <div class = "list-tags-user my-3">
         <ul class="list-unstyled list-inline">
-          <li class="btn-tag list-inline-item"><%= image_tag "xp.svg", class: "tag-icon"%> <%= current_user.total_experience%> years experience</li>
-          <li class="btn-tag list-inline-item"><%= image_tag "mbti.svg", class: "tag-icon"%> <%= current_user.mbti %></li>
-          <li class="btn-tag list-inline-item"><%= image_tag "skill_bleu.svg", class: "tag-icon"%> <%= current_user.expertise_list %></li>
-          <li class="btn-tag list-inline-item"><%= image_tag "language.svg", class: "tag-icon"%> <%= current_user.language_list %></li>
+          <li class="btn-tag list-inline-item"><%= image_tag "xp_orange.svg", class: "tag-icon"%> <%= current_user.total_experience%> years experience</li>
+          <li class="btn-tag list-inline-item"><%= image_tag "mbti_orange.svg", class: "tag-icon"%> <%= current_user.mbti %></li>
+          <li class="btn-tag list-inline-item"><%= image_tag "skill_orange.svg", class: "tag-icon"%> <%= current_user.expertise_list %></li>
+          <li class="btn-tag list-inline-item"><%= image_tag "language_orange.svg", class: "tag-icon"%> <%= current_user.language_list %></li>
 
           <% if current_user.has_a_project%>
           <li class="btn-tag list-inline-item"><%= image_tag "project_outline_bleu.svg", class: "tag-icon"%> I've a project</li>
