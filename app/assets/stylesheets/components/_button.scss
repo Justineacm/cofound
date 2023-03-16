@@ -46,6 +46,25 @@
   opacity: 0.8;
 }
 
+.btn-cta-home {
+  text-decoration: none;
+  color: white;
+  background-color: $orange;
+  padding: 8px 24px;
+  border: 1px solid $orange;
+  border-radius: 50px;
+  opacity: 1;
+  transition: background 0.3s ease;
+  margin-left: 18px;
+
+}
+
+.btn-cta-home:hover {
+  background: $orange;
+  color: white;
+  opacity: 0.7;
+}
+
 .btn-yellow {
   font-size: 14px;
   text-decoration: none;
