@@ -27,7 +27,7 @@
             </div>
           </div>
           <div class="text-center row justify-content-center my-2" data-controller="sweetalert">
-            <ul class="list-unstyled list-inline justify-content-center my-2">
+            <ul class="list-unstyled list-inline">
               <%= link_to reject_dashboards_path(user_id: user.id, has_project: has_project ), data: {action: "click->sweetalert#deny" } do %>
                 <li class="btn-circle-cross list-inline-item mx-2"></li>
               <% end %>

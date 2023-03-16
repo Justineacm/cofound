@@ -79,6 +79,19 @@
   font-size: 22px;
 }
 
+#connect-user-accepted {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  color: white;
+  background-color:$yellow;
+  margin-top: 10px;
+  height: 40px;
+  border-radius: 0px 0px 20px 20px;
+  align-items: center;
+  font-size: 22px;
+}
+
 h5 {
   margin-bottom: 0;
   color: $orange;

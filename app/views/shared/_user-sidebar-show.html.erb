@@ -4,7 +4,7 @@
     <%= link_to " ", @user.linkedin, class:"fab fa-linkedin"%>
   </div>
 
-  <div class="bloc">
+  <div class="bloc mb-3">
     <div class="photo">
       <% if @user.photo? %>
         <%= image_tag @user.photo, class: "avatar-large"%>
@@ -23,10 +23,11 @@
       </ul>
     </div>
   </div>
-
-  <div id='connect-user'>
-    <%= link_to params[:has_project].present? ? like_dashboards_path(user_id: @user.id, has_project: params[:has_project]) : like_dashboards_path(user_id: @user.id), class: "nav-link", data: {action: "click->sweetalert#accept" } do %>
-    <p class="mb-0"><i class="fa-solid fa-heart"></i> I want to connect</p>
-    <%end%>
-  </div>
+  <% unless current_user.selection_for(@user).accepted?%>
+    <div id='connect-user'>
+      <%= link_to params[:has_project].present? ? like_dashboards_path(user_id: @user.id, has_project: params[:has_project]) : like_dashboards_path(user_id: @user.id), class: "nav-link", data: {action: "click->sweetalert#accept" } do %>
+      <p class="mb-0"><i class="fa-solid fa-heart"></i> I want to connect</p>
+      <%end%>
+    </div>
+  <%end%>
 </div>
