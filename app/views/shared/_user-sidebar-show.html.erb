@@ -1,7 +1,7 @@
 <div class="profil_user">
   <div class="name-title">
     <h4 class="my-2"><%= @user.first_name %> <%= @user.last_name %></h4>
-    <a href="#"><i class="fab fa-linkedin"></i></a>
+    <%= link_to " ", @user.linkedin, class:"fab fa-linkedin"%>
   </div>
 
   <div class="bloc">
