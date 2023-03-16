@@ -39,7 +39,12 @@
         <div class="main-container">
           <%= render "shared/flashes" %>
           <% if action_name == "show" && controller_name == "users" %>
-            <%= render "shared/user-sidebar-show" %>
+            <div class="flex-col">
+              <%= render "shared/user-sidebar-show" %>
+                <div class="chatroom">
+                <%= render "shared/chatroom2", selection: @selection, message: @message, user: @user %>
+                </div>
+            </div>
           <% else %>
             <%= render "shared/user-sidebar" unless devise_controller? %>
           <% end %>

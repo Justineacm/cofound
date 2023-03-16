@@ -5,6 +5,13 @@
   margin: auto;
 }
 
+.chatroom #locked-screen{
+    position: absolute;
+    left: 10%;
+    top: 60%;
+    margin: auto;
+  }
+
 .blocked-content {
   filter: blur(6px);
 }
