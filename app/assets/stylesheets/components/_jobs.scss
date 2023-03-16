@@ -1,9 +1,9 @@
 $container-shadow: 0.5rem 0.5rem 2rem 0 rgba(black, 0.2);
 
 $gutter: 30px;
-$border-width: 4px;
-$dot-diameter: 8px;
-$half-dot-diameter: 4px;
+$border-width: 3px;
+$dot-diameter: 12px;
+$half-dot-diameter: 7px;
 
 // body {
 //   background: linear-gradient(55deg,$yellow 30%,$orange 90%);
@@ -82,7 +82,7 @@ $half-dot-diameter: 4px;
       border: $border-width solid $orange;
       background-color:#fff;
       border-radius:100%;
-      top: 15%;
+      top: 5%;
       //right: -$dot-diameter;
       right: -$half-dot-diameter;
 
