@@ -236,7 +236,7 @@ data.each_with_index do |infos, index|
   user.personality_list.add(@personality.sample(3))
   user.soft_skill_list.add(@soft_skills.sample(2))
   user.expertise_list.add("Marketing")
-  user.language_list.add("French", "English", "Español")
+  user.language_list.add("French", "English")
   user.save!
 
   infos["jobs"].first(3).each do |job|
