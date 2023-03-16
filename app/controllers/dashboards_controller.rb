@@ -11,8 +11,7 @@ class DashboardsController < ApplicationController
       @suggestions = []
     end
 
-    @matched_profiles = User.where(id: current_user.matched_users.map(&:id))
-    @pending_requests = User.where(id: current_user.liked_users.map(&:id))
+    @matched_profiles = User.where(id: current_user.matched_users.map(&:id)) + User.where(id: current_user.liked_users.map(&:id))
   end
 
   def suggestions

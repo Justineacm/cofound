@@ -12,16 +12,16 @@ export default class extends Controller {
     this.loaderTarget.classList.remove("d-none")
     this.textTarget.classList.remove("d-none")
     setTimeout(() => {
-      this.textTarget.innerHTML="Matching experiences"
+      this.textTarget.innerHTML= '<span class="blue-color">Matching</span> <span class="orange-color">experiences</span>'
     }, 1000);
     setTimeout(() => {
-      this.textTarget.innerHTML="Matching MBTI profiles"
+      this.textTarget.innerHTML='<span class="blue-color">Matching</span> <span class="orange-color">MBTI profiles</span>'
     }, 2000);
     setTimeout(() => {
-      this.textTarget.innerHTML="Matching expertise"
+      this.textTarget.innerHTML='<span class="blue-color">Matching</span> <span class="orange-color">expertise</span>'
     }, 3000);
     setTimeout(() => {
-      this.textTarget.innerHTML="Matching locations"
+      this.textTarget.innerHTML='<span class="blue-color">Matching</span> <span class="orange-color">locations</span>'
     }, 4000);
     setTimeout(() => {
       this.formTarget.submit()
