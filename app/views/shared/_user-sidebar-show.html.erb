@@ -16,9 +16,9 @@
     <div class=list-tags-user-show>
       <ul class="list-unstyled list-inline">
         <li class="btn-tag list-inline-item"><%= image_tag "location_orange.svg", class: "tag-icon"%> <%= @user.city %></li>
-        <li class="btn-tag list-inline-item"><%= image_tag "xp.svg", class: "tag-icon"%> <%= @user.total_experience%> years experience</li>
+        <li class="btn-tag list-inline-item"><%= image_tag "xp_orange.svg", class: "tag-icon"%> <%= @user.total_experience%> years experience</li>
         <% if @user.has_a_project%>
-        <li class="btn-tag list-inline-item"><%= image_tag "project_outline_bleu.svg", class: "tag-icon"%> Having a project</li>
+        <li class="btn-tag list-inline-item"><%= image_tag "project_outline_orange.svg", class: "tag-icon"%> Having a project</li>
         <% end %>
       </ul>
     </div>
@@ -26,7 +26,7 @@
 
   <div id='connect-user'>
     <%= link_to params[:has_project].present? ? like_dashboards_path(user_id: @user.id, has_project: params[:has_project]) : like_dashboards_path(user_id: @user.id), class: "nav-link", data: {action: "click->sweetalert#accept" } do %>
-    <i class="fa-solid fa-heart">I want to connect</i>
+    <p class="mb-0"><i class="fa-solid fa-heart"></i> I want to connect</p>
     <%end%>
   </div>
 </div>

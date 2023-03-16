@@ -6,7 +6,7 @@
   <div class="profil-content-show">
 
     <div class="main-content-show">
-      <h3>Highlights</h3>
+      <h3 class="mb-4">Highlights</h3>
       <div class="highlights-content">
         <div class="card-highlights">
           <div class="card-highlights-icon">
@@ -19,16 +19,18 @@
         </div>
         <div class="card-highlights">
           <div class="card-highlights-icon">
-            <%= image_tag "mbti_orange.svg", class: "highlights-icon"%>
+            <%= image_tag "mbti_orange.svg"%>
           </div>
           <div class="card-highlights-infos">
             <h2>MBTI</h2>
-            <p><%= @user.mbti %></p>
+            <ul>
+              <li><%= @user.mbti %></li>
+            </ul>
           </div>
         </div>
         <div class="card-highlights">
           <div class="card-highlights-icon">
-            <%= image_tag "language_orange.svg", class: "highlights-icon"%>
+            <%= image_tag "language_orange.svg"%>
           </div>
           <div class="card-highlights-infos">
             <h2>Language</h2>
@@ -41,16 +43,18 @@
         </div>
         <div class="card-highlights">
           <div class="card-highlights-icon">
-            <%= image_tag "expertise_orange.svg", class: "highlights-icon"%>
+            <%= image_tag "expertise_orange.svg"%>
           </div>
           <div class="card-highlights-infos">
             <h2>Expertise</h2>
-            <p><%= @user.expertise_list %></p>
+              <ul>
+                <li><%= @user.expertise_list %></li>
+              </ul>
           </div>
         </div>
         <div class="card-highlights">
           <div class="card-highlights-icon">
-            <%= image_tag "skill_orange.svg", class: "highlights-icon"%>
+            <%= image_tag "skill_orange.svg"%>
           </div>
           <div class="card-highlights-infos">
             <h2>Soft skills</h2>
@@ -63,7 +67,7 @@
         </div>
         <div class="card-highlights">
           <div class="card-highlights-icon">
-            <%= image_tag "personality_orange.svg", class: "highlights-icon"%>
+            <%= image_tag "personality_orange.svg"%>
           </div>
           <div class="card-highlights-infos">
             <h2>Personality</h2>
@@ -76,7 +80,7 @@
         </div>
         <%# <div class="card-highlights"> %>
           <%# <div class="card-highlights-icon"> %>
-            <%# <%= image_tag "hobbies_orange.svg", class: "highlights-icon"%>
+            <%# <%= image_tag "hobbies_orange.svg"%>
           <%# </div> %>
           <%# <div class="card-highlights-infos"> %>
             <%# <h2>Hobbies</h2> %>
