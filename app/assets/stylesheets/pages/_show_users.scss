@@ -1,7 +1,7 @@
 #locked-screen {
   position: absolute;
-  left: 50%;
-  top: 50%;
+  left: 45%;
+  top: 40%;
   margin: auto;
 }
 
@@ -71,12 +71,12 @@
   justify-content: center;
   align-items: baseline;
   color: white;
-  background-color:$blue;
+  background-color:$orange;
   margin-top: 10px;
   height: 40px;
   border-radius: 0px 0px 20px 20px;
   align-items: center;
-  font-weight: bold;
+  font-size: 20px;
 }
 
 h5 {
@@ -150,8 +150,6 @@ i {
     border-radius: 20px;
   }
 }
-
-
 
 .users-show .profil_user ul {
   display: flex;

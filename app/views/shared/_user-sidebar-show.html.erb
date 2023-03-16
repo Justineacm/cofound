@@ -26,7 +26,7 @@
 
   <div id='connect-user'>
     <%= link_to params[:has_project].present? ? like_dashboards_path(user_id: @user.id, has_project: params[:has_project]) : like_dashboards_path(user_id: @user.id), class: "nav-link", data: {action: "click->sweetalert#accept" } do %>
-    <i class="fa-solid fa-heart">I want to connect</i>
+    <p class="mb-0"><i class="fa-solid fa-heart"></i> I want to connect</p>
     <%end%>
   </div>
 </div>
