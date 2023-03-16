@@ -6,7 +6,11 @@
     <% end %>
 
     <%= link_to matches_dashboards_path, class:"text-decoration-none text-center" do %>
+      <% if action_name == "matches" %>
+      <li class="btn-circle-matches-current"></li><p class="mb-5 orange-color">Matches</p>
+      <% else %>
       <li class="btn-circle-matches"></li><p class="mb-5">Matches</p>
+      <% end %>
     <% end %>
 
     <%= link_to messages_dashboards_path, class:"text-decoration-none text-center" do %>
