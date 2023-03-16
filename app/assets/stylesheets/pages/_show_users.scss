@@ -148,7 +148,6 @@ i {
 .users-show .profil_user ul {
   display: flex;
   flex-direction: column;
-  align-items: center;
   margin: 0;
 }
 
@@ -174,6 +173,16 @@ i {
   align-items: center;
 }
 
-.list-tags {
-  
+.list-tags-user li {
+ font-size: 13px;
+}
+
+.location-title {
+  font-size: 18px;
+  margin-top: 1.5rem;
+  margin-bottom: 1.9rem;
+}
+
+.list-tags-user-show li {
+  font-size: 13px;
 }
