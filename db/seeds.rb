@@ -222,9 +222,9 @@ data.each_with_index do |infos, index|
   user = User.new(
     first_name: infos["general"]["firstName"],
     last_name: infos["general"]["lastName"],
-    gender: "female",
+    gender: "male",
     description: infos["general"]["description"],
-    mbti: @mbti_profiles.sample,
+    mbti: "Diplomat",
     mission: [true, false].sample,
     city: infos["general"]["location"],
     photo: infos["general"]["imgUrl"],
@@ -235,8 +235,8 @@ data.each_with_index do |infos, index|
   user.hobby_list.add(@hobbies.sample(2))
   user.personality_list.add(@personality.sample(3))
   user.soft_skill_list.add(@soft_skills.sample(2))
-  user.expertise_list.add(@expertise.sample)
-  user.language_list.add("French", @languages.sample)
+  user.expertise_list.add("Marketing")
+  user.language_list.add("French", "English", "Español")
   user.save!
 
   infos["jobs"].first(3).each do |job|
