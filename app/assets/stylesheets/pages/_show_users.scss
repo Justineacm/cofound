@@ -134,12 +134,12 @@ i {
   }
 
   .profil_user {
-    height: fit-content;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding: 0;
     flex: 0 0 350px;
+    height: fit-content;
   }
 
   .profil-content.profil-content-matches {
@@ -150,6 +150,8 @@ i {
     border-radius: 20px;
   }
 }
+
+
 
 .users-show .profil_user ul {
   display: flex;
