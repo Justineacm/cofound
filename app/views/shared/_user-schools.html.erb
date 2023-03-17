@@ -1,16 +1,18 @@
 <h3>Education</h3>
-<% @user.trainings.each do |training| %>
-  <% if training.graduation_year.present?%>
-    <div class="timeline">
-      <div class="entry">
-        <div class="title">
-          <h5><%= training.graduation_year %></h5>
+  <% @user.trainings.order("graduation_year desc").each do |training| %>
+  <% if training.graduation_year%>
+      <% unless training.graduation_year.zero? %>
+        <div class="timeline">
+          <div class="entry">
+            <div class="title">
+              <h5><%= training.graduation_year %></h5>
+            </div>
+            <div class="body">
+              <h6 class="fw-bold text-capitalize"><%= training.school.name %></h6>
+              <p><%= training.title %></p>
+            </div>
+          </div>
         </div>
-        <div class="body">
-          <h6 class="fw-bold text-capitalize"><%= training.school.name %></h6>
-          <p><%= training.title %></p>
-        </div>
-      </div>
-    </div>
+      <% end %>
+    <% end %>
   <% end %>
-<% end %>
