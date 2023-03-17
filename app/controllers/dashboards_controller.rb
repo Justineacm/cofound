@@ -42,6 +42,7 @@ class DashboardsController < ApplicationController
     @selection = current_user.selection_for(@user)
     @selection.accepted! if @selection.pending?
     @selection.pending! if @selection.suggestion?
+    sleep(0.2)
     redirect_to matches_dashboards_path(has_project: params[:has_project])
   end
 
@@ -49,6 +50,7 @@ class DashboardsController < ApplicationController
     @user = User.find(params[:user_id])
     @selection = current_user.selection_for(@user)
     @selection.rejected!
+    sleep(0.2)
     redirect_to matches_dashboards_path(has_project: params[:has_project])
   end
 
