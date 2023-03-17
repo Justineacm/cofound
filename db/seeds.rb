@@ -345,6 +345,7 @@ data.each_with_index do |infos, index|
     end
 
     puts "creating #{user.first_name} #{user.last_name}"
+    generate_project(user, index, kisskissprojects)
 end
 
 # /(.*)\s-\s(.*)\s·/.match("Sep 2021 - Jan 2022 · 1 yrs 5 mos")
