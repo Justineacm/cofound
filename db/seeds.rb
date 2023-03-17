@@ -277,9 +277,78 @@ data.each_with_index do |infos, index|
   end
 
   puts "creating #{user.first_name} #{user.last_name}"
+
+  saskia_profile = "app/assets/JSON/saskia.json"
+
+  file = File.read(saskia_profile)
+  data = JSON.parse(file)
+  kisskissprojects = kisskissbankbank_scrap
+
+  puts "creating Saskia"
+  data.each_with_index do |infos, index|
+    user = User.new(
+      first_name: infos["general"]["firstName"],
+      last_name: infos["general"]["lastName"],
+      gender: "female",
+      linkedin: infos["general"]["profileUrl"],
+      description: infos["general"]["description"],
+      mbti: "Analyst",
+      mission: [true, false].sample,
+      city: infos["general"]["location"],
+      photo: infos["general"]["imgUrl"],
+      has_a_project: true,
+      email: "#{infos["general"]["lastName"].strip}@gmail.com",
+      password: "123456"
+    )
+    user.hobby_list.add(@hobbies.sample(2))
+    user.personality_list.add(@personality.sample(3))
+    user.soft_skill_list.add(@soft_skills.sample(2))
+    user.expertise_list.add("Technical")
+    user.language_list.add("French", "English")
+    user.save!
+
+    infos["jobs"].first(3).each do |job|
+      company1 = Company.new(
+        industry: job["companyName"]
+      )
+      company1.save!
+
+      job_new = Job.new(
+        description: job["description"],
+        title: job["jobTitle"],
+        city: job["location"],
+        logo: job["logoUrl"],
+        start_date: start_date(job),
+        end_date: end_date(job),
+        year_experience: xp_calculation(job)
+      )
+
+      job_new.user = user
+      job_new.company = company1
+
+      job_new.save!
+    end
+
+    schools = infos["schools"]
+
+    schools.each do |dataSchool|
+      school = School.find_or_create_by(name: dataSchool["schoolName"])
+      training = Training.new(
+        title: dataSchool["degree"],
+        graduation_year: dataSchool["dateRange"]
+      )
+
+      training.user = user
+      training.school = school
+
+      training.save
+    end
+
+    puts "creating #{user.first_name} #{user.last_name}"
 end
 
 # /(.*)\s-\s(.*)\s·/.match("Sep 2021 - Jan 2022 · 1 yrs 5 mos")
 # matches = _
 # matches[1]
 # Date.today
+end
